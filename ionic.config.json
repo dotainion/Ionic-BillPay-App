@@ -1,0 +1,7 @@
+{
+  "name": "billPayApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

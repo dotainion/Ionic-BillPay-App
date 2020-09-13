@@ -1,0 +1,23 @@
+.iconStyle{
+    font-size:20px;
+}
+
+.onHover:hover{
+    color:red;
+}
+
+.loginBottomNavHover:hover{
+    cursor: pointer;
+    color:navy;
+    background-color: gray;
+}
+
+.loginBottomNavStyle{
+    text-align:center;
+    padding:5px;
+    color:black;
+}
+
+.icon{
+    vertical-align: top;
+}
