@@ -10,6 +10,7 @@ import './Home.css';
 
 const Login: React.FC = () => {  
   tools.isLogin(false);
+  var serverRecall = 0;
   
   var MARGIN = tools.compare(tools.platform(),true,"2%","35%");
 
@@ -61,8 +62,13 @@ const Login: React.FC = () => {
         
     })
     .catch(()=>{
-      setErrorText(tools.MSG.serverDown);
-      tools.clickById("stop-loader");
+      if (serverRecall <= 10){
+        serverRecall ++;
+        server();
+      }else{
+        setErrorText(tools.MSG.serverDown);
+        tools.clickById("stop-loader");
+      }
     });
   }
 
