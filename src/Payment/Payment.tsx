@@ -5,7 +5,7 @@ import { IonPage, IonContent, IonSelect, IonSelectOption, IonLabel, IonItem, Ion
 import tools from '../components/Tools';
 import Widgets from '../components/Widgets';
 import utils from '../Payment/Utils';
-import Info from '../../Info';
+import Info from './Info';
 import './Payment.css';
 
 
