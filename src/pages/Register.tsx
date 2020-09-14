@@ -24,7 +24,7 @@ const Register: React.FC = () =>{
     const server = () =>{
         setErrorText("");
         tools.clickById("start-loader");
-        axios.post(tools.URL.REGISTER,serverVar.REGISTER)
+        /*axios.post(tools.URL.REGISTER,serverVar.REGISTER)
         .then(response =>{
             if (response.data === true){
                 if (rememberChecked){
@@ -44,7 +44,13 @@ const Register: React.FC = () =>{
         })
         .finally(()=>{
             tools.clickById("stop-loader");
-        })
+        })*/
+        tools.tempStorage(serverVar.REGISTER.email,serverVar.REGISTER.password);
+        if (rememberChecked){
+            tools.saveCreds(serverVar.REGISTER.email,serverVar.REGISTER.password);
+        }
+        tools.clickById("stop-loader");
+        tools.clickById("home");
     }
 
     const matchWhileTyping = (value:any, reference:any) =>{

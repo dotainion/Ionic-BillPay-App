@@ -261,6 +261,35 @@ class Tools{
             }
         }
     }
+
+    tempStorage(username:any, password:any){
+        var credsTemp = [];
+        var users = window.localStorage.getItem("users");
+        var creds = {username:username,password:password};
+        if (users){
+            for (var item of JSON.parse(users)){
+                credsTemp.push(item);
+            }
+            credsTemp.push(creds);
+            window.localStorage.setItem("users",JSON.stringify(credsTemp));
+            console.log(credsTemp)
+        }else{
+            window.localStorage.setItem("users",JSON.stringify(creds));
+        }
+    }
+
+    tempStorageCheck(username:any, password:any){
+        var allCreds = window.localStorage.getItem("users");
+        if (allCreds){
+            for (var creds of JSON.parse(allCreds)){
+                if (creds.username === username && creds.password === password){
+                    return true;
+                }
+            }
+            return false;
+        }
+        return null;
+    }
 }
 
 var systemTools = new Tools()

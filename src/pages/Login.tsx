@@ -36,9 +36,10 @@ const Login: React.FC = () => {
   const server = () => {
     tools.clickById("start-loader");
     setErrorText("");
-    axios.post(tools.URL.LOGIN,serverVar.LOGIN)
-    .then(response =>{
-        if (response.data === true){
+    /*axios.post(tools.URL.LOGIN,serverVar.LOGIN)
+    .then(response =>{/*/
+      var response = tools.tempStorageCheck(serverVar.LOGIN.username,serverVar.LOGIN.password);
+        if (response === true){
             if (rememberChecked){
                 tools.saveCreds(serverVar.LOGIN.username,serverVar.LOGIN.password);
             }else{
@@ -49,10 +50,10 @@ const Login: React.FC = () => {
             tools.isLogin(true);
             tools.clickById("stop-loader");
             tools.clickById("home");            
-        }else if (response.data === false){
+        }else if (response === false){
             setErrorText(tools.MSG.wrongPassword);
             tools.clickById("stop-loader");
-        }else if (response.data === null){
+        }else if (response === null){
           setErrorText(tools.MSG.userNotExist);
           tools.clickById("stop-loader");
         }else{
@@ -60,7 +61,7 @@ const Login: React.FC = () => {
           tools.clickById("stop-loader");
         }
         
-    })
+    /*})
     .catch(()=>{
       if (serverRecall <= 10){
         serverRecall ++;
@@ -69,7 +70,7 @@ const Login: React.FC = () => {
         setErrorText(tools.MSG.serverDown);
         tools.clickById("stop-loader");
       }
-    });
+    });*/
   }
 
   return (
