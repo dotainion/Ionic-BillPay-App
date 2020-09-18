@@ -49,6 +49,7 @@ const Login: React.FC = () => {
             }
             tools.isLogin(true);
             tools.clickById("stop-loader");
+            tools.clickById("show-menu");
             tools.clickById("home");            
         }else if (response === false){
             setErrorText(tools.MSG.wrongPassword);
@@ -159,7 +160,6 @@ const Login: React.FC = () => {
           <IonItem style={{marginLeft:MARGIN,marginRight:MARGIN}} lines="full">
               <AppInfo.Nav/>
           </IonItem>
-          <IonButton onClick={()=>{tools.clickById('home')}}>test</IonButton>
       </IonContent>
     </IonPage>
   );

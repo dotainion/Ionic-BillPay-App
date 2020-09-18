@@ -216,23 +216,6 @@ class Widgets{
                     tools.saveHistry(e.currentTarget.id)
                 }} routerLink="/archeived"/>
 
-                <IonButton hidden id="aboutus-outside" onClick={e=>{
-                    tools.saveHistry(e.currentTarget.id)
-                }} routerLink="/aboutus-outside"/>
-                <IonButton hidden id="contactus-outside" onClick={e=>{
-                    tools.saveHistry(e.currentTarget.id)
-                }} routerLink="/contactus-outside"/>
-                <IonButton hidden id="help-outside" onClick={e=>{
-                    tools.saveHistry(e.currentTarget.id)
-                }} routerLink="/help-outside"/>
-                <IonButton hidden id="privacy-outside" onClick={e=>{
-                    tools.saveHistry(e.currentTarget.id)
-                }} routerLink="/privacy-outside"/>
-                <IonButton hidden id="terms-outside" onClick={e=>{
-                    tools.saveHistry(e.currentTarget.id)
-                }} routerLink="/terms-outside"/>
-
-
                 <IonButton hidden id="home" onClick={e=>{
                     tools.saveHistry(e.currentTarget.id)
                 }} routerLink="/home"/>

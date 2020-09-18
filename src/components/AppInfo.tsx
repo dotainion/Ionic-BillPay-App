@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonIcon } from '@ionic/react';
+import { IonIcon, IonItem } from '@ionic/react';
 import { languageSharp } from 'ionicons/icons';
 import tools from './Tools';
 import '../components/AppInfo.css';
@@ -8,23 +8,23 @@ import '../components/AppInfo.css';
 class AppInformations{
     Nav(){
         return(
-            <div style={{textAlign:"center",width:"100%"}}>
+            <IonItem style={{width:"100%"}} lines="none">
                 <IonIcon class="loginBottomNavStyle loginBottomNavHover" onClick={()=>{
                     tools.clickById("show-language");
                 }} icon={languageSharp}/>
                 <span className="loginBottomNavStyle loginBottomNavHover" onClick={()=>{
-                    tools.clickById("help-outside")
+                    tools.clickById("help")
                 }}>Help</span>
                 <span className="loginBottomNavStyle loginBottomNavHover" onClick={()=>{
-                    tools.clickById("privacy-outside")
+                    tools.clickById("privacy")
                 }}>Privacy</span>
                 <span className="loginBottomNavStyle loginBottomNavHover" onClick={()=>{
-                    tools.clickById("terms-outside")
+                    tools.clickById("terms")
                 }}>Terms</span>
                 <span className="loginBottomNavStyle loginBottomNavHover" onClick={()=>{
-                    tools.clickById("aboutus-outside")
+                    tools.clickById("aboutus")
                 }}>About us</span>
-            </div>
+            </IonItem>
         )
     }
 }

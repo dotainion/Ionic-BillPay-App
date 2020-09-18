@@ -143,7 +143,9 @@ class Tools{
     }
 
     logout(){
+        console.log("tsting this")
         this.clearCreds();
+        this.clickById("hide-menu");
         this.clickById("login");
     }
 

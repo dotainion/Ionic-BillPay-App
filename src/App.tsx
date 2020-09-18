@@ -89,20 +89,9 @@ const App: React.FC = () => {
             <Route path="/payment" component={Payment} exact />
             <Redirect from="/" to="/" exact />
             <Route path="/home" component={Home} exact />
-            <Redirect from="/" to="/login" exact />
+            <Redirect from="/" to="/" exact />
           </IonRouterOutlet>
         </IonSplitPane>
-
-        <Route path="/aboutus-outside" component={Aboutus} exact />
-        <Redirect from="/" to="/" exact />
-        <Route path="/contactus-outside" component={ContactUs} exact />
-        <Redirect from="/" to="/" exact />
-        <Route path="/help-outside" component={Help} exact />
-        <Redirect from="/" to="/" exact />
-        <Route path="/privacy-outside" component={Privacy} exact />
-        <Redirect from="/" to="/" exact />
-        <Route path="/terms-outside" component={Terms} exact />
-        <Redirect from="/" to="/" exact />
 
         <Route path="/register" component={Register} exact />
         <Redirect from="/" to="/" exact />

@@ -1,6 +1,6 @@
-import {IonContent,IonIcon,IonItem,IonLabel,IonList,IonListHeader,IonMenu,IonMenuToggle,IonItemDivider,} from '@ionic/react';
+import {IonContent,IonIcon,IonItem,IonLabel,IonList,IonListHeader,IonMenu,IonMenuToggle,IonItemDivider, IonButton} from '@ionic/react';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, mailOutline, mailSharp, trashOutline, trashSharp,  settingsSharp, settingsOutline, logOutSharp, cardSharp, homeSharp } from 'ionicons/icons';
 import './Menu.css';
 import tools from './Tools';
@@ -120,8 +120,9 @@ const oftenLink:UserLinks[] = [
 ]
 
 const Menu: React.FC = () => {
+  const [hideMenu, setHideMenu] = useState(true);
   return (
-    <IonMenu contentId="menu" type="overlay" 
+    <IonMenu hidden={hideMenu} contentId="menu" type="overlay" 
     style={{width:tools.compare(tools.platform(),true,"","0px")}}>
       <IonListHeader style={{
         fontWeight:"bold",
@@ -192,6 +193,8 @@ const Menu: React.FC = () => {
             })}
         </IonList>
       </IonContent>
+      <IonButton id="show-menu" hidden onClick={()=>{setHideMenu(false);}}/>
+      <IonButton id="hide-menu" hidden onClick={()=>{setHideMenu(false);}}/>
     </IonMenu>
   );
 };
