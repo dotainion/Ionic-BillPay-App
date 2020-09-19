@@ -15,7 +15,7 @@ class Widgets{
         }
         return(
             <>
-                <IonHeader>
+                <IonHeader style={{borderBottom:"1px solid blue"}}>
                     <IonToolbar>
                         <IonButtons hidden={tools.compare(tools.platform(),true,false,true)} slot="start">
                             <IonMenuButton autoHide={false}/>
@@ -44,6 +44,10 @@ class Widgets{
             </>
         )
     };
+
+    HomeHeader(){
+        
+    }
 
     BottomNavMobileBar(){
         return(

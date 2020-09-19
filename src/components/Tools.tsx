@@ -70,10 +70,6 @@ class Tools{
         APPNAME:"Bill-Pay",
         fieldsRequired:"Feilds are required",
         passwordMatch:"Passwords dose not match",
-        somethingWrong:"Something went wrong",
-        serverDown:"Server is down",
-        wrongPassword:"Username or password is incorrect",
-        userNotExist:"User not exist",
         provideValidCreds:"Please provide valid credentials",
         recoverinfo:"A verification email will be sent to your email address. Please check your email account for your confirmation id after submiting this form.",
         recoververificationinfo:"Please enter the 5 digit code that was sent to your email address.",
@@ -264,33 +260,12 @@ class Tools{
         }
     }
 
-    tempStorage(username:any, password:any){
-        var credsTemp = [];
-        var users = window.localStorage.getItem("users");
-        var creds = {username:username,password:password};
-        if (users){
-            for (var item of JSON.parse(users)){
-                credsTemp.push(item);
-            }
-            credsTemp.push(creds);
-            window.localStorage.setItem("users",JSON.stringify(credsTemp));
-            console.log(credsTemp)
+    tempCheckCreds(username:any, password:any){
+        if (username === "example@gmail.com" && password === "password"){
+            return true;
         }else{
-            window.localStorage.setItem("users",JSON.stringify(creds));
-        }
-    }
-
-    tempStorageCheck(username:any, password:any){
-        var allCreds = window.localStorage.getItem("users");
-        if (allCreds){
-            for (var creds of JSON.parse(allCreds)){
-                if (creds.username === username && creds.password === password){
-                    return true;
-                }
-            }
             return false;
         }
-        return null;
     }
 }
 

@@ -39,6 +39,7 @@ const Payment: React.FC = () => {
     const FLOATRIGHT = tools.compare(tools.platform(),true,"","right");
     return (
         <IonPage style={{border:"1px solid gray"}}>
+            <Widgets.Header/>
             
             <Widgets.dialogBox left={tools.compare(tools.platform(),true,"20%","5%")}
                 bottom={tools.compare(tools.platform(),true,dialogScroll,300)}

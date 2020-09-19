@@ -3,14 +3,13 @@ import { IonPage, IonLabel, IonHeader, IonToolbar, IonTitle, IonContent, IonItem
 import Widgets from '../components/Widgets';
 import AppInfo from '../components/AppInfo';
 import tools from '../components/Tools';
-import axios from 'axios';
 import serverVar from '../components/ServerVar';
 import './Home.css';
+import { loginUser } from '../Firebase/Firebase';
 
 
 const Login: React.FC = () => {  
   tools.isLogin(false);
-  var serverRecall = 0;
   
   var MARGIN = tools.compare(tools.platform(),true,"2%","35%");
 
@@ -33,45 +32,26 @@ const Login: React.FC = () => {
     setRunOnce(false);
   }
 
-  const server = () => {
+  async function server(){
     tools.clickById("start-loader");
     setErrorText("");
-    /*axios.post(tools.URL.LOGIN,serverVar.LOGIN)
-    .then(response =>{/*/
-      var response = tools.tempStorageCheck(serverVar.LOGIN.username,serverVar.LOGIN.password);
-        if (response === true){
-            if (rememberChecked){
-                tools.saveCreds(serverVar.LOGIN.username,serverVar.LOGIN.password);
-            }else{
-              serverVar.LOGIN.username = "";
-              serverVar.LOGIN.password = "";
-              tools.clearCreds();
-            }
-            tools.isLogin(true);
-            tools.clickById("stop-loader");
-            tools.clickById("show-menu");
-            tools.clickById("home");            
-        }else if (response === false){
-            setErrorText(tools.MSG.wrongPassword);
-            tools.clickById("stop-loader");
-        }else if (response === null){
-          setErrorText(tools.MSG.userNotExist);
-          tools.clickById("stop-loader");
-        }else{
-          setErrorText(tools.MSG.somethingWrong);
-          tools.clickById("stop-loader");
-        }
-        
-    /*})
-    .catch(()=>{
-      if (serverRecall <= 10){
-        serverRecall ++;
-        server();
+    const response = await loginUser(serverVar.LOGIN.username,serverVar.LOGIN.password);
+    if (response.state === true){
+      if (rememberChecked){
+        tools.saveCreds(serverVar.LOGIN.username,serverVar.LOGIN.password);
       }else{
-        setErrorText(tools.MSG.serverDown);
-        tools.clickById("stop-loader");
+        serverVar.LOGIN.username = "";
+        serverVar.LOGIN.password = "";
+        tools.clearCreds();
       }
-    });*/
+      tools.isLogin(true);
+      tools.clickById("stop-loader");
+      tools.clickById("show-menu");
+      tools.clickById("home"); 
+    }else{
+        setErrorText(response.message);
+    }
+    tools.clickById("stop-loader");
   }
 
   return (
@@ -79,7 +59,7 @@ const Login: React.FC = () => {
       <Widgets.languages/>
       <Widgets.routes/>
       <Widgets.loadSpinner/>
-
+      
       <IonHeader>
         <IonToolbar>
           <IonTitle>{tools.MSG.APPNAME}</IonTitle>
@@ -87,8 +67,8 @@ const Login: React.FC = () => {
       </IonHeader>
 
       <IonContent>
-          <IonItem style={{textAlign:"center",color:"red"}} lines="none">
-              <IonLabel>{errorText}</IonLabel>
+          <IonItem lines="none">
+              <p style={{textAlign:"center",color:"red",width:"100%"}}>{errorText}</p>
           </IonItem>
           <IonList style={{marginLeft:MARGIN,marginRight:MARGIN,
                   padding:"4%",border:"1px solid #000"}}>
@@ -118,7 +98,7 @@ const Login: React.FC = () => {
                   <IonCheckbox checked={rememberChecked} onIonChange={e =>{
                       setRememberChecked(e.detail.checked);
                   }}></IonCheckbox>
-                  <IonLabel>Remember me</IonLabel>
+                  <IonLabel style={{paddingLeft:"5px"}}>Remember me</IonLabel>
               </div>
 
               <div style={{marginTop:"15px",color:"Crimson"}}>

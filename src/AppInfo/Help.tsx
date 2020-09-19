@@ -1,10 +1,11 @@
 import React from 'react';
 import { IonPage, IonBackButton, IonButtons, IonToolbar, IonHeader, IonContent, IonTitle, IonLabel } from '@ionic/react';
-
+import Widget from '../components/Widgets';
 
 const Help:React.FC = () =>{
     return(
         <IonPage>
+            <Widget.Header/>
             <IonHeader>
                 <IonToolbar>
                     <IonButtons onClick={()=>{

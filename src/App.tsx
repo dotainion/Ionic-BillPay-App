@@ -90,6 +90,8 @@ const App: React.FC = () => {
             <Redirect from="/" to="/" exact />
             <Route path="/home" component={Home} exact />
             <Redirect from="/" to="/" exact />
+            <Route path="/login" component={Login} exact />
+            <Redirect from="/" to="/login" exact />
           </IonRouterOutlet>
         </IonSplitPane>
 

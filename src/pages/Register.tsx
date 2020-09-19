@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { IonPage, IonItem, IonLabel, IonInput, IonContent, IonToolbar, IonTitle, IonButton, IonHeader, IonList, IonCheckbox } from '@ionic/react';
 import Widgets from '../components/Widgets';
 import tools from '../components/Tools';
-import axios from 'axios';
 import AppInfo from '../components/AppInfo';
 import serverVar from '../components/ServerVar';
 import './Home.css';
+import { registerUser } from '../Firebase/Firebase';
 
 const Register: React.FC = () =>{
     var MARGIN = tools.compare(tools.platform(),true,"2%","35%")
@@ -21,36 +21,19 @@ const Register: React.FC = () =>{
 
     const [progressCreds, setProgressCreds] = useState("");
 
-    const server = () =>{
+    async function server(){
         setErrorText("");
         tools.clickById("start-loader");
-        /*axios.post(tools.URL.REGISTER,serverVar.REGISTER)
-        .then(response =>{
-            if (response.data === true){
-                if (rememberChecked){
-                    tools.saveCreds(serverVar.REGISTER.email,serverVar.REGISTER.password);
-                }
-                tools.clickById("home")
-            }else if (response.data === false){
-                setErrorText(tools.MSG.userExist);
-            }else if (response.data === null){
-                setErrorText(tools.MSG.somethingWrong);
-            }else{
-                setErrorText(tools.MSG.somethingWrong);
+        const response = await registerUser(serverVar.REGISTER.email,serverVar.REGISTER.password);
+        if (response.state === true){
+            if (rememberChecked){
+                tools.saveCreds(serverVar.REGISTER.email,serverVar.REGISTER.password);
             }
-        })
-        .catch(error=>{
-            setErrorText(tools.MSG.serverDown);
-        })
-        .finally(()=>{
-            tools.clickById("stop-loader");
-        })*/
-        tools.tempStorage(serverVar.REGISTER.email,serverVar.REGISTER.password);
-        if (rememberChecked){
-            tools.saveCreds(serverVar.REGISTER.email,serverVar.REGISTER.password);
+            tools.clickById("home")
+        }else{
+            setErrorText(response.message);
         }
         tools.clickById("stop-loader");
-        tools.clickById("home");
     }
 
     const matchWhileTyping = (value:any, reference:any) =>{
@@ -65,7 +48,7 @@ const Register: React.FC = () =>{
     }    
 
     document.addEventListener("keypress",function(e){
-        if (e.keyCode === 13){
+        /*if (e.keyCode === 13){//keyCode
             if (firstPage){
                 console.log("fisrt")
                 tools.clickById("firstPage-go");
@@ -76,7 +59,7 @@ const Register: React.FC = () =>{
                 console.log("fisrt3")
                 tools.clickById("thirdPage-go");
             }
-        }
+        }*/
     });
 
     return(
@@ -92,8 +75,8 @@ const Register: React.FC = () =>{
             </IonHeader>
 
             <IonContent>
-                <IonItem style={{textAlign:"center",color:"red"}} lines="none">
-                    <IonLabel>{errorText}</IonLabel>
+                <IonItem lines="none">
+                    <p style={{textAlign:"center",color:"red",width:"100%"}}>{errorText}</p>
                 </IonItem>
                 <IonList style={{marginLeft:MARGIN,marginRight:MARGIN,
                         padding:"4%",border:"1px solid #000"}}>
