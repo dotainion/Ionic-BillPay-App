@@ -24,7 +24,7 @@ import './theme/variables.css';
 
 /* pages */
 import Menu from './components/Menu';
-import Home from './pages/Home';
+import Home from './Home/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Recover from './pages/Recover';
