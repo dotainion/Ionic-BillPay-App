@@ -1,22 +1,15 @@
 import React from 'react';
-import { IonPage, IonBackButton, IonButtons, IonToolbar, IonHeader, IonContent, IonTitle } from '@ionic/react';
+import { IonPage, IonContent } from '@ionic/react';
 import Widget from '../components/Widgets';
 import tools from '../components/Tools';
 import './AppInfo.css';
+import { helpOutline } from 'ionicons/icons';
 
 const Help:React.FC = () =>{
     return(
         <IonPage>
-            <Widget.Header id="help-header"/>
-            <IonHeader>
-                <IonToolbar>
-                    <IonButtons onClick={()=>{
-                    }} slot="start">
-                        <IonBackButton defaultHref=""/>
-                    </IonButtons>
-                    <IonTitle>Help</IonTitle>
-                </IonToolbar>
-            </IonHeader>
+            <Widget.Header backButton={true} subTitle="Help" icon={helpOutline}/>
+
             <IonContent scrollEvents={true} onIonScroll={(e)=>{
                 tools.hideWhenScroll(e.detail.scrollTop,"help-header");
             }}>

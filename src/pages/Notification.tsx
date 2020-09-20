@@ -1,20 +1,13 @@
 import React from 'react';
-import { IonPage, IonBackButton, IonButtons, IonToolbar, IonHeader, IonContent, IonTitle, IonLabel } from '@ionic/react';
+import { IonPage, IonContent } from '@ionic/react';
 import Widget from '../components/Widgets';
+import { notifications } from 'ionicons/icons';
 
 export const Notifications:React.FC = () =>{
     return(
         <IonPage>
-            <Widget.Header/>
-            <IonHeader>
-                <IonToolbar>
-                    <IonButtons onClick={()=>{
-                    }} slot="start">
-                        <IonBackButton defaultHref=""/>
-                    </IonButtons>
-                    <IonTitle>Notifications</IonTitle>
-                </IonToolbar>
-            </IonHeader>
+            <Widget.Header backButton={true} title="Notification" icon={notifications}/>
+
             <div style={{padding:"20px",paddingBottom:"20px"}}>
                 <h1>Notified Information</h1>
                 <p>Notification messages will be sent to customers as a

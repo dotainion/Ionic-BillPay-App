@@ -1,12 +1,13 @@
 import React from 'react';
-import { IonPage, IonBackButton, IonButtons, IonToolbar, IonHeader, IonContent, IonTitle, IonLabel } from '@ionic/react';
+import { IonPage, IonBackButton, IonButtons, IonToolbar, IonHeader, IonContent, IonTitle } from '@ionic/react';
 import Widget from '../components/Widgets';
 import './AppInfo.css';
+import { documentOutline } from 'ionicons/icons';
 
 const Privacy:React.FC = () =>{
     return(
         <IonPage>
-            <Widget.Header/>
+            <Widget.Header backButton={true} subTitle="Privacy and Policies" icon={documentOutline}/>
             <IonHeader>
                 <IonToolbar>
                     <IonButtons onClick={()=>{

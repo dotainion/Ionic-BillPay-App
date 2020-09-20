@@ -46,7 +46,7 @@ class Tools{
     color = [
         "blue",
         "red",
-        "yellow",
+        "teal",
         "black",
         "orange",
         "green",
@@ -86,6 +86,7 @@ class Tools{
     }
 
     clickById(id:string){
+        console.log(id)
         try{
             document.getElementById(id)?.click();
         }catch{
@@ -244,11 +245,27 @@ class Tools{
     }
 
     saveHistry(page:string){
+        var history = window.localStorage.getItem("page");
+        if (history){
+            window.localStorage.setItem("previous-page",history);
+        }
         window.localStorage.setItem("page",page);
     }
 
-    getHistory(){
-        return window.localStorage.getItem("page");
+    getPriviousHistory(){
+        var previousHistory = window.localStorage.getItem("previous-page");
+        if (previousHistory){
+            return previousHistory;
+        }
+        return "";
+    }
+
+    getCurrentHistory(){
+        var history = window.localStorage.getItem("page");
+        if (history){
+            return history;
+        }
+        return "";
     }
 
     isLogin(state:any=""){

@@ -1,4 +1,3 @@
-import { bookmarkOutline } from 'ionicons/icons';
 import billPayIcon from './Images/billPay.jpg';
 import billHistoryIcon from './Images/billHistory.png';
 import settingsIcon from './Images/settings.png';

@@ -1,22 +1,15 @@
 import React from 'react';
-import { IonPage, IonBackButton, IonButtons, IonToolbar, IonHeader, IonContent, IonTitle, IonLabel } from '@ionic/react';
+import { IonPage, IonContent } from '@ionic/react';
 import Widget from '../components/Widgets';
 import './AppInfo.css';
+import { informationCircleOutline } from 'ionicons/icons';
 
 
 const AboutUs:React.FC = () =>{
     return(
         <IonPage>
-            <Widget.Header/>
-            <IonHeader>
-                <IonToolbar>
-                    <IonButtons onClick={()=>{
-                    }} slot="start">
-                        <IonBackButton defaultHref=""/>
-                    </IonButtons>
-                    <IonTitle>About us</IonTitle>
-                </IonToolbar>
-            </IonHeader>
+            <Widget.Header backButton={true} subTitle="About us" icon={informationCircleOutline}/>
+
             <IonContent>
                 <div className="main-container">
                     <h1>About your service</h1>

@@ -1,8 +1,9 @@
 import React from 'react';
-import { IonPage, IonBackButton, IonButtons, IonToolbar, IonHeader, IonContent, IonTitle, IonLabel, IonTextarea, IonItem, IonButton } from '@ionic/react';
+import { IonPage, IonContent, IonTextarea, IonItem, IonButton } from '@ionic/react';
 import Widget from '../../components/Widgets';
 import './LiveChat.css';
 import tools from '../../components/Tools';
+import { chatbox } from 'ionicons/icons';
 
 export class Chat extends React.Component{
     styles = `border:1px solid lightgray;border-radius:25px;padding-left:20px;
@@ -18,16 +19,8 @@ export class Chat extends React.Component{
     render(){
         return(
             <IonPage>
-                <Widget.Header/>
-                <IonHeader>
-                    <IonToolbar>
-                        <IonButtons onClick={()=>{
-                        }} slot="start">
-                            <IonBackButton defaultHref=""/>
-                        </IonButtons>
-                        <IonTitle>Chat</IonTitle>
-                    </IonToolbar>
-                </IonHeader>
+                <Widget.Header backButton={true} title="Live Chat" icon={chatbox}/>
+                
                 <IonContent>
                     <div id="live-chat-container" className="messageScroll"></div>
 

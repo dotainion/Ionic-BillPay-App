@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
-import { IonPage, IonContent, IonSelect, IonSelectOption, IonLabel, IonItem, IonCard, IonList, IonText, IonImg, IonThumbnail, IonToolbar, IonTitle, IonHeader, IonButtons, IonBackButton } from "@ionic/react";
+import { IonPage, IonContent, IonSelect, IonSelectOption, IonLabel, IonItem, IonCard, IonList, IonText, IonImg, IonThumbnail } from "@ionic/react";
 import tools from '../components/Tools';
 import Widgets from '../components/Widgets';
 import utils from '../Payment/Utils';
 import Info from './Info';
 import './Payment.css';
+import { cardOutline } from "ionicons/icons";
 
 
 const Payment: React.FC = () => {
@@ -39,22 +40,13 @@ const Payment: React.FC = () => {
     const FLOATRIGHT = tools.compare(tools.platform(),true,"","right");
     return (
         <IonPage style={{border:"1px solid gray"}}>
-            <Widgets.Header/>
+            <Widgets.Header backButton={true} title="Payments" icon={cardOutline}/>
             
             <Widgets.dialogBox left={tools.compare(tools.platform(),true,"20%","5%")}
                 bottom={tools.compare(tools.platform(),true,dialogScroll,300)}
                 maxWidth={tools.compare(tools.platform(),true,"70%","40%")}
                 arrow="bottom"
                 text="Please choose the service you are paying first and then click pay with card"/>
-
-            <IonHeader>
-                <IonToolbar>
-                    <IonButtons slot="start">
-                        <IonBackButton defaultHref=""/>
-                    </IonButtons>
-                    <IonTitle style={{color:"teal",fontWeight:"bold",fontSize:"30px"}}>Payments</IonTitle>
-                </IonToolbar>
-            </IonHeader>
 
             <IonContent scrollEvents={true} onIonScroll={(e)=>{setDialogScroll(e.detail.scrollTop+100)}}>
                 <IonList style={{width:RIGHTSIDEWIDTH,height:"100%",float:FLOATlEFT}}>

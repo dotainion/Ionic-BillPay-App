@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonHeader, IonToolbar, IonTitle, IonFooter, IonIcon, IonButtons, IonItem, IonMenuButton, IonButton, IonLabel, IonLoading, IonPopover, IonList, IonToast, IonGrid, IonRow, IonCol, IonCard, IonImg } from '@ionic/react';
+import { IonHeader, IonToolbar, IonTitle, IonFooter, IonIcon, IonButtons, IonItem, IonMenuButton, IonButton, IonLabel, IonLoading, IonPopover, IonList, IonToast, IonGrid, IonRow, IonCol, IonCard, IonImg, IonBackButton } from '@ionic/react';
 import tools from './Tools';
 import './Widgets.css';
 import { arrowUpCircleSharp, arrowDownCircleSharp } from 'ionicons/icons';
@@ -9,11 +9,11 @@ import serverVer from '../components/ServerVar';
 class Widgets{
     Header(data:any){
         var appName;
-        if (data.name){
-            appName = data.name;
-        }else{
-            appName = tools.MSG.APPNAME;
-        }
+        var icon;
+        var backButton;
+        if (data.title){appName = data.title;}else{appName = tools.MSG.APPNAME;}
+        if (data.icon){icon = data.icon;}else{icon = arrowUpCircleSharp;}
+        if (data.backButton){backButton = data.backButton;}else{backButton = false;}
         return(
             <>
                 <IonHeader id={data.id} hidden={tools.compare(tools.isLogin(),false,true,false)} style={{borderBottom:"1px solid blue"}}>
@@ -21,6 +21,10 @@ class Widgets{
                         <IonButtons hidden={tools.compare(tools.platform(),true,false,true)} slot="start">
                             <IonMenuButton autoHide={false}/>
                         </IonButtons>
+                        <IonButtons hidden={!backButton} slot={tools.compare(tools.platform(),true,"end","start")}>
+                            <IonBackButton defaultHref={tools.getPriviousHistory()}/>
+                        </IonButtons>
+                        <IonIcon class="pageHeaderImage" icon={icon} slot="start"/>
                         <IonTitle class="headerPageName">{
                             tools.compare(tools.platform(),true,tools.MSG.APPNAME,appName)
                         }</IonTitle>
@@ -31,10 +35,7 @@ class Widgets{
                             }}>ABOUT US</div>
                             <div className="onHover topBarButtonNav" onClick={()=>{
                                 tools.clickById("contactus");
-                            }}>CONTACT US</div>
-                            <div className="onHover topBarButtonNav" onClick={()=>{
-
-                            }}>MORE</div>
+                            }}>CONTACT</div>
                             <div className="onHover topBarButtonNav" onClick={()=>{
                                 tools.clickById("help");
                             }}>HELP</div>
