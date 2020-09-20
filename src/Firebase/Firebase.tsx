@@ -18,7 +18,6 @@ export async function loginUser(email:string, password:string){
         console.log(response);
         return {state:true,message:""};
     }catch(error){
-        console.log(error);
         if (error.code === "auth/user-not-found"){
             return {state:null,message:"User dose not exist or may have been deactivated"};
         }

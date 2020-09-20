@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { IonHeader, IonToolbar, IonTitle, IonFooter, IonIcon, IonButtons, IonItem, IonMenuButton, IonButton, IonLabel, IonLoading, IonPopover, IonList, IonToast } from '@ionic/react';
+import { IonHeader, IonToolbar, IonTitle, IonFooter, IonIcon, IonButtons, IonItem, IonMenuButton, IonButton, IonLabel, IonLoading, IonPopover, IonList, IonToast, IonGrid, IonRow, IonCol, IonCard, IonImg } from '@ionic/react';
 import tools from './Tools';
 import './Widgets.css';
 import { arrowUpCircleSharp, arrowDownCircleSharp } from 'ionicons/icons';
 import serverVer from '../components/ServerVar';
+
 
 class Widgets{
     Header(data:any){
@@ -15,7 +16,7 @@ class Widgets{
         }
         return(
             <>
-                <IonHeader style={{borderBottom:"1px solid blue"}}>
+                <IonHeader id={data.id} hidden={tools.compare(tools.isLogin(),false,true,false)} style={{borderBottom:"1px solid blue"}}>
                     <IonToolbar>
                         <IonButtons hidden={tools.compare(tools.platform(),true,false,true)} slot="start">
                             <IonMenuButton autoHide={false}/>
@@ -45,25 +46,18 @@ class Widgets{
         )
     };
 
-    HomeHeader(){
-        
-    }
-
-    BottomNavMobileBar(){
+    BottomNavBar(){
         return(
             <>
+                {/*mobile nav bar*/}
                 <IonFooter hidden={tools.compare(tools.platform(),true,false,true)}>
                     <IonToolbar>
                         <IonTitle>{tools.MSG.APPNAME}</IonTitle>
                     </IonToolbar>
+                    
                 </IonFooter>
-            </>
-        )
-    }
 
-    BottomNavWebInfo(){
-        return(
-            <>
+                {/*web nav bar*/}
                 <div hidden={tools.compare(tools.platform(),true,true,false)} 
                     style={{width:"100%", backgroundColor:"SteelBlue",paddingTop:"10px",bottom:0}}>
                     <IonItem color="medium" style={{marginBottom:"20px"}}>
@@ -446,6 +440,49 @@ class Widgets{
                     hideDialogBox();
                 }}/>
             </>
+        )
+    }
+
+    createCards(data:any){
+        return(
+            <IonGrid>
+                <IonRow>
+                {
+                    data.items.map((files:any, index:number)=>{return(
+                    <IonCol key={index}>
+                        <IonCard id={files.id} style={{width:tools.compare(tools.platform(),true,"105px","210px"),
+                            height:tools.compare(tools.platform(),true,"150px","")}} class="card" onClick={()=>{
+                            tools.flipCard(files.id,files.id+"content",files.id+"new");
+                            }}>
+                            <div id={files.id+"content"}>
+                                <div style={{fontSize:tools.compare(tools.platform(),true,"90px","120px")}}>
+                                    <IonImg class="card-icon" src={files.icon}/>
+                                </div>
+                                <div className="card-name">
+                                    <IonLabel>{files.name}</IonLabel>
+                                </div>
+                            </div>
+                            <div className="backOfCard-container" hidden={true} id={files.id+"new"}>
+                                <div className="backOfCard-title">
+                                    <IonLabel>{files.title}</IonLabel>
+                                </div>
+                                {
+                                files.detail.map((centant:any,index:number)=>{return(
+                                    <div className="backOfCard-content" key={index}>
+                                    <IonLabel>{centant}</IonLabel>
+                                    </div>
+                                )})
+                                }
+                                <div className="openLink openLink-press" onClick={()=>{
+                                    tools.clickById(files.cmd);
+                                }}>Open</div>
+                            </div>
+                        </IonCard>
+                    </IonCol>
+                    )})
+                }
+                </IonRow>
+            </IonGrid>
         )
     }
 }

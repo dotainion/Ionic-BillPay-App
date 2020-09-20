@@ -1,6 +1,6 @@
-import grenlect from '../images/grenlec.jpg';
-import nawasa from '../images/nawasa.jpeg';
-import flow from '../images/flow.png';
+import grenlect from './images/grenlec.jpg';
+import nawasa from './images/nawasa.jpeg';
+import flow from './images/flow.png';
 
 interface companyData {
     name: string;

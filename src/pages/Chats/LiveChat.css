@@ -1,0 +1,24 @@
+.textArea{
+    width:50%;
+    border: 2px solid lightgray;
+    margin-left: 50%;
+    border-radius: 10px;
+    transform: translate(-50%);
+    margin-top: 20px;
+}
+.messageScroll{
+    color: blue;
+    width: 50%;
+    height: 50%;
+    border: 2px solid lightgray;
+    margin-top: 20px;
+    margin-left: 50%;
+    border-radius: 10px;
+    overflow-x: hidden;
+    transform: translate(-50%);
+}
+.sendButton{
+    margin-top: 10px;
+    margin-left: 50%;
+    transform: translate(-50%);
+}

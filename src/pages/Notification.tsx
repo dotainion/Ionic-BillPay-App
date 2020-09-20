@@ -15,13 +15,17 @@ export const Notifications:React.FC = () =>{
                     <IonTitle>Notifications</IonTitle>
                 </IonToolbar>
             </IonHeader>
-            <IonContent>
-                <div style={{marginTop:"40%",marginBottom:"40%",textAlign:"center"}}>
-                    <IonLabel>Comming soon</IonLabel>
+            <div style={{padding:"20px",paddingBottom:"20px"}}>
+                <h1>Notified Information</h1>
+                <p>Notification messages will be sent to customers as a
+                    reminder bills that are due.</p>
+                <p>Disconnection notification will be sent prior to account being disconnected.</p>
+            </div>
+            <IonContent style={{border:"3px solid teal"}}>
+                <div style={{padding:"20px"}}>
+                    <li>No faults in your area</li>
                 </div>
-
             </IonContent>
-
         </IonPage>
     )
 }

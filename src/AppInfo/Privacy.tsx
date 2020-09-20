@@ -1,6 +1,7 @@
 import React from 'react';
 import { IonPage, IonBackButton, IonButtons, IonToolbar, IonHeader, IonContent, IonTitle, IonLabel } from '@ionic/react';
 import Widget from '../components/Widgets';
+import './AppInfo.css';
 
 const Privacy:React.FC = () =>{
     return(
@@ -16,10 +17,11 @@ const Privacy:React.FC = () =>{
                 </IonToolbar>
             </IonHeader>
             <IonContent>
-                <div style={{marginTop:"40%",marginBottom:"40%",textAlign:"center"}}>
-                    <IonLabel>Comming soon</IonLabel>
-                </div>
+                <div className="main-container">
+                    <div className="sub-container">
 
+                    </div>
+                </div>
             </IonContent>
 
         </IonPage>

@@ -9,8 +9,6 @@ import { loginUser } from '../Firebase/Firebase';
 
 
 const Login: React.FC = () => {  
-  tools.isLogin(false);
-  
   var MARGIN = tools.compare(tools.platform(),true,"2%","35%");
 
   const [ runOnce, setRunOnce ] = useState(true);
@@ -18,6 +16,7 @@ const Login: React.FC = () => {
   const [ rememberChecked, setRememberChecked ] = useState(false);
 
   var ionViewWillEnter = () =>{
+    tools.isLogin(false);
     var creds = tools.getCreds();
     if (creds.username && creds.password){
       serverVar.LOGIN.username = creds.username;

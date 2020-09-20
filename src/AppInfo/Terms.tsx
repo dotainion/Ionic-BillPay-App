@@ -1,6 +1,7 @@
 import React from 'react';
 import { IonPage, IonBackButton, IonButtons, IonToolbar, IonHeader, IonContent, IonTitle, IonLabel } from '@ionic/react';
 import Widget from '../components/Widgets';
+import './AppInfo.css';
 
 export const Terms:React.FC = () =>{
     return(
@@ -16,8 +17,10 @@ export const Terms:React.FC = () =>{
                 </IonToolbar>
             </IonHeader>
             <IonContent>
-                <div style={{marginTop:"40%",marginBottom:"40%",textAlign:"center"}}>
-                    <IonLabel>Comming soon</IonLabel>
+                <div className="main-container">
+                    <div className="sub-container">
+                        
+                    </div>
                 </div>
 
             </IonContent>

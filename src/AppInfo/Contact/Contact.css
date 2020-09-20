@@ -1,0 +1,45 @@
+.header-icon{
+    width: 65px;
+    margin-right: 50px;
+}
+
+
+/****************for components in contact**********************/
+/*as components global scope*/
+.close-icon{
+    margin-right: 10px;
+    font-size: 30px;
+}
+.close-icon-hover:hover{
+    color: red;
+}
+
+/*for Emailing*/
+.textArea{
+    width:80%;
+    border: 2px solid lightgray;
+    margin-left: 50%;
+    border-radius: 10px;
+    transform: translate(-50%);
+    margin-top: 20px;
+}
+.messageScroll{
+    color: blue;
+    width: 80%;
+    height: 50%;
+    border: 2px solid lightgray;
+    margin-top: 20px;
+    margin-left: 50%;
+    border-radius: 10px;
+    overflow-x: hidden;
+    transform: translate(-50%);
+}
+.sendButton{
+    margin-top: 10px;
+    margin-left: 50%;
+    transform: translate(-50%);
+}
+.done-button{
+    margin-right: 20px;
+}
+

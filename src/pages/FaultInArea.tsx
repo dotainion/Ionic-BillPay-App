@@ -15,13 +15,16 @@ export const Faults:React.FC = () =>{
                     <IonTitle>Faults</IonTitle>
                 </IonToolbar>
             </IonHeader>
-            <IonContent>
-                <div style={{marginTop:"40%",marginBottom:"40%",textAlign:"center"}}>
-                    <IonLabel>Comming soon</IonLabel>
+            <div style={{padding:"20px",paddingBottom:"20px"}}>
+                <h1>Faults Information</h1>
+                <p>Information will be send out notifying the plublic of 
+                    any interuption of server in the area.</p>
+            </div>
+            <IonContent style={{border:"3px solid teal"}}>
+                <div style={{padding:"20px"}}>
+                    <li>No faults in your area</li>
                 </div>
-
             </IonContent>
-
         </IonPage>
     )
 }

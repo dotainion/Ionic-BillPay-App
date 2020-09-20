@@ -1,9 +1,0 @@
-.cardActive:active{
-    background-color: lightgray;
-}
-.card{
-    height: 200px;
-    padding: 10px;
-    margin: 0px;
-    text-align: center;
-}

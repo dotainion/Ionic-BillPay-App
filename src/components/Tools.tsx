@@ -2,6 +2,8 @@ import { isPlatform } from '@ionic/react';
 
 class Tools{
     index = 0;
+    flipCardTimerArray = [] as any[];
+    hideWhenScrollValue = 0;
 
     SERVERUSERNAME = "user";
     SERVERPASSWORD = "users"
@@ -267,8 +269,87 @@ class Tools{
             return false;
         }
     }
+
+    hideWhenScroll(value:number,id:string){
+        var element = document.getElementById(id);
+        if (this.hideWhenScrollValue < value){
+            if (element){
+                element.hidden = true;
+            }
+            this.hideWhenScrollValue = value - 5;
+          }else{
+            if (element){
+                element.hidden = false;
+            }
+            this.hideWhenScrollValue = value;
+          }
+    }
+
+    flipCard(id:string,contentId:string,newContentId:string){
+        var newContentElement = document.getElementById(newContentId);
+        var newContentElement2 = document.getElementById(newContentId)?.style;
+        var contentElement = document.getElementById(contentId);
+        var element = document.getElementById(id)?.style;
+        const reset = () =>{
+            if (element && contentElement && newContentElement){
+                element.transition = "transform 1s";
+                element.transform = "rotateY( 0deg )";
+                setTimeout(() => {
+                    if (element && contentElement && newContentElement){
+                        contentElement.hidden = false;
+                        newContentElement.hidden = true;
+                    }
+                }, 300);
+            }
+        }
+        const flip = () =>{
+            if (contentElement?.hidden !== true && element && contentElement && newContentElement){
+                element.transition = "transform 1s";
+                element.transform = "rotateY( 180deg )";
+                setTimeout(() => {
+                    if (element && newContentElement2 && contentElement && newContentElement){
+                        contentElement.hidden = true;
+                        newContentElement.hidden = false;
+                        newContentElement2.transform = "rotateY( 180deg )";
+                    }
+                }, 300);
+            }    
+        }
+        const timer = () =>{
+            var timerOut = setTimeout(()=>{
+                reset();
+            }, 10000);
+            var tempTimeOut = timerOut;
+            for (var timeRef of this.flipCardTimerArray){
+                if (timeRef.id === id){
+                    clearTimeout(timeRef.ref);
+                    var index = this.flipCardTimerArray.indexOf(timeRef);
+                    this.flipCardTimerArray.splice(index,1);
+                }
+            }
+            this.flipCardTimerArray.push({ref:tempTimeOut,id:id});
+        }
+
+        if (contentElement?.hidden !== true){
+            flip();
+            timer();
+        }else{
+            reset();
+        }
+    }
+
+    addElement(elementType:string,addToId:string,msg:string,styles:any=""){
+        var tag = document.createElement(elementType);
+        var text = document.createTextNode(msg);
+        tag.appendChild(text);
+        var addTo = document.getElementById(addToId);
+        addTo?.appendChild(tag);
+        if (tag){
+            tag.style.cssText = styles;
+        }
+    }
 }
 
-var systemTools = new Tools()
+var tools = new Tools()
 
-export default systemTools;
+export default tools;

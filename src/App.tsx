@@ -24,18 +24,18 @@ import './theme/variables.css';
 
 /* pages */
 import Menu from './components/Menu';
-import Home from './Home/Home';
+import Home from './pages/Home/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Recover from './pages/Recover';
 import Payment from './Payment/Payment';
 import Aboutus from './AppInfo/AboutUs';
-import ContactUs from './AppInfo/ContactUs';
+import ContactUs from './AppInfo/Contact/ContactUs';
 import Help from './AppInfo/Help';
 import Privacy from './AppInfo/Privacy';
 import Terms from './AppInfo/Terms';
 
-import Chat from './pages/Chat';
+import Chat from './pages/Chats/LiveChat';
 import History from './pages/History';
 import Notification from './pages/Notification';
 import GeneralInfo from './pages/GenteralInfo';
