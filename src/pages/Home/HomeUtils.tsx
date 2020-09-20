@@ -9,6 +9,13 @@ import earningsIcon from './Images/earnings.png';
 import faultsIcon from './Images/faults.jpg';
 import contactIcon from './Images/contact.png';
 import chatIcon from './Images/liveChat.jpg';
+import incomeIcon from './Images/income.jpg';
+import budgetIcon from './Images/budget.jpg';
+import reportIcon from './Images/report.png';
+import expensIcon from './Images/expenses.png';
+import accountsIcon from './Images/accounts.png';
+import notePadIcon from './Images/notePad.jpg';
+import shareIcon from './Images/share.jpg';
 
 
 export function cardItems(){
@@ -18,7 +25,7 @@ export function cardItems(){
             icon:billPayIcon,
             id:"BillPayment",
             cmd:"payment",
-            title:"Payment methods",
+            title:"Payment Methods",
             detail:[
                 "Cash",
                 "Debit Card",
@@ -29,7 +36,7 @@ export function cardItems(){
             icon:billHistoryIcon,
             id:"BillHistory",
             cmd:"history",
-            title:"Payment methods",
+            title:"Payment History",
             detail:[
                 "Pass bills",
             ],
@@ -38,7 +45,7 @@ export function cardItems(){
             icon:settingsIcon,
             id:"Settings",
             cmd:"settings",
-            title:"Test",
+            title:"Settings",
             detail:[
                 "this is a test",
             ]
@@ -47,7 +54,7 @@ export function cardItems(){
             icon:offersIcon,
             id:"Offers",
             cmd:"",
-            title:"Test",
+            title:"My Offers",
             detail:[
                 "Promotional Offers",
             ]
@@ -56,6 +63,7 @@ export function cardItems(){
             icon:rewardIcon,
             id:"Rewards",
             cmd:"",
+            title:"My Rewards",
             detail:[
                 "this is a test",
             ]
@@ -64,7 +72,7 @@ export function cardItems(){
             icon:bankingIcon,
             id:"Banking",
             cmd:"",
-            title:"Test",
+            title:"Banking",
             detail:[
                 "this is a test",
             ]
@@ -73,7 +81,7 @@ export function cardItems(){
             icon:earningsIcon,
             id:"Earning",
             cmd:"",
-            title:"Test",
+            title:"My Earnings",
             detail:[
                 "this is a test",
             ]
@@ -82,7 +90,7 @@ export function cardItems(){
             icon:faultsIcon,
             id:"Faults",
             cmd:"faults",
-            title:"Test",
+            title:"Faults that affects me",
             detail:[
                 "this is a test",
             ]
@@ -91,7 +99,7 @@ export function cardItems(){
             icon:contactIcon,
             id:"Contact",
             cmd:"contactus",
-            title:"Test",
+            title:"Contact Companies",
             detail:[
                 "this is a test",
             ]
@@ -100,70 +108,70 @@ export function cardItems(){
             icon:chatIcon,
             id:"Live Chat",
             cmd:"chat",
-            title:"Test",
+            title:"Chat Live",
             detail:[
                 "this is a test",
             ]
         },{
             name:"Income",
-            icon:bookmarkOutline,
-            id:"test",
+            icon:incomeIcon,
+            id:"income",
             cmd:"",
-            title:"Test",
+            title:"My Incomes",
             detail:[
                 "this is a test",
             ]
         },{
             name:"Budget",
-            icon:bookmarkOutline,
-            id:"test",
+            icon:budgetIcon,
+            id:"budget",
             cmd:"",
-            title:"Test",
+            title:"My Budgets",
             detail:[
                 "this is a test",
             ]
         },{
             name:"Reports",
-            icon:bookmarkOutline,
-            id:"test",
+            icon:reportIcon,
+            id:"reports",
             cmd:"",
-            title:"Test",
+            title:"Reports",
             detail:[
                 "this is a test",
             ]
         },{
             name:"Expenses",
-            icon:bookmarkOutline,
-            id:"test",
+            icon:expensIcon,
+            id:"expenses",
             cmd:"",
-            title:"Test",
+            title:"My Expenses",
             detail:[
                 "this is a test",
             ]
           },{
             name:"Accounts",
-            icon:bookmarkOutline,
-            id:"test",
+            icon:accountsIcon,
+            id:"accounts",
             cmd:"",
-            title:"Test",
+            title:"My Accounts",
             detail:[
                 "this is a test",
             ]
           },{
-            name:"test",
-            icon:bookmarkOutline,
-            id:"test",
+            name:"Note",
+            icon:notePadIcon,
+            id:"my note",
             cmd:"",
-            title:"Test",
+            title:"My notes",
             detail:[
                 "this is a test",
             ]
           },{
-            name:"test",
-            icon:bookmarkOutline,
-            id:"test",
+            name:"Share",
+            icon:shareIcon,
+            id:"share",
             cmd:"",
-            title:"Test",
+            title:"Share this app",
             detail:[
                 "this is a test",
             ]

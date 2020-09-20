@@ -127,13 +127,6 @@ const Login: React.FC = () => {
                       }
                   }}>Login</IonButton>
               </IonItem>
-              <IonLabel hidden class="underLine" onClick={()=>{
-                  tools.clickById("login");
-              }} style={{
-                color:"Teal",
-                border:"1px solid lightgray",
-                padding:"5px"
-              }}>Back to home</IonLabel>  
           </IonList>
 
           <IonItem style={{marginLeft:MARGIN,marginRight:MARGIN}} lines="full">
