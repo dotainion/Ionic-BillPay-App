@@ -22,7 +22,7 @@ class Widgets{
                             <IonMenuButton autoHide={false}/>
                         </IonButtons>
                         <IonButtons hidden={!backButton} slot={tools.compare(tools.platform(),true,"end","start")}>
-                            <IonBackButton defaultHref={tools.getPriviousHistory()}/>
+                            <IonBackButton defaultHref="home"/>
                         </IonButtons>
                         <IonIcon class="pageHeaderImage" icon={icon} slot="start"/>
                         <IonTitle class="headerPageName">{
@@ -186,7 +186,7 @@ class Widgets{
     routes(){
         return(
             <>
-                <IonButton hidden id="generalinfo" routerDirection="none" onClick={e=>{
+                <IonButton hidden id="generalinfo" onClick={e=>{
                     tools.saveHistry(e.currentTarget.id)
                 }} routerLink="/generalinfo"/>
                 <IonButton hidden id="chat" onClick={e=>{
@@ -202,7 +202,7 @@ class Widgets{
                     tools.saveHistry(e.currentTarget.id)
                 }} routerLink="/notification"/>
 
-                <IonButton hidden id="trash" routerDirection="none" onClick={e=>{
+                <IonButton hidden id="trash" onClick={e=>{
                     tools.saveHistry(e.currentTarget.id)
                 }} routerLink="/trash"/>
                 <IonButton hidden id="settings" onClick={e=>{
@@ -465,12 +465,12 @@ class Widgets{
                             </div>
                             <div className="backOfCard-container" hidden={true} id={files.id+"new"}>
                                 <div className="backOfCard-title">
-                                    <IonLabel>{files.title}</IonLabel>
+                                    <IonLabel style={{fontSize:tools.compare(tools.platform(),true,"80%","120%")}}>{files.title}</IonLabel>
                                 </div>
                                 {
                                 files.detail.map((centant:any,index:number)=>{return(
                                     <div className="backOfCard-content" key={index}>
-                                    <IonLabel>{centant}</IonLabel>
+                                        <IonLabel style={{fontSize:tools.compare(tools.platform(),true,"80%","120%")}}>{centant}</IonLabel>
                                     </div>
                                 )})
                                 }

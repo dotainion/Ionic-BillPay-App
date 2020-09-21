@@ -252,7 +252,7 @@ class Tools{
         window.localStorage.setItem("page",page);
     }
 
-    getPriviousHistory(){
+    getPreviousHistory(){
         var previousHistory = window.localStorage.getItem("previous-page");
         if (previousHistory){
             return previousHistory;

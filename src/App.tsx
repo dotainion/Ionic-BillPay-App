@@ -38,7 +38,7 @@ import Terms from './AppInfo/Terms';
 import Chat from './pages/Chats/LiveChat';
 import History from './pages/History';
 import Notification from './pages/Notification';
-import GeneralInfo from './pages/GenteralInfo';
+import GeneralInfo from './pages/GeneralInfo';
 import Faults from './pages/FaultInArea';
 
 import Trash from './pages/Trash';

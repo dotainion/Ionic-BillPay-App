@@ -8,15 +8,7 @@ const Privacy:React.FC = () =>{
     return(
         <IonPage>
             <Widget.Header backButton={true} subTitle="Privacy and Policies" icon={documentOutline}/>
-            <IonHeader>
-                <IonToolbar>
-                    <IonButtons onClick={()=>{
-                    }} slot="start">
-                        <IonBackButton defaultHref=""/>
-                    </IonButtons>
-                    <IonTitle>Privacy</IonTitle>
-                </IonToolbar>
-            </IonHeader>
+   
             <IonContent>
                 <div className="main-container">
                     <div className="sub-container">
