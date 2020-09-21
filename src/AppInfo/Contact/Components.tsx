@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonBackButton, IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonModal, IonTextarea, IonTitle, IonToolbar } from "@ionic/react";
+import { IonButton, IonContent, IonHeader, IonIcon, IonItem, IonModal, IonTextarea, IonTitle, IonToolbar } from "@ionic/react";
 import { close } from 'ionicons/icons';
 import './Contact.css';
 import tools from '../../components/Tools';
