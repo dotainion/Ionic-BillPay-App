@@ -11,7 +11,7 @@ import { mailOpenOutline } from 'ionicons/icons';
 const ContactUs:React.FC = () =>{
     return(
         <IonPage>
-            <Widget.Header backButton={true} subTitle="Contact us" icon={mailOpenOutline}/>
+            <Widget.Header backButton={true} title="Contact us" icon={mailOpenOutline}/>
 
             <Emailing/>
             

@@ -8,7 +8,7 @@ import { helpOutline } from 'ionicons/icons';
 const Help:React.FC = () =>{
     return(
         <IonPage>
-            <Widget.Header backButton={true} subTitle="Help" icon={helpOutline}/>
+            <Widget.Header backButton={true} title="Help" icon={helpOutline}/>
 
             <IonContent scrollEvents={true} onIonScroll={(e)=>{
                 tools.hideWhenScroll(e.detail.scrollTop,"help-header");

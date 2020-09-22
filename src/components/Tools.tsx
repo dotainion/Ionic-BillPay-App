@@ -86,11 +86,10 @@ class Tools{
     }
 
     clickById(id:string){
-        console.log(id)
         try{
             document.getElementById(id)?.click();
         }catch{
-            console.log("this '",id,"' is not known")
+            console.log("this 'id:",id,"' is not known")
         }
     }
 

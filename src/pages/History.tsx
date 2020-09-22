@@ -6,7 +6,7 @@ import { leafOutline } from 'ionicons/icons';
 export const History:React.FC = () =>{
     return(
         <IonPage>
-            <Widget.Header backButton={true} title="Bill Hostory" icon={leafOutline}/>
+            <Widget.Header backButton={true} title="Bill History" icon={leafOutline}/>
 
             <IonContent>
                 <div style={{marginTop:"40%",marginBottom:"40%",textAlign:"center"}}>

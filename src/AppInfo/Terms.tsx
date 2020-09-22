@@ -7,7 +7,7 @@ import { readerOutline } from 'ionicons/icons';
 export const Terms:React.FC = () =>{
     return(
         <IonPage>
-            <Widget.Header backButton={true} subTigle="Terms and Conditions" icon={readerOutline}/>
+            <Widget.Header backButton={true} title="Terms and Conditions" icon={readerOutline}/>
 
             <IonContent>
                 <div className="main-container">

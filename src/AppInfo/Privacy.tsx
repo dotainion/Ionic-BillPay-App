@@ -7,7 +7,7 @@ import { documentOutline } from 'ionicons/icons';
 const Privacy:React.FC = () =>{
     return(
         <IonPage>
-            <Widget.Header backButton={true} subTitle="Privacy and Policies" icon={documentOutline}/>
+            <Widget.Header backButton={true} title="Privacy and Policies" icon={documentOutline}/>
    
             <IonContent>
                 <div className="main-container">

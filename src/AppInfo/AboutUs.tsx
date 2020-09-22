@@ -8,7 +8,7 @@ import { informationCircleOutline } from 'ionicons/icons';
 const AboutUs:React.FC = () =>{
     return(
         <IonPage>
-            <Widget.Header backButton={true} subTitle="About us" icon={informationCircleOutline}/>
+            <Widget.Header backButton={true} title="About us" icon={informationCircleOutline}/>
 
             <IonContent>
                 <div className="main-container">

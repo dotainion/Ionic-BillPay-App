@@ -25,9 +25,7 @@ class Widgets{
                             <IonBackButton defaultHref="home"/>
                         </IonButtons>
                         <IonIcon class="pageHeaderImage" icon={icon} slot="start"/>
-                        <IonTitle class="headerPageName">{
-                            tools.compare(tools.platform(),true,tools.MSG.APPNAME,appName)
-                        }</IonTitle>
+                        <IonTitle class="headerPageName">{appName}</IonTitle>
 
                         <IonItem hidden={tools.compare(tools.platform(),true,true,false)} slot="end" lines="none">
                             <div className="onHover topBarButtonNav" onClick={()=>{
