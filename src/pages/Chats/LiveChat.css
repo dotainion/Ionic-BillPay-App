@@ -1,5 +1,4 @@
 .textArea{
-    width:50%;
     border: 2px solid lightgray;
     margin-left: 50%;
     border-radius: 10px;
@@ -8,7 +7,6 @@
 }
 .messageScroll{
     color: blue;
-    width: 50%;
     height: 50%;
     border: 2px solid lightgray;
     margin-top: 20px;

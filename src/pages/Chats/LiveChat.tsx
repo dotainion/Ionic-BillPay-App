@@ -17,14 +17,16 @@ export class Chat extends React.Component{
     }
 
     render(){
+        var WIDTH = tools.compare(tools.platform(),true,"95%","50%");
         return(
             <IonPage>
                 <Widget.Header backButton={true} title="Live Chat" icon={chatbox}/>
                 
                 <IonContent>
-                    <div id="live-chat-container" className="messageScroll"></div>
+                    <div id="live-chat-container" className="messageScroll" style={{width:WIDTH}}></div>
 
-                    <IonTextarea rows={5} class="textArea" value={this.message} onIonChange={(e)=>{
+                    <IonTextarea rows={5} class="textArea" style={{width:WIDTH}}
+                        value={this.message} onIonChange={(e)=>{
                         if (e.detail.value){
                             this.message = e.detail.value;
                         }

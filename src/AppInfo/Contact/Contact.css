@@ -16,7 +16,6 @@
 
 /*for Emailing*/
 .textArea{
-    width:80%;
     border: 2px solid lightgray;
     margin-left: 50%;
     border-radius: 10px;
@@ -25,7 +24,6 @@
 }
 .messageScroll{
     color: blue;
-    width: 80%;
     height: 50%;
     border: 2px solid lightgray;
     margin-top: 20px;

@@ -18,6 +18,7 @@ export function Emailing(){
             tools.addElement("p","new",msg,styles);
         }
     }
+    var WIDTH = tools.compare(tools.platform(),true,"95%","80%");
     return(
         <>
             <IonModal isOpen={show} onDidDismiss={()=>{setShow(false)}}>
@@ -29,9 +30,9 @@ export function Emailing(){
                 </IonHeader>
 
                 <IonContent>
-                    <div id="new" className="messageScroll"></div>
+                    <div id="new" className="messageScroll" style={{width:WIDTH}}></div>
 
-                    <IonTextarea rows={5} class="textArea" value={messages} onIonChange={(e)=>{
+                    <IonTextarea rows={5} class="textArea" style={{width:WIDTH}} value={messages} onIonChange={(e)=>{
                         if (e.detail.value){
                             setMessages(e.detail.value);
                             utils.textAreaMessage = e.detail.value;
