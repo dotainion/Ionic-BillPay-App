@@ -4,6 +4,7 @@ import tools from './Tools';
 import './Widgets.css';
 import { arrowUpCircleSharp, arrowDownCircleSharp } from 'ionicons/icons';
 import serverVer from '../components/ServerVar';
+import { Language } from './Languages';
 
 
 class Widgets{
@@ -11,12 +12,12 @@ class Widgets{
         var appName;
         var icon;
         var backButton;
-        if (data.title){appName = data.title;}else{appName = tools.MSG.APPNAME;}
+        if (data.title){appName = data.title;}else{appName = language.texts().APPNAME;}
         if (data.icon){icon = data.icon;}else{icon = arrowUpCircleSharp;}
         if (data.backButton){backButton = data.backButton;}else{backButton = false;}
         return(
             <>
-                <IonHeader id={data.id} hidden={tools.compare(tools.isLogin(),false,true,false)} style={{borderBottom:"1px solid blue"}}>
+                <IonHeader id={data.id} style={{borderBottom:"1px solid blue"}}>
                     <IonToolbar>
                         <IonButtons hidden={tools.compare(tools.platform(),true,false,true)} slot="start">
                             <IonMenuButton autoHide={false}/>
@@ -45,59 +46,15 @@ class Widgets{
         )
     };
 
-    BottomNavBar(){
+    Footer(){
         return(
             <>
                 {/*mobile nav bar*/}
                 <IonFooter hidden={tools.compare(tools.platform(),true,false,true)}>
                     <IonToolbar>
-                        <IonTitle>{tools.MSG.APPNAME}</IonTitle>
+                        <IonTitle>{language.texts().APPNAME}</IonTitle>
                     </IonToolbar>
-                    
                 </IonFooter>
-
-                {/*web nav bar*/}
-                <div hidden={tools.compare(tools.platform(),true,true,false)} 
-                    style={{width:"100%", backgroundColor:"SteelBlue",paddingTop:"10px",bottom:0}}>
-                    <IonItem color="medium" style={{marginBottom:"20px"}}>
-                        <div style={{float:"right",width:"100%",paddingTop:"20px",height:"130px"}}>
-                            <IonLabel style={{backgroundColor:"gray"}}><b>Company Info</b></IonLabel>
-                            {
-                                tools.companyInfo ?
-                                tools.companyInfo.map((item, i)=>
-                                    <IonLabel key={i} class="bottomWebInfoBar">{item}</IonLabel>
-                                ):
-                                null
-                            }
-                        </div>
-
-                        <div style={{float:"right",width:"100%",paddingTop:"20px",height:"130px"}}>
-                            <IonLabel style={{backgroundColor:"gray"}}><b>Quick Links</b></IonLabel>
-                            {
-                                tools.quickLinks ?
-                                tools.quickLinks.map((item, i)=>
-                                    <IonLabel key={i} class="bottomWebInfoBar">{item}</IonLabel>
-                                ):
-                                null
-                            }
-                        </div>
-
-                        <div style={{float:"right",width:"100%",paddingTop:"20px",height:"130px"}}>
-                            <IonLabel style={{backgroundColor:"gray"}}><b>Categories</b></IonLabel>
-                            {
-                                tools.searchCategory ?
-                                tools.searchCategory.map((item, i)=>
-                                    <IonLabel key={i} class="bottomWebInfoBar">{item}</IonLabel>
-                                ):
-                                null
-                            }
-                        </div>
-
-                        <div style={{float:"right",width:"100%",paddingTop:"20px",height:"130px"}}>
-                            <IonLabel style={{backgroundColor:"gray"}}><b>Payment Method</b></IonLabel>
-                        </div>
-                    </IonItem>
-                </div>
             </>
         )
     }
@@ -126,22 +83,23 @@ class Widgets{
 
     languages(){
         const [ showLanguage, setShowLanguage ] = useState(false);
+        const [ error, setError ] = useState("");
         return(
             <>
                 <IonPopover isOpen={showLanguage} cssClass='my-custom-class' onDidDismiss={()=>{
                     setShowLanguage(false);
+                    setError("")
                 }}>
-                    <IonList style={{border:"1px solid #000",margin:"2%"}}>
+                    <div hidden={tools.compare(error,"",true,false)} className="languageError">{error}</div>
+                    <IonList class="languageLists">
                         {
-                            tools.LANGUAGES.length ?
-                            tools.LANGUAGES.map((language, i)=>
+                            language.LANGUAGES().map((language, i)=>{return(
                                 <IonItem key={i}>
-                                    <IonLabel class="languageHover" onClick={()=>{
-                                        console.log(language)
-                                    }} style={{padding:"5px"}}>{language}</IonLabel>
+                                    <IonLabel class="languageHover language" onClick={()=>{
+                                        setError(language.toUpperCase()+": Not in operation");
+                                    }}>{language}</IonLabel>
                                 </IonItem>
-                                
-                            ):null
+                            )})
                         }
                     </IonList>
                     <IonItem style={{marginLeft:"60%"}}>
@@ -404,6 +362,9 @@ class Widgets{
 
     dialogBox(data:any){
         const [hide, setHIde] = useState(true);
+
+        var arrow;
+        if (!data.arrow){arrow = "top";}else{arrow = data.arrow;}
        
         const hideDialogBox = () =>{
             setTimeout(() => {
@@ -418,23 +379,23 @@ class Widgets{
         }
         return(
             <>
-                <div hidden={tools.compare(data.arrow,"top",hide,true)} style={box} className="box arrow-top">
+                <div hidden={tools.compare(arrow,"top",hide,true)} style={box} className="box arrow-top">
                     {data.text}
                 </div>
 
-                <div hidden={tools.compare(data.arrow,"left",hide,true)} style={box} className="box arrow-left">
+                <div hidden={tools.compare(arrow,"left",hide,true)} style={box} className="box arrow-left">
                     {data.text}
                 </div>
 
-                <div hidden={tools.compare(data.arrow,"right",hide,true)} style={box} className="box arrow-right">
+                <div hidden={tools.compare(arrow,"right",hide,true)} style={box} className="box arrow-right">
                     {data.text}
                 </div>
 
-                <div hidden={tools.compare(data.arrow,"bottom",hide,true)} style={box} className="box arrow-bottom">
+                <div hidden={tools.compare(arrow,"bottom",hide,true)} style={box} className="box arrow-bottom">
                     {data.text}
                 </div>
 
-                <IonButton hidden id="popup-msg-arrow" onClick={()=>{
+                <IonButton hidden id={data.id} onClick={()=>{
                     setHIde(false);
                     hideDialogBox();
                 }}/>
@@ -450,10 +411,10 @@ class Widgets{
                     data.items.map((files:any, index:number)=>{return(
                     <IonCol key={index}>
                         <IonCard id={files.id} style={{width:tools.compare(tools.platform(),true,"105px","210px"),
-                            height:tools.compare(tools.platform(),true,"150px","")}} class="card" onClick={()=>{
-                            tools.flipCard(files.id,files.id+"content",files.id+"new");
+                            height:tools.compare(tools.platform(),true,"150px","")}} class="card card-hover" onClick={()=>{
+                                tools.flipCard(files.id,files.id+"content",files.id+"new");
                             }}>
-                            <div id={files.id+"content"}>
+                            <div className="frontOfCard-container-hover" id={files.id+"content"}>
                                 <div style={{fontSize:tools.compare(tools.platform(),true,"90px","120px")}}>
                                     <IonImg class="card-icon" src={files.icon}/>
                                 </div>
@@ -486,5 +447,6 @@ class Widgets{
     }
 }
 
-var systemWidgets = new Widgets()
-export default systemWidgets;
+const language = new Language();
+var widgets = new Widgets()
+export default widgets;

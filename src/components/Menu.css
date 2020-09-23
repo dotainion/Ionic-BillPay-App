@@ -5,3 +5,13 @@
 .icon{
   color:teal;
 }
+.profileImage{
+  left: 60%;
+  width: 70px;
+  height: 70px;
+  z-index: 99999;
+  border-radius: 50%;
+  position: absolute;
+  border: 1px solid gray;
+}
+

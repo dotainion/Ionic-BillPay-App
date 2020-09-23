@@ -48,11 +48,6 @@
     cursor: pointer;
     background-color: gray;
   }
-  
-  .languageHover:hover{
-    color:navy;
-    background-color: gray;
-  }
 
   .sideMenuDiv{
     position:fixed;
@@ -66,6 +61,30 @@
     font-size: 30px;
     font-weight: bold;
   }
+/*for language popup box*/
+.language{
+  padding: 5px;
+  cursor: default;
+}
+
+.languageHover:hover{
+  color:navy;
+  background-color: gray;
+}
+
+.languageError{
+  color: red;
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+  border: 1px solid teal;
+  background-color: lightgray;
+}
+
+.languageLists{
+  border: 1px solid #000;
+  margin: 2%;
+}
 
 /*for popup message box*/
 .box {
@@ -137,13 +156,16 @@
   text-align: center;
   background-color: white;
 }
+.card-hover:hover{
+  background-color: lightgray;
+}
 .card-name{
   position: absolute;
   bottom: 0px;
   width: auto;
   color: teal;
   font-weight: bold;
-  cursor: pointer;
+  cursor: default;
   font-size: 120%;
   user-select: none;
   white-space: nowrap;
@@ -199,6 +221,10 @@
   box-shadow: 2px 3px gray;
   background-color: lightgray;
   color: blue;
+}
+
+.frontOfCard-container-hover:hover{
+  background-color: lightgray;
 }
 
 /*for header*/

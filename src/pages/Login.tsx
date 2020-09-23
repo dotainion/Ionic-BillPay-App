@@ -6,9 +6,11 @@ import tools from '../components/Tools';
 import serverVar from '../components/ServerVar';
 import './Home.css';
 import { loginUser } from '../Firebase/Firebase';
+import { Language } from '../components/Languages';
 
 
 const Login: React.FC = () => {  
+  const language = new Language();
   var MARGIN = tools.compare(tools.platform(),true,"2%","35%");
 
   const [ runOnce, setRunOnce ] = useState(true);
@@ -61,7 +63,7 @@ const Login: React.FC = () => {
       
       <IonHeader>
         <IonToolbar>
-          <IonTitle>{tools.MSG.APPNAME}</IonTitle>
+          <IonTitle>{language.texts().APPNAME}</IonTitle>
         </IonToolbar>
       </IonHeader>
 
@@ -71,7 +73,7 @@ const Login: React.FC = () => {
           </IonItem>
           <IonList style={{marginLeft:MARGIN,marginRight:MARGIN,
                   padding:"4%",border:"1px solid #000"}}>
-              <Widgets.textStyle subtitle="Sign in" textColor="blue" title={tools.MSG.APPNAME} LM="31%"/>
+              <Widgets.textStyle subtitle="Sign in" textColor="blue" title={language.texts().APPNAME} LM="31%"/>
 
               <IonItem id="login-email" class="loginItemStyle">
                   <IonLabel position="floating">Email</IonLabel>
@@ -120,10 +122,10 @@ const Login: React.FC = () => {
                               server();
                           }else{
                               tools.inputValidation([["","login-email"]]);
-                              setErrorText(tools.MSG.validEmail);
+                              setErrorText(language.texts().validEmail);
                           }
                       }else{
-                        setErrorText(tools.MSG.provideValidCreds);
+                        setErrorText(language.texts().provideValidCreds);
                       }
                   }}>Login</IonButton>
               </IonItem>

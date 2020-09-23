@@ -6,8 +6,11 @@ import AppInfo from '../components/AppInfo';
 import serverVar from '../components/ServerVar';
 import './Home.css';
 import { registerUser } from '../Firebase/Firebase';
+import { Language } from '../components/Languages';
+
 
 const Register: React.FC = () =>{
+    const language = new Language();
     var MARGIN = tools.compare(tools.platform(),true,"2%","35%")
 
     const [firstPage, setFirstPage] = useState(true);
@@ -39,7 +42,7 @@ const Register: React.FC = () =>{
     const matchWhileTyping = (value:any, reference:any) =>{
         if (value !== reference){
             tools.inputValidationSet("register-confirmpassword","orange")
-            setPasswordMatchErrorText(tools.MSG.passwordMatch);
+            setPasswordMatchErrorText(language.texts().passwordMatch);
         }else{
             setPasswordMatchErrorText("");
             tools.inputValidationReset("register-confirmpassword");
@@ -70,7 +73,7 @@ const Register: React.FC = () =>{
 
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>{tools.MSG.APPNAME}</IonTitle>
+                    <IonTitle>{language.texts().APPNAME}</IonTitle>
                 </IonToolbar>
             </IonHeader>
 
@@ -80,7 +83,7 @@ const Register: React.FC = () =>{
                 </IonItem>
                 <IonList style={{marginLeft:MARGIN,marginRight:MARGIN,
                         padding:"4%",border:"1px solid #000"}}>
-                    <Widgets.textStyle subtitle="Register" textColor="blue" title={tools.MSG.APPNAME} LM="30%"/>
+                    <Widgets.textStyle subtitle="Register" textColor="blue" title={language.texts().APPNAME} LM="30%"/>
 
                     {/*this is the first page*/}
                     <div hidden={!firstPage} id="register-firstpage">
@@ -140,7 +143,7 @@ const Register: React.FC = () =>{
                                         setErrorText("");
                                     }else{
                                         tools.inputValidation([["","register-email"]]);
-                                        setErrorText(tools.MSG.validEmail);
+                                        setErrorText(language.texts().validEmail);
                                     }
                                 }
                             }}>Next</IonButton>
@@ -263,13 +266,13 @@ const Register: React.FC = () =>{
                                                 ["","register-password"],
                                                 ["","register-confirmpassword"]
                                             ])
-                                            setErrorText(tools.MSG.passwordStrength);
+                                            setErrorText(language.texts().passwordStrength);
                                         }
                                     }else{
-                                        setErrorText(tools.MSG.passwordMatch);
+                                        setErrorText(language.texts().passwordMatch);
                                     };
                                 }else{
-                                    setErrorText(tools.MSG.fieldsRequired);
+                                    setErrorText(language.texts().fieldsRequired);
                                 };
                             }}>Finish</IonButton>
                         </IonItem>

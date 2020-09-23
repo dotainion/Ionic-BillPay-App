@@ -14,6 +14,7 @@ const Home: React.FC = () => {
       <IonContent>
         <Widgets.createCards items={cardItems()}/>
       </IonContent>
+      <Widgets.Footer/>
     </IonPage>
   );
 };

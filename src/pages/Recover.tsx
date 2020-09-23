@@ -5,9 +5,11 @@ import tools from '../components/Tools';
 import axios from 'axios';
 import AppInfo from '../components/AppInfo';
 import './Home.css';
+import { Language } from '../components/Languages';
 
 const Recover: React.FC = () => {
-    const vfcode = tools.MSG.resendverificationcode;
+    const language = new Language();
+    const vfcode = language.texts().resendverificationcode;
 
     const [ errorText, setErrorText ] = useState("");
     const [ recallServer, setRecallServer ] = useState(false);
@@ -57,7 +59,7 @@ const Recover: React.FC = () => {
 
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>{tools.MSG.APPNAME}</IonTitle>
+                    <IonTitle>{language.texts().APPNAME}</IonTitle>
                 </IonToolbar>
             </IonHeader>
 
@@ -67,11 +69,11 @@ const Recover: React.FC = () => {
                 </IonItem>
                 <IonList style={{marginLeft:MARGIN,marginRight:MARGIN,
                         padding:"4%",border:"1px solid #000"}}>
-                    <Widgets.textStyle subtitle="Recovery" textColor="blue" title={tools.MSG.APPNAME} LM="30%"/>
+                    <Widgets.textStyle subtitle="Recovery" textColor="blue" title={language.texts().APPNAME} LM="30%"/>
 
                     <div hidden={!firstPage}>
                         <IonItem lines="none">
-                            <p>{tools.MSG.recoverinfo}</p>
+                            <p>{language.texts().recoverinfo}</p>
                         </IonItem>
                         
                         <IonItem id="recover-email" class="loginItemStyle" style={{marginTop:"5px"}}>
@@ -97,10 +99,10 @@ const Recover: React.FC = () => {
                                         setErrorText("");
                                     }else{
                                         tools.inputValidation([["","recover-email"]]);
-                                        setErrorText(tools.MSG.validEmail);
+                                        setErrorText(language.texts().validEmail);
                                     }
                                 }else{
-                                    setErrorText(tools.MSG.fieldsRequired);
+                                    setErrorText(language.texts().fieldsRequired);
                                 }
                             }}>Next</IonButton>
                         </IonItem>
@@ -108,7 +110,7 @@ const Recover: React.FC = () => {
 
                     <div hidden={!secondPage}>
                         <IonItem lines="none">
-                            <p>{tools.MSG.recoververificationinfo}</p>
+                            <p>{language.texts().recoververificationinfo}</p>
                         </IonItem>
 
                         <IonItem id="recover-verification" class="loginItemStyle" style={{marginTop:"5px"}}>
@@ -140,7 +142,7 @@ const Recover: React.FC = () => {
                                 if (tools.inputValidation(validate)){
                                     server();
                                 }else{
-                                    setErrorText(tools.MSG.fieldsRequired);
+                                    setErrorText(language.texts().fieldsRequired);
                                 };
                             }}>Submit</IonButton>
                         </IonItem>

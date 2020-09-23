@@ -16,33 +16,6 @@ class Tools{
         RECOVER:this.link+"/recover"
     }
 
-    searchCategory = [
-        "jeans",
-        "pants",
-        "shirt",
-        "All Category"
-    ]
-
-    companyInfo = [
-        "About us",
-        "Contact us",
-        "Privacy and policy",
-        "Terms and conditions",
-    ]
-
-    quickLinks = [
-        "Login",
-        "Register",
-        "Recover password"
-    ]
-
-    LANGUAGES = [
-        "English",
-        "Spanish",
-        "French",
-        "Dutch"
-    ]
-
     color = [
         "blue",
         "red",
@@ -67,23 +40,6 @@ class Tools{
         "navy",
         "purple",
     ];
-
-    MSG = {
-        APPNAME:"Bill-Pay",
-        fieldsRequired:"Feilds are required",
-        passwordMatch:"Passwords dose not match",
-        provideValidCreds:"Please provide valid credentials",
-        recoverinfo:"A verification email will be sent to your email address. Please check your email account for your confirmation id after submiting this form.",
-        recoververificationinfo:"Please enter the 5 digit code that was sent to your email address.",
-        validEmail:"Email is invalid. Please double check email",
-        resendverificationcode:{
-            1:"To resend verification code click ",
-            2:"here",
-        },
-        cartMsg:"Shipping cost will be calculated based on your shipping address.",
-        userExist:"User already exist, try to login",
-        passwordStrength:"Password must be above 50%.",
-    }
 
     clickById(id:string){
         try{
@@ -301,11 +257,11 @@ class Tools{
           }
     }
 
-    flipCard(id:string,contentId:string,newContentId:string){
-        var newContentElement = document.getElementById(newContentId);
-        var newContentElement2 = document.getElementById(newContentId)?.style;
-        var contentElement = document.getElementById(contentId);
-        var element = document.getElementById(id)?.style;
+    flipCard(cardId:string,firstContainertId:string,secondContainertId:string){
+        var newContentElement = document.getElementById(secondContainertId);
+        var newContentElement2 = document.getElementById(secondContainertId)?.style;
+        var contentElement = document.getElementById(firstContainertId);
+        var element = document.getElementById(cardId)?.style;
         const reset = () =>{
             if (element && contentElement && newContentElement){
                 element.transition = "transform 1s";
@@ -331,19 +287,19 @@ class Tools{
                 }, 300);
             }    
         }
-        const timer = () =>{
+        const timer = (resetTime:number=10000) =>{
             var timerOut = setTimeout(()=>{
                 reset();
-            }, 10000);
+            }, resetTime);
             var tempTimeOut = timerOut;
             for (var timeRef of this.flipCardTimerArray){
-                if (timeRef.id === id){
+                if (timeRef.id === cardId){
                     clearTimeout(timeRef.ref);
                     var index = this.flipCardTimerArray.indexOf(timeRef);
                     this.flipCardTimerArray.splice(index,1);
                 }
             }
-            this.flipCardTimerArray.push({ref:tempTimeOut,id:id});
+            this.flipCardTimerArray.push({ref:tempTimeOut,id:cardId});
         }
 
         if (contentElement?.hidden !== true){

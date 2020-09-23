@@ -42,7 +42,9 @@ const Payment: React.FC = () => {
         <IonPage style={{border:"1px solid gray"}}>
             <Widgets.Header backButton={true} title="Payments" icon={cardOutline}/>
             
-            <Widgets.dialogBox left={tools.compare(tools.platform(),true,"20%","5%")}
+            <Widgets.dialogBox
+                id="payment-dialog-box"
+                left={tools.compare(tools.platform(),true,"20%","5%")}
                 bottom={tools.compare(tools.platform(),true,dialogScroll,300)}
                 maxWidth={tools.compare(tools.platform(),true,"70%","40%")}
                 arrow="bottom"
@@ -111,7 +113,7 @@ const Payment: React.FC = () => {
                             if (!paymentDisabled){
                                 tools.clickById("stripeCheckout");
                             }else{
-                                tools.clickById("popup-msg-arrow");
+                                tools.clickById("payment-dialog-box");
                             }
                         }}>Pay With Card</button>
                     </div>

@@ -1,9 +1,10 @@
-import {IonContent,IonIcon,IonItem,IonLabel,IonList,IonListHeader,IonMenu,IonMenuToggle,IonItemDivider, IonButton} from '@ionic/react';
-
+import {IonContent,IonIcon,IonItem,IonLabel,IonList,IonListHeader,IonMenu,IonMenuToggle,IonItemDivider, IonButton, IonImg, IonCard} from '@ionic/react';
 import React, { useState } from 'react';
 import { archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, mailOutline, mailSharp, trashOutline, trashSharp,  settingsSharp, settingsOutline, logOutSharp, cardSharp, homeSharp } from 'ionicons/icons';
 import './Menu.css';
 import tools from './Tools';
+import { Language } from './Languages';
+import defaul_image from './GlobImage/defaultProfile.png';
 
 interface SystemLinks {
   url: string;
@@ -120,14 +121,15 @@ const oftenLink:UserLinks[] = [
 ]
 
 const Menu: React.FC = () => {
+  const language = new Language();
   const [hideMenu, setHideMenu] = useState(true);
   return (
     <IonMenu hidden={hideMenu} contentId="menu" type="overlay" 
     style={{width:tools.compare(tools.platform(),true,"","0px")}}>
-      <IonListHeader style={{
-        fontWeight:"bold",
-        fontSize:"25px"
-      }}>{tools.MSG.APPNAME}</IonListHeader>
+      <IonListHeader style={{fontWeight:"bold",fontSize:"25px"}}>{language.texts().APPNAME}</IonListHeader>
+      <IonCard className="profileImage">
+        <IonImg alt="" src={defaul_image}/>
+      </IonCard>
 
       <IonContent>
         <IonList>
