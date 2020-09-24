@@ -3,6 +3,7 @@ import { isPlatform } from '@ionic/react';
 class Tools{
     index = 0;
     flipCardTimerArray = [] as any[];
+    flipCardIdArray = [] as any[];
     hideWhenScrollValue = 0;
 
     SERVERUSERNAME = "user";
@@ -262,18 +263,22 @@ class Tools{
         var newContentElement2 = document.getElementById(secondContainertId)?.style;
         var contentElement = document.getElementById(firstContainertId);
         var element = document.getElementById(cardId)?.style;
-        const reset = () =>{
-            if (element && contentElement && newContentElement){
-                element.transition = "transform 1s";
-                element.transform = "rotateY( 0deg )";
+
+        //this will reset card with id parameter
+        const reset = (main:any,first:any,second:any) =>{
+            if (main && contentElement && newContentElement){
+                main.transition = "transform 1s";
+                main.transform = "rotateY( 0deg )";
                 setTimeout(() => {
-                    if (element && contentElement && newContentElement){
-                        contentElement.hidden = false;
-                        newContentElement.hidden = true;
+                    if (element && first && second){
+                        first.hidden = false;
+                        second.hidden = true;
                     }
                 }, 300);
             }
         }
+
+        //user element id to flip card
         const flip = () =>{
             if (contentElement?.hidden !== true && element && contentElement && newContentElement){
                 element.transition = "transform 1s";
@@ -287,9 +292,27 @@ class Tools{
                 }, 300);
             }    
         }
+
+        //send previous card to reset to default
+        //when user click on a different card
+        const setPreviouseToReset = () =>{
+        for (var ids of this.flipCardIdArray){
+                reset(ids.main,ids.id_1,ids.id_2);
+            }
+            this.flipCardIdArray = [];
+        }
+
+        //this will reset card to default base on time 
+        //card timer will be stored in flipCardTimerArray 
+        //so if that card is click and reclick by user 
+        // it will then delete the previouse timer set
+        // to avoid the card for closing when not needed
+        //then store card id's to flipCardIdArray incose
+        //user click on a different card that once can be close.
         const timer = (resetTime:number=10000) =>{
+            setPreviouseToReset()
             var timerOut = setTimeout(()=>{
-                reset();
+                reset(element,contentElement,newContentElement);
             }, resetTime);
             var tempTimeOut = timerOut;
             for (var timeRef of this.flipCardTimerArray){
@@ -299,15 +322,20 @@ class Tools{
                     this.flipCardTimerArray.splice(index,1);
                 }
             }
+            this.flipCardIdArray.push({main:element,id_1:contentElement,id_2:newContentElement})
             this.flipCardTimerArray.push({ref:tempTimeOut,id:cardId});
         }
 
-        if (contentElement?.hidden !== true){
-            flip();
-            timer();
-        }else{
-            reset();
+        //start flip process
+        const start = () =>{
+            if (contentElement?.hidden !== true){
+                flip();
+                timer();
+            }else{
+                reset(element,contentElement,newContentElement);
+            }
         }
+        start();
     }
 
     addElement(elementType:string,addToId:string,msg:string,styles:any=""){
