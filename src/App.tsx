@@ -46,6 +46,8 @@ import Settings from './pages/Settings';
 import Favorites from './pages/Favorites';
 import Archieved from './pages/Archieved';
 
+import TemplatePage from './Template/TemplatePage';
+
 const App: React.FC = () => {
 
   return (
@@ -84,6 +86,9 @@ const App: React.FC = () => {
             <Route path="/generalinfo" component={GeneralInfo} exact />
             <Redirect from="/" to="/" exact />
             <Route path="/faults" component={Faults} exact />
+            <Redirect from="/" to="/" exact />
+
+            <Route path="/template" component={TemplatePage} exact />
             <Redirect from="/" to="/" exact />
 
             <Route path="/payment" component={Payment} exact />

@@ -5,6 +5,7 @@ import './Widgets.css';
 import { arrowUpCircleSharp, arrowDownCircleSharp } from 'ionicons/icons';
 import serverVer from '../components/ServerVar';
 import { Language } from './Languages';
+import { W_Utils } from './W_Utils';
 
 
 class Widgets{
@@ -12,9 +13,12 @@ class Widgets{
         var appName;
         var icon;
         var backButton;
+        var imgState = false;
+        var iconState = true;
         if (data.title){appName = data.title;}else{appName = language.texts().APPNAME;}
         if (data.icon){icon = data.icon;}else{icon = arrowUpCircleSharp;}
         if (data.backButton){backButton = data.backButton;}else{backButton = false;}
+        if (data.image === "img"){imgState = true;iconState = false;}else{imgState = false;iconState = true;}
         return(
             <>
                 <IonHeader id={data.id} style={{borderBottom:"1px solid blue"}}>
@@ -25,7 +29,11 @@ class Widgets{
                         <IonButtons hidden={!backButton} slot={tools.compare(tools.platform(),true,"end","start")}>
                             <IonBackButton defaultHref="home"/>
                         </IonButtons>
-                        <IonIcon class="pageHeaderImage" icon={icon} slot="start"/>
+
+                        <IonIcon hidden={!iconState} class="pageHeaderIcon" icon={icon} slot="start"/>
+                        <IonCard hidden={!imgState} class="pageHeaderImg" slot="start">
+                            <IonImg src={icon}/>
+                        </IonCard>
                         <IonTitle class="headerPageName">{appName}</IonTitle>
 
                         <IonItem hidden={tools.compare(tools.platform(),true,true,false)} slot="end" lines="none">
@@ -170,6 +178,10 @@ class Widgets{
                 <IonButton hidden id="archeived" onClick={e=>{
                     tools.saveHistry(e.currentTarget.id)
                 }} routerLink="/archeived"/>
+
+                <IonButton hidden id="template" onClick={e=>{
+                    tools.saveHistry(e.currentTarget.id)
+                }} routerLink="/template"/>
 
                 <IonButton hidden id="home" onClick={e=>{
                     tools.saveHistry(e.currentTarget.id)
@@ -404,6 +416,7 @@ class Widgets{
     }
 
     createCards(data:any){
+        var utils = new W_Utils();
         return(
             <IonGrid>
                 <IonRow>
@@ -412,7 +425,7 @@ class Widgets{
                     <IonCol key={index}>
                         <IonCard id={files.id} style={{width:tools.compare(tools.platform(),true,"105px","210px"),
                             height:tools.compare(tools.platform(),true,"150px","")}} class="card card-hover" onClick={()=>{
-                                tools.flipCard(files.id,files.id+"content",files.id+"new");
+                                utils.flipCard(files.id,files.id+"content",files.id+"new");
                             }}>
                             <div className="frontOfCard-container-hover" id={files.id+"content"}>
                                 <div style={{fontSize:tools.compare(tools.platform(),true,"90px","120px")}}>
@@ -434,7 +447,12 @@ class Widgets{
                                 )})
                                 }
                                 <div className="openLink openLink-press" onClick={()=>{
-                                    tools.clickById(files.cmd);
+                                    if (files.group){
+                                        if (data.onClick){data.onClick();}
+                                        tools.saveCmdData(files);
+                                    }else{
+                                        tools.clickById(files.cmd);
+                                    }
                                 }}>Open</div>
                             </div>
                         </IonCard>

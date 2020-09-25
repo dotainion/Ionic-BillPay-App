@@ -4,6 +4,7 @@ import './Home.css';
 import Widgets from '../../components/Widgets';
 import { cardItems } from './HomeUtils';
 import { home } from 'ionicons/icons';
+import tools from '../../components/Tools';
 
 const Home: React.FC = () => {
   return (
@@ -12,7 +13,7 @@ const Home: React.FC = () => {
       <Widgets.routes/>
 
       <IonContent>
-        <Widgets.createCards items={cardItems()}/>
+        <Widgets.createCards items={cardItems()} onClick={()=>{tools.clickById("template")}}/>
       </IonContent>
       <Widgets.Footer/>
     </IonPage>

@@ -24,6 +24,7 @@ export function cardItems(){
             icon:billPayIcon,
             id:"BillPayment",
             cmd:"payment",
+            group:false,
             title:"Payment Methods",
             detail:[
                 "Cash",
@@ -35,6 +36,7 @@ export function cardItems(){
             icon:billHistoryIcon,
             id:"BillHistory",
             cmd:"history",
+            group:false,
             title:"Payment History",
             detail:[
                 "Pass bills",
@@ -44,6 +46,7 @@ export function cardItems(){
             icon:settingsIcon,
             id:"Settings",
             cmd:"settings",
+            group:false,
             title:"Settings",
             detail:[
                 "this is a test",
@@ -52,7 +55,8 @@ export function cardItems(){
             name:"Offers",
             icon:offersIcon,
             id:"Offers",
-            cmd:"",
+            cmd:"offer",
+            group:true,
             title:"My Offers",
             detail:[
                 "Promotional Offers",
@@ -61,7 +65,8 @@ export function cardItems(){
             name:"Rewards",
             icon:rewardIcon,
             id:"Rewards",
-            cmd:"",
+            cmd:"reward",
+            group:true,
             title:"My Rewards",
             detail:[
                 "this is a test",
@@ -70,7 +75,8 @@ export function cardItems(){
             name:"Banking",
             icon:bankingIcon,
             id:"Banking",
-            cmd:"",
+            cmd:"banking",
+            group:true,
             title:"Banking",
             detail:[
                 "this is a test",
@@ -79,7 +85,8 @@ export function cardItems(){
             name:"Earning",
             icon:earningsIcon,
             id:"Earning",
-            cmd:"",
+            cmd:"earning",
+            group:true,
             title:"My Earnings",
             detail:[
                 "this is a test",
@@ -89,6 +96,7 @@ export function cardItems(){
             icon:faultsIcon,
             id:"Faults",
             cmd:"faults",
+            group:false,
             title:"Faults that affects me",
             detail:[
                 "this is a test",
@@ -98,6 +106,7 @@ export function cardItems(){
             icon:contactIcon,
             id:"Contact",
             cmd:"contactus",
+            group:false,
             title:"Contact Companies",
             detail:[
                 "this is a test",
@@ -107,6 +116,7 @@ export function cardItems(){
             icon:chatIcon,
             id:"Live Chat",
             cmd:"chat",
+            group:false,
             title:"Chat Live",
             detail:[
                 "this is a test",
@@ -114,8 +124,9 @@ export function cardItems(){
         },{
             name:"Income",
             icon:incomeIcon,
-            id:"income",
-            cmd:"",
+            id:"Income",
+            cmd:"income",
+            group:true,
             title:"My Incomes",
             detail:[
                 "this is a test",
@@ -123,8 +134,9 @@ export function cardItems(){
         },{
             name:"Budget",
             icon:budgetIcon,
-            id:"budget",
-            cmd:"",
+            id:"Rudget",
+            cmd:"budget",
+            group:true,
             title:"My Budgets",
             detail:[
                 "this is a test",
@@ -132,8 +144,9 @@ export function cardItems(){
         },{
             name:"Reports",
             icon:reportIcon,
-            id:"reports",
-            cmd:"",
+            id:"Reports",
+            cmd:"report",
+            group:true,
             title:"Reports",
             detail:[
                 "this is a test",
@@ -141,8 +154,9 @@ export function cardItems(){
         },{
             name:"Expenses",
             icon:expensIcon,
-            id:"expenses",
-            cmd:"",
+            id:"Expenses",
+            cmd:"expense",
+            group:true,
             title:"My Expenses",
             detail:[
                 "this is a test",
@@ -150,8 +164,9 @@ export function cardItems(){
           },{
             name:"Accounts",
             icon:accountsIcon,
-            id:"accounts",
-            cmd:"",
+            id:"Accounts",
+            cmd:"account",
+            group:true,
             title:"My Accounts",
             detail:[
                 "this is a test",
@@ -160,7 +175,8 @@ export function cardItems(){
             name:"Note",
             icon:notePadIcon,
             id:"my note",
-            cmd:"",
+            cmd:"note",
+            group:true,
             title:"My notes",
             detail:[
                 "this is a test",
@@ -168,8 +184,9 @@ export function cardItems(){
           },{
             name:"Share",
             icon:shareIcon,
-            id:"share",
+            id:"Share",
             cmd:"",
+            group:true,
             title:"Share this app",
             detail:[
                 "this is a test",
