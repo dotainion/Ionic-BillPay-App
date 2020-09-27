@@ -22,7 +22,7 @@ export async function loginUser(email:string, password:string){
         if (error.code === "auth/user-not-found"){
             return {state:null,message:"User dose not exist or may have been deactivated"};
         }else if (error.code === "auth/network-request-failed"){
-            return {state:true,message:"Unable to connect to server, try again later"};
+            return {state:false,message:"Unable to connect to server, try again later"};
         }else{
             return {state:false,message:"Email or password is incorrect"};
         }
