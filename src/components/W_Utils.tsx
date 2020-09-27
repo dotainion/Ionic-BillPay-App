@@ -1,7 +1,5 @@
 
-
-
-export class W_Utils{
+export class W_FlipCard{
     flipCardTimerArray = [] as any[];
     flipCardIdArray = [] as any[];
 
@@ -90,3 +88,103 @@ export class W_Utils{
         }
     }
 }
+
+class W_Calendar{
+    week_1 = 1;
+    week_2 = 8;
+    week_3 = 15;
+    week_4 = 22;
+    week_5 = 29;
+
+    daysOfTheWeek = ["SUN","MON","TUE","WED","THU","FRI","SAT"];
+    stringWeek = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+    stringMonths = ["January","February","March","April","May",
+        "June","July","August","September","October","November","December"];
+    monthAbrive = ["Jan","Feb","Mar","Apr","May",
+        "Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    
+    getSyle(data:string,month:string,year:string){
+        var date = this.weekMonthDayYearExtract(new Date().toString())
+        var Month = this.getMonthAbrive(date.month)
+        if (data === date.day && month === Month.fullText && year === date.year){
+            return {backgroundColor: "teal",color:"white"};
+        }else{
+            return {backgroundColor: "",color:""};
+        }
+    }
+    getWeekAbrive(week:string){
+        var index = 0;
+        for (var Week of this.daysOfTheWeek){
+            index ++;
+            if (week.toUpperCase() === Week){
+                return {index:index,abbr:week,fullText:this.stringWeek[index-1]};;
+            }
+        }
+        return {index:index,abbr:week,fullText:this.stringWeek[index]};
+    }
+    getMonthAbrive(month:string){
+        var index = 0;
+        for (var Month of this.monthAbrive){
+            index ++;
+            if (month === Month){
+                return {index:index,abbr:month,fullText:this.stringMonths[index-1]};;
+            }
+        }
+        return {index:index,abbr:month,fullText:this.stringMonths[index]};
+    }
+    weekMonthDayYearExtract(data:string){
+        var index = 0;var temp = "";var dates = [];
+        for (var value of data){
+            if (value !== " "){
+                temp = temp + value;
+            }else{
+                index ++;
+                dates.push(temp);
+                temp = "";
+                if (index === 4){break;}
+            }
+        }
+        return {week:dates[0],month:dates[1],day:dates[2],year:dates[3],};
+    }
+    getDaysInMonth = (month:number, year:number) =>{
+        var Month = month -1;
+        var date = new Date(year, Month,1);
+        var days = [];
+        while (date.getMonth() === Month) {
+            days.push(this.weekMonthDayYearExtract(new Date(date).toString()));
+            date.setDate(date.getDate() + 1);
+        }
+        return days;
+    }
+    oganaizeDate(limit:number,month:number,year:number){
+        var tempRowReturn = [];
+        var dateHolder = [];
+        var subMax = this.daysOfTheWeek.indexOf(this.getDaysInMonth(month,year)[0].week.toUpperCase());
+        for (var i=0;i < subMax; i++){
+            dateHolder.push("");
+        }
+        for (var item of this.getDaysInMonth(month,year)){
+            dateHolder.push(item.day)
+        }
+        for (var p=dateHolder.length;p <= 35; p++){
+            dateHolder.push("");
+        }
+        var index = 0;
+        var countBreak = 0;
+        for (var items of dateHolder){
+            index ++;
+            if (index >= limit){
+                tempRowReturn.push(items.toString());
+                countBreak ++
+                if (countBreak === 7){
+                    break;
+                }
+            }
+            
+        }  
+        return tempRowReturn;          
+    } 
+}
+
+
+export var w_calendar = new W_Calendar()

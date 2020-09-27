@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { IonHeader, IonToolbar, IonTitle, IonFooter, IonIcon, IonButtons, IonItem, IonMenuButton, IonButton, IonLabel, IonLoading, IonPopover, IonList, IonToast, IonGrid, IonRow, IonCol, IonCard, IonImg, IonBackButton } from '@ionic/react';
+import { IonHeader, IonToolbar, IonTitle, IonFooter, IonIcon, IonButtons, IonItem, IonMenuButton, IonButton, IonLabel, IonLoading, IonPopover, IonList, IonToast, IonGrid, IonRow, IonCol, IonCard, IonImg, IonBackButton, IonInput, IonDatetime, IonContent, IonModal } from '@ionic/react';
 import tools from './Tools';
 import './Widgets.css';
-import { arrowUpCircleSharp, arrowDownCircleSharp } from 'ionicons/icons';
+import { arrowUpCircleSharp, arrowDownCircleSharp, calendarSharp, arrowBack, arrowForward } from 'ionicons/icons';
 import serverVer from '../components/ServerVar';
 import { Language } from './Languages';
-import { W_Utils } from './W_Utils';
+import { w_calendar, W_FlipCard } from './W_Utils';
 
 
 class Widgets{
@@ -416,7 +416,7 @@ class Widgets{
     }
 
     createCards(data:any){
-        var utils = new W_Utils();
+        var utils = new W_FlipCard();
         return(
             <IonGrid>
                 <IonRow>
@@ -461,6 +461,162 @@ class Widgets{
                 }
                 </IonRow>
             </IonGrid>
+        )
+    }
+
+    calenderPicker(data:any){
+        const [openCalendar, setOpenCalendar] = useState(false);
+        const [calendarInputValue, setCalendarInputValue] = useState("");
+
+        var date = w_calendar.weekMonthDayYearExtract(new Date().toString());
+        var month = w_calendar.getMonthAbrive(date.month);
+        var week = w_calendar.getWeekAbrive(date.week);
+        var year = parseInt(date.year);
+
+        const [DATE_WEEK_1, SET_DATE_WEEK_1] = useState(w_calendar.oganaizeDate(w_calendar.week_1, month.index, year));
+        const [DATE_WEEK_2, SET_DATE_WEEK_2] = useState(w_calendar.oganaizeDate(w_calendar.week_2, month.index, year));
+        const [DATE_WEEK_3, SET_DATE_WEEK_3] = useState(w_calendar.oganaizeDate(w_calendar.week_3, month.index, year));
+        const [DATE_WEEK_4, SET_DATE_WEEK_4] = useState(w_calendar.oganaizeDate(w_calendar.week_4, month.index, year));
+        const [DATE_WEEK_5, SET_DATE_WEEK_5] = useState(w_calendar.oganaizeDate(w_calendar.week_5, month.index, year));
+
+        var WEEK_NAME = ("Today: " + week.abbr + "/" + month.abbr + "/" + year.toString());
+        const [MONTH_NAME, SET_MONTH_NAME] = useState(month.fullText);
+        const [YEAR_NAME, SET_YEAR_NAME] = useState(year.toString());
+        
+        const [MONTH_MOTION, SET_MONTH_MOTION] = useState(w_calendar.getMonthAbrive(date.month).index);
+        const [YEAR_MOTION, SET_YEAR_MOTION] = useState(year);
+
+        const getCalendarData = (month:number, year:number) =>{
+            SET_MONTH_MOTION(month);
+            SET_YEAR_MOTION(year);
+
+            var fullMonth = w_calendar.stringMonths[month-1];
+            SET_MONTH_NAME(fullMonth);
+            SET_YEAR_NAME(year.toString());
+
+            SET_DATE_WEEK_1(w_calendar.oganaizeDate(w_calendar.week_1, month, year));
+            SET_DATE_WEEK_2(w_calendar.oganaizeDate(w_calendar.week_2, month, year));
+            SET_DATE_WEEK_3(w_calendar.oganaizeDate(w_calendar.week_3, month, year));
+            SET_DATE_WEEK_4(w_calendar.oganaizeDate(w_calendar.week_4, month, year));
+            SET_DATE_WEEK_5(w_calendar.oganaizeDate(w_calendar.week_5, month, year));
+        }
+        const getDateOnClick = (date:string) =>{
+            if (data.onClick && date){
+                data.onClick({day:date,month:MONTH_NAME,year:YEAR_NAME});
+            }else{
+                setCalendarInputValue(MONTH_NAME+"/"+date+"/"+YEAR_NAME);
+                setOpenCalendar(false);
+            }
+        }
+        return(
+            <div>
+                <IonModal isOpen={openCalendar} onDidDismiss={()=>{setOpenCalendar(false)}}>
+                    <IonItem lines="none">
+                        <div className="dateTitle">Calendar</div>
+                    </IonItem>
+                    <IonItem lines="full">
+                        <IonLabel><span className="dateHeaderNowDateText">{WEEK_NAME}</span></IonLabel>
+                    </IonItem>
+                    <IonItem class="dateHeader" style={{fontSize:"15px"}} lines="full">
+                        <IonIcon class="dateHeaderIcon dataHeaderIconHover" onClick={async ()=>{
+                            var num = MONTH_MOTION - 1;
+                            if (num === 0){num = 12;}
+                            getCalendarData(num, YEAR_MOTION);
+                        }} icon={arrowBack}/>
+                        <IonLabel class="dateHeaderText"><span className="dateHeaderText">{MONTH_NAME}</span></IonLabel>
+                        <IonIcon class="dateHeaderIcon dataHeaderIconHover" style={{marginRight:"5%"}} onClick={()=>{
+                            var num = MONTH_MOTION + 1;
+                            if (num === 13){num = 1;}
+                            getCalendarData(num, YEAR_MOTION);
+                        }} icon={arrowForward}/>
+                            
+                        <IonIcon class="dateHeaderIcon dataHeaderIconHover" onClick={async ()=>{
+                            var num = YEAR_MOTION - 1;
+                            getCalendarData(MONTH_MOTION, num);
+                        }} icon={arrowBack}/>
+                        <span className="dateHeaderText" style={{width:"25%"}}>{YEAR_NAME}</span>
+                        <IonIcon class="dateHeaderIcon dataHeaderIconHover" onClick={async ()=>{
+                            var num = YEAR_MOTION + 1;
+                            getCalendarData(MONTH_MOTION, num);;
+                        }} icon={arrowForward}/>
+                    </IonItem>
+                    <IonContent>
+                        <IonItem class="dateSubHeader" lines="full">
+                            {w_calendar.daysOfTheWeek.map((WEEK, key) =>{return(
+                                <IonLabel key={key}>{WEEK}</IonLabel>
+                            )})}
+                        </IonItem>
+
+                        <IonItem lines="none">
+                            {DATE_WEEK_1.map((DATE, KEY)=>{return(
+                                <div className="dateContainer" key={KEY}>
+                                    <span className="dateSpan dateHover" onClick={()=>{
+                                        getDateOnClick(DATE);
+                                    }} style={w_calendar.getSyle(DATE, MONTH_NAME, YEAR_NAME)}>{DATE}</span>
+                                </div>
+                            )})}
+                        </IonItem>
+                        <IonItem lines="none">
+                            {DATE_WEEK_2.map((DATE, KEY)=>{return(
+                                <div className="dateContainer" key={KEY}>
+                                    <span className="dateSpan dateHover" onClick={()=>{
+                                        getDateOnClick(DATE);
+                                    }} style={w_calendar.getSyle(DATE, MONTH_NAME, YEAR_NAME)}>{DATE}</span>
+                                </div>
+                            )})}
+                        </IonItem>
+                        <IonItem lines="none">
+                            {DATE_WEEK_3.map((DATE, KEY)=>{return(
+                                <div className="dateContainer" key={KEY}>
+                                    <span className="dateSpan dateHover" onClick={()=>{
+                                        getDateOnClick(DATE);
+                                    }} style={w_calendar.getSyle(DATE, MONTH_NAME, YEAR_NAME)}>{DATE}</span>
+                                </div>
+                            )})}
+                        </IonItem>
+                        <IonItem lines="none">
+                            {DATE_WEEK_4.map((DATE,KEY)=>{return(
+                                <div className="dateContainer" key={KEY}>
+                                    <span className="dateSpan dateHover" onClick={()=>{
+                                        getDateOnClick(DATE);
+                                    }} style={w_calendar.getSyle(DATE, MONTH_NAME, YEAR_NAME)}>{DATE}</span>
+                                </div>
+                            )})}
+                        </IonItem>
+                        <IonItem lines="none">
+                            {DATE_WEEK_5.map((DATE, KEY)=>{return(
+                                <div className="dateContainer" key={KEY}>
+                                    <span className="dateSpan dateHover" onClick={()=>{
+                                        getDateOnClick(DATE);
+                                    }} style={w_calendar.getSyle(DATE, MONTH_NAME, YEAR_NAME)}>{DATE}</span>
+                                </div>
+                            )})}
+                        </IonItem>
+                    </IonContent>
+                </IonModal>
+
+                <IonItem lines={data.lines}>
+                    <IonIcon icon={calendarSharp}/>
+                    <IonInput class={data.class} value={calendarInputValue} onClick={()=>{
+                        setOpenCalendar(true);
+                    }} style={data.style} placeholder={"Click to open calender"}></IonInput>
+                </IonItem>
+            </div>
+        )
+    }
+
+    dataPicker(data:any){
+        var date = new Date();
+        const [selectedDate, setSelectedDate] = useState(date.toISOString());
+        return(
+            <IonItem lines={data.lines}>
+                <IonIcon icon={calendarSharp}/>
+                <IonDatetime class={data.class} displayFormat="MM/DD/YYYY" value={selectedDate} onIonChange={e =>{
+                    if (e.detail.value){
+                        setSelectedDate(e.detail.value);
+                    }
+                }} style={data.style}></IonDatetime>
+            </IonItem>
         )
     }
 }
