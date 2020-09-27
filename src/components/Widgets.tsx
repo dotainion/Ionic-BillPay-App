@@ -599,7 +599,7 @@ class Widgets{
                     <IonIcon icon={calendarSharp}/>
                     <IonInput class={data.class} value={calendarInputValue} onClick={()=>{
                         setOpenCalendar(true);
-                    }} style={data.style} placeholder={"Click to open calender"}></IonInput>
+                    }} style={data.style} placeholder="Calender date"></IonInput>
                 </IonItem>
             </div>
         )

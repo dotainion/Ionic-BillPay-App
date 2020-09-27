@@ -1,5 +1,5 @@
-import { IonCard, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonModal, IonSelect, IonSelectOption, IonTitle, IonToolbar } from '@ionic/react';
-import { addOutline, cameraSharp, chatbox, close, logoUsd, refreshSharp } from 'ionicons/icons';
+import { IonButton, IonCard, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonModal, IonSelect, IonSelectOption, IonTitle, IonToolbar } from '@ionic/react';
+import { addOutline, cameraSharp, chatbox, close, giftOutline, logoUsd, refreshSharp } from 'ionicons/icons';
 import React, { useState } from 'react';
 import tools from '../components/Tools';
 import widgets from '../components/Widgets';
@@ -75,10 +75,13 @@ export function Incomes(data:any){
                     </IonToolbar>
                 </IonHeader>
                 <IonContent>
-                    <IonItem class="addPopUpHover">
-                        <IonSelect interface="popover" placeholder="Choose your income uses" value="">
-                            <IonSelectOption>testing</IonSelectOption>
-                        </IonSelect>
+                    <IonItem class="addPopUpHover" lines="none">
+                        <IonIcon icon={giftOutline}/>
+                        <IonItem class="incomeChoiceInputAdd">
+                            <IonSelect interface="popover" placeholder="Choose your income uses" value="">
+                                <IonSelectOption>testing</IonSelectOption>
+                            </IonSelect>
+                        </IonItem>
                     </IonItem>
                     <IonItem class="ionItem" lines="none">
                         <IonIcon icon={logoUsd}/>
@@ -98,6 +101,9 @@ export function Incomes(data:any){
                         <IonInput placeholder="Photo" class="addPopUpHover incomeInputAdd"/>
                     </IonItem>
                 </IonContent>
+                <IonItem lines="none">
+                    <IonButton slot="end">Add</IonButton>
+                </IonItem>
             </IonModal>
         )
     }

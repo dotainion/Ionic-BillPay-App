@@ -61,6 +61,10 @@
     color: red;
     background-color: lightgray;
 }
+.incomeChoiceInputAdd{
+    width: 100%;
+    border-bottom: 1px solid blue;
+}
 
 
 
