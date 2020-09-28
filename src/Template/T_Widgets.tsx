@@ -222,7 +222,7 @@ export function Notes(data:any){
             <IonModal isOpen={openNote} onDidDismiss={()=>{setOpenNote(false)}}>
                 <IonHeader>
                     <IonToolbar>
-                        <IonTitle slot="start">Add Incomes</IonTitle>
+                        <IonTitle slot="start">Add Note</IonTitle>
                         <IonIcon slot="end" onClick={()=>{
                             setOpenNote(false)
                         }} class="back-close back-close-hover" icon={close}/>
@@ -237,7 +237,7 @@ export function Notes(data:any){
                 </IonContent>
                 <IonItem>
                     <IonButton slot="end" onClick={()=>{
-                        
+
                     }}>Save</IonButton>
                 </IonItem>
             </IonModal>
