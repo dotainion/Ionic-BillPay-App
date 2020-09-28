@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { IonHeader, IonToolbar, IonTitle, IonFooter, IonIcon, IonButtons, IonItem, IonMenuButton, IonButton, IonLabel, IonLoading, IonPopover, IonList, IonToast, IonGrid, IonRow, IonCol, IonCard, IonImg, IonBackButton, IonInput, IonDatetime, IonContent, IonModal } from '@ionic/react';
 import tools from './Tools';
 import './Widgets.css';
-import { arrowUpCircleSharp, arrowDownCircleSharp, calendarSharp, arrowBack, arrowForward } from 'ionicons/icons';
+import { arrowUpCircleSharp, arrowDownCircleSharp, calendarSharp, arrowBack, arrowForward, close, caretDown } from 'ionicons/icons';
 import serverVer from '../components/ServerVar';
 import { Language } from './Languages';
-import { w_calendar, W_FlipCard } from './W_Utils';
+import { w_calendar, W_FlipCard ,utils } from './W_Utils';
 
 
 class Widgets{
@@ -501,18 +501,20 @@ class Widgets{
             SET_DATE_WEEK_5(w_calendar.oganaizeDate(w_calendar.week_5, month, year));
         }
         const getDateOnClick = (date:string) =>{
+            var value = MONTH_NAME+"/"+date+"/"+YEAR_NAME;
+            var dic_value = {day:date,month:MONTH_NAME,year:YEAR_NAME,data:value};
             if (data.onClick && date){
-                data.onClick({day:date,month:MONTH_NAME,year:YEAR_NAME});
-            }else{
-                setCalendarInputValue(MONTH_NAME+"/"+date+"/"+YEAR_NAME);
-                setOpenCalendar(false);
+                data.onClick(dic_value);
             }
+            setCalendarInputValue(value);
+            setOpenCalendar(false);
         }
         return(
             <div>
                 <IonModal isOpen={openCalendar} onDidDismiss={()=>{setOpenCalendar(false)}}>
                     <IonItem lines="none">
                         <div className="dateTitle">Calendar</div>
+                        <IonIcon class="dateTitleClose dateTitleCloseHover" icon={close} onClick={()=>{setOpenCalendar(false)}}/>
                     </IonItem>
                     <IonItem lines="full">
                         <IonLabel><span className="dateHeaderNowDateText">{WEEK_NAME}</span></IonLabel>
@@ -617,6 +619,43 @@ class Widgets{
                     }
                 }} style={data.style}></IonDatetime>
             </IonItem>
+        )
+    }
+    textConfigureWidgets(data:any){
+        return(
+            <IonCard class={data.class}>
+                <IonItem>
+                    <span onClick={()=>{utils.config("font",data.IDS)}} className="textAsIcon textAsIconHover"><span style={{fontSize:"11px"}}>T</span>T</span>
+                    <span onClick={()=>{utils.config("bold",data.IDS)}} className="textAsIcon textAsIconHover">B</span>
+                    <span onClick={()=>{utils.config("Italic",data.IDS)}} style={{fontStyle:"italic"}} className="textAsIcon textAsIconHover">I</span>
+                    <span onClick={()=>{utils.config("underline",data.IDS)}} className="textAsIcon textAsIconHover underline">U</span>
+                    <span onClick={()=>{utils.config("color",data.IDS)}} className="textAsIcon textAsIconHover underline">A<IonIcon style={{fontSize:"10px"}} icon={caretDown}/></span>
+                    
+                    <div onClick={()=>{utils.config("left",data.IDS)}} className="justify-container justify-hover">
+                        <div className="justify-line"></div>
+                        <div className="justify-line justify-left-inline"></div>
+                        <div className="justify-line"></div>
+                        <div className="justify-line justify-left-inline"></div>
+                        <div className="justify-line"></div>
+                    </div>
+
+                    <div onClick={()=>{utils.config("center",data.IDS)}} className="justify-container justify-hover">
+                        <div className="justify-line"></div>
+                        <div className="justify-line justify-center-inline"></div>
+                        <div className="justify-line"></div>
+                        <div className="justify-line justify-center-inline"></div>
+                        <div className="justify-line"></div>
+                    </div>
+
+                    <div onClick={()=>{utils.config("right",data.IDS)}} className="justify-container justify-hover">
+                        <div className="justify-line"></div>
+                        <div className="justify-line justify-right-inline"></div>
+                        <div className="justify-line"></div>
+                        <div className="justify-line justify-right-inline"></div>
+                        <div className="justify-line"></div>
+                    </div>
+                </IonItem>
+            </IonCard>
         )
     }
 }

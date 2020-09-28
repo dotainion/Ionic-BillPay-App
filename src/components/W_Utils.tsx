@@ -186,5 +186,51 @@ class W_Calendar{
     } 
 }
 
+export class TextConfigure{
+    config(cmd:string,id_Array:any,color:string="black"){
+        for (var id of id_Array){
+            var element = document.getElementById(id)?.style;
+            if (element){
+                if (cmd === "font"){
+                    if (element.fontSize === "20px"){
+                        element.fontSize = "";
+                    }else{
+                        element.fontSize = "20px";
+                    }
+                }else if (cmd === "bold"){
+                    if (element.fontWeight === "bold"){
+                        element.fontWeight = "";
+                    }else{
+                        element.fontWeight = "bold";
+                    }
+                }else if (cmd === "Italic"){
+                    if (element.fontStyle === "italic"){
+                        element.fontStyle = "";
+                    }else{
+                        element.fontStyle = "italic";
+                    }
+                }else if (cmd === "underline"){
+                    if (element.textDecoration === "underline"){
+                        element.textDecoration = "";
+                    }else{
+                        element.textDecoration = "underline";
+                    }
+                }else if (cmd === "color"){
+                    element.color = color;
+                }else if (cmd === "left"){
+                    element.textAlign = cmd;
+                }else if (cmd === "center"){
+                    element.textAlign = cmd;
+                }else if (cmd === "right"){
+                    element.textAlign = cmd;
+                }else{
+
+                }
+            }
+        }
+    }
+}
+
 
 export var w_calendar = new W_Calendar()
+export var utils = new TextConfigure()

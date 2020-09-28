@@ -5,12 +5,11 @@ import tools from '../components/Tools';
 import { Rewards, Offers, Banking, Earnings, Notes, Incomes, Budgets, Accounts, Reports, Expense } from './T_Widgets';
 
 
-
 export const Template:React.FC = () =>{
     var cmd = tools.getCmdData().cmd;
     var headerTitle = tools.getCmdData().name;
     var headerIcon = tools.getCmdData().icon;
-    return(
+    return( 
         <IonPage>
             <Widget.Header backButton={true} title={headerTitle} image="img" icon={headerIcon}/>
             

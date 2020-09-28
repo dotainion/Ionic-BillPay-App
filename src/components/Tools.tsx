@@ -67,6 +67,16 @@ class Tools{
         
     }
 
+    toast(msg:string,duration:number=3000){
+        const toast = document.createElement('ion-toast');
+        toast.message = msg;
+        toast.position = "top";
+        toast.duration = duration;
+      
+        document.body.appendChild(toast);
+        return toast.present();
+    }
+      
     platform(){
         if (!isPlatform("desktop")){
             if (isPlatform("mobile") || isPlatform("tablet") || isPlatform("ios")){
