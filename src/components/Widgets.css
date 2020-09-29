@@ -317,6 +317,13 @@
   margin-right: 10px;
   background-color: lightgray;
 }
+.emojiIcon{
+  color: black;
+  width: 30px;
+  padding: 4px;
+  font-size: 16px;
+  background-color: lightgray;
+}
 .textAsIconHover:hover{
   color: white;
   background-color: gray;
@@ -349,4 +356,11 @@
 .justify-right-inline{
   width: 15px;
   margin-left: 24%;
+}
+
+/*for emoji picker*/
+.emojiContainer{
+  position: fixed;
+  z-index: 99999;
+  margin-top: -30%;
 }

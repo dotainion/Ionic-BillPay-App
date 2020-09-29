@@ -79,6 +79,39 @@
     border-radius: 10px;
     border: 2px solid lightgray;
 }
+.noteMsgContainer{
+    margin-top: 20px;
+    user-select: none;
+}
+.noteMsgHover:hover{
+    border: 1px solid teal;
+}
+.noteIcon{
+    color: teal;
+    font-size: 250%;
+}
+.noteMsgSubject{
+    color: teal;
+}
+.noteMsgSubject1{
+    color: blue;
+    margin-left: 20px;
+}
+.noteMsg{
+    margin-left: 5px;
+}
+.displayNoteMsgContainer{
+    margin: 15px;
+}
+.displayNoteSubject{
+    margin-left: 5px;
+}
+.displayNoteMsg{
+    color: blue;
+}
+.displayNoteMsgSubContainer{
+    margin: 15px;
+}
 
 
 

@@ -7,7 +7,6 @@ import serverVar from '../components/ServerVar';
 import './Home.css';
 import { loginUser } from '../Firebase/Firebase';
 import { Language } from '../components/Languages';
-import widgets from '../components/Widgets';
 
 
 const Login: React.FC = () => {  
@@ -55,13 +54,12 @@ const Login: React.FC = () => {
     }
     tools.clickById("stop-loader");
   }
-  const [pp, spp] = useState("");
   return (
     <IonPage>
       <Widgets.languages/>
       <Widgets.routes/>
       <Widgets.loadSpinner/>
-
+      
       <IonHeader>
         <IonToolbar>
           <IonTitle>{language.texts().APPNAME}</IonTitle>

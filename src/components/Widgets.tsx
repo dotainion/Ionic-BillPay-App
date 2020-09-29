@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { IonHeader, IonToolbar, IonTitle, IonFooter, IonIcon, IonButtons, IonItem, IonMenuButton, IonButton, IonLabel, IonLoading, IonPopover, IonList, IonToast, IonGrid, IonRow, IonCol, IonCard, IonImg, IonBackButton, IonInput, IonDatetime, IonContent, IonModal } from '@ionic/react';
 import tools from './Tools';
 import './Widgets.css';
-import { arrowUpCircleSharp, arrowDownCircleSharp, calendarSharp, arrowBack, arrowForward, close, caretDown } from 'ionicons/icons';
+import { arrowUpCircleSharp, arrowDownCircleSharp, calendarSharp, arrowBack, arrowForward, close, caretDown, happyOutline } from 'ionicons/icons';
 import serverVer from '../components/ServerVar';
 import { Language } from './Languages';
 import { w_calendar, W_FlipCard ,utils } from './W_Utils';
+import EmojiPicker from 'emoji-picker-react';
 
 
 class Widgets{
@@ -622,8 +623,18 @@ class Widgets{
         )
     }
     textConfigureWidgets(data:any){
+        const [emoji_open, set_emoji_open] = useState(false);
+        var x;
+        if(data.imojiX==="left"){x="0%"}else if(data.imojiX==="right"){x="100%"}else{x="50%"}
+        var y;
+        if(data.imojiY==="top"){y=""}else if(data.imojiY==="bottom"){y=0}else{y=""}
         return(
+            <>
+            <widgets.emoji isOpen={emoji_open} imoji={(e:any)=>{
+                if (data.imoji){data.imoji(e)}
+            }} onClose={(e:boolean)=>{set_emoji_open(e)}} x={x} y={y}/>
             <IonCard class={data.class}>
+                
                 <IonItem>
                     <span onClick={()=>{utils.config("font",data.IDS)}} className="textAsIcon textAsIconHover"><span style={{fontSize:"11px"}}>T</span>T</span>
                     <span onClick={()=>{utils.config("bold",data.IDS)}} className="textAsIcon textAsIconHover">B</span>
@@ -654,8 +665,46 @@ class Widgets{
                         <div className="justify-line justify-right-inline"></div>
                         <div className="justify-line"></div>
                     </div>
+
+                    <IonIcon class="emojiIcon textAsIconHover" onClick={()=>{
+                        set_emoji_open(true);
+                        if (data.onOpen){
+                            data.onOpen(true);
+                        }
+                    }} icon={happyOutline}/>
                 </IonItem>
             </IonCard>
+            </>
+        )
+    }
+
+    emoji(data:any){
+        var isOpen;
+        if(data.isOpen===true){isOpen=data.isOpen}else{isOpen=false}
+        var left;
+        if(data.x==="left"){left="0%"}else if(data.x==="right"){left="100%"}else{left="50%"}
+        var bottom;
+        if(data.y==="top"){bottom=""}else if(data.y==="bottom"){bottom=0}else{bottom=""}
+        var style = {
+            bottom: bottom,
+            marginLeft: left,
+            marginBottom: "10px",
+            transform:"translate(-"+left+")",
+        }
+        return(
+            <div className="emojiContainer" style={style} hidden={!isOpen}>
+               <IonItem>
+                  <IonButton slot="end" onClick={()=>{
+                      if (data.onClose){
+                          data.onClose(()=>{return false});
+                      }
+                  }}>Close</IonButton>
+              </IonItem> 
+              <EmojiPicker onEmojiClick={(event,IMOJI)=>{
+                  if (data.imoji){data.imoji(IMOJI)};
+                  if (data.event){data.event(event)};
+              }}/>
+            </div>
         )
     }
 }
