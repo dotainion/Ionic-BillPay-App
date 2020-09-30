@@ -103,8 +103,8 @@
     border: 1px solid teal;
 }
 .noteIcon{
-    color: teal;
-    font-size: 250%;
+    color: sienna;
+    font-size: 150%;
 }
 .noteMsgSubject{
     color: teal;
@@ -130,8 +130,7 @@
 }
 .noItemText{
     color: blue;
-    user-select: none;
-    
+    user-select: none;    
 }
 .noItemTextHover:hover{
     text-decoration: underline;

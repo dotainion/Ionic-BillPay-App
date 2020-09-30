@@ -116,7 +116,8 @@ class Notes{
                             tools.clickById("start-loader");
                             setTimeout(()=>{setOpenAddNote(true)},100);
                         }}>
-                            <span className="noItemText noItemTextHover">Click the Add button to place your first note</span>
+                            <IonIcon class="noteIcon" icon={readerOutline}/>
+                            <span className="noItemText noItemTextHover">Click to add note</span>
                         </IonItem>
                     }
                 </IonContent>
