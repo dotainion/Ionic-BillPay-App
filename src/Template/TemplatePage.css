@@ -38,6 +38,7 @@
 .categoryHeaderContainer{
     color: teal;
     font-weight: bold;
+    user-select: none;
 }
 .catHeaderVLine{
     border-right: 1px solid lightgray;
@@ -63,6 +64,12 @@
 .incomeAddedHover:hover{
     user-select: none;
     border: 1px solid teal;
+}
+.catContentName{
+    color: blue;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: underline;
 }
 
 /*for notes*/
@@ -112,6 +119,13 @@
 .displayNoteMsgSubContainer{
     margin: 15px;
 }
-
+.noItemText{
+    color: blue;
+    user-select: none;
+    
+}
+.noItemTextHover:hover{
+    text-decoration: underline;
+}
 
 

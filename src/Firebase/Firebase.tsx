@@ -31,6 +31,7 @@ export async function loginUser(email:string, password:string){
 
 export async function registerUser(email:string, password:string){
     try{
+        console.log("firebase starting");
         const response = await firebase.auth().createUserWithEmailAndPassword(email, password);
         console.log(response);
         return {state:true,message:""};

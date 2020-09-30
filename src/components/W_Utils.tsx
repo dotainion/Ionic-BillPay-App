@@ -144,7 +144,8 @@ class W_Calendar{
                 if (index === 4){break;}
             }
         }
-        return {week:dates[0],month:dates[1],day:dates[2],year:dates[3],};
+        var fullMonth = w_calendar.stringMonths[w_calendar.monthAbrive.indexOf(dates[1])];
+        return {week:dates[0],month:dates[1],day:dates[2],year:dates[3],fullMonth:fullMonth};
     }
     getDaysInMonth = (month:number, year:number) =>{
         var Month = month -1;
