@@ -229,12 +229,14 @@ class Incomes{
                         income.headerCategoryhighlight(e.currentTarget.id,cat_cmd,highLightStyle);
                     }} style={{borderBottom:catMonthly}}>MONTHLY</IonLabel>
                 </IonItem>
+                
+                <IonContent hidden={!data.state}>
+                    <income.AddIncomes get={(value:any)=>{SET_ITEMS_VALUE(value)}} isOpen={showAddIncome} dismiss={()=>{setShowAddIncome(false)}} value={ITEMS_VALUE} onClick={()=>{setShowAddIncome(true)}}/>
 
-                <income.AddIncomes get={(value:any)=>{SET_ITEMS_VALUE(value)}} isOpen={showAddIncome} dismiss={()=>{setShowAddIncome(false)}} value={ITEMS_VALUE} onClick={()=>{setShowAddIncome(true)}}/>
-
-                <income.allCategory del={(index:number)=>{}} state={catAll} value={ITEMS_VALUE} onClick={()=>{setShowAddIncome(true)}}/>
-                <income.dailyCategory del={(index:number)=>{}} state={catDaily} value={ITEMS_VALUE} onClick={()=>{setShowAddIncome(true)}}/>
-                <income.monthlyCategory del={(index:number)=>{}} state={catMonthly} value={ITEMS_VALUE} onClick={()=>{setShowAddIncome(true)}}/>
+                    <income.allCategory del={(index:number)=>{}} state={catAll} value={ITEMS_VALUE} onClick={()=>{setShowAddIncome(true)}}/>
+                    <income.dailyCategory del={(index:number)=>{}} state={catDaily} value={ITEMS_VALUE} onClick={()=>{setShowAddIncome(true)}}/>
+                    <income.monthlyCategory del={(index:number)=>{}} state={catMonthly} value={ITEMS_VALUE} onClick={()=>{setShowAddIncome(true)}}/>
+                </IonContent>
 
                 <IonCard hidden={!data.state} class="addButtonContainer" onClick={()=>{setShowAddIncome(true)}}>
                     <IonIcon class="AddButtonIcon" icon={addOutline}/>
