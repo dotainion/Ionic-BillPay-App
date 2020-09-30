@@ -147,10 +147,11 @@ class Incomes{
                     {
                         data.value.length?
                         data.value.map((item:any, index:number) =>
-                            <IonItem onClick={()=>{console.log(item)}} className="incomeAddedHover" key={index} lines={tools.compare(tools.platform(),true,"none","")}>
+                            <IonItem onClick={()=>{}} className="incomeAddedHover" key={index} lines={tools.compare(tools.platform(),true,"none","")}>
                                 <IonIcon color="primary" icon={bookSharp}/>
                                 <IonLabel class="incomeAdded">Income:{index+1}</IonLabel>
-                                <IonLabel class="incomeAdded">Amount:{item[1]}</IonLabel>
+                                <IonLabel class="incomeAdded">Amount: ${item[1]}</IonLabel>
+                                <IonIcon class="itemDelete itemDeleteHover" onClick={()=>{if(data.del){data.del(index)}}} icon={close}/>
                             </IonItem>
                         ):
                         <income.noteIncomeLabel onClick={()=>{if(data.onClick){data.onClick(true)}}}/>
@@ -170,10 +171,11 @@ class Incomes{
                     {
                         income.categoryItemSeperator("daily",data.value).length?
                         income.categoryItemSeperator("daily",data.value).map((item:any, index:number) =>
-                            <IonItem onClick={()=>{console.log(item)}} className="incomeAddedHover" key={index} lines={tools.compare(tools.platform(),true,"none","")}>
+                            <IonItem onClick={()=>{}} className="incomeAddedHover" key={index} lines={tools.compare(tools.platform(),true,"none","")}>
                                 <IonIcon color="primary" icon={bookSharp}/>
                                 <IonLabel class="incomeAdded">Income:{index+1}</IonLabel>
-                                <IonLabel class="incomeAdded">Amount:{item[1]}</IonLabel>
+                                <IonLabel class="incomeAdded">Amount: ${item[1]}</IonLabel>
+                                <IonIcon class="itemDelete itemDeleteHover" onClick={()=>{if(data.del){data.del(index)}}} icon={close}/>
                             </IonItem>
                         ):
                         <income.noteIncomeLabel onClick={()=>{if(data.onClick){data.onClick(true)}}}/>
@@ -192,10 +194,11 @@ class Incomes{
                     {
                         income.categoryItemSeperator("monthly",data.value).length?
                         income.categoryItemSeperator("monthly",data.value).map((item:any, index:number) =>
-                            <IonItem onClick={()=>{console.log(item)}} className="incomeAddedHover" key={index} lines={tools.compare(tools.platform(),true,"none","")}>
+                            <IonItem onClick={()=>{}} className="incomeAddedHover" key={index} lines={tools.compare(tools.platform(),true,"none","")}>
                                 <IonIcon color="primary" icon={bookSharp}/>
                                 <IonLabel class="incomeAdded">Income:{index+1}</IonLabel>
-                                <IonLabel class="incomeAdded">Amount:{item[1]}</IonLabel>
+                                <IonLabel class="incomeAdded">Amount: ${item[1]}</IonLabel>
+                                <IonIcon class="itemDelete itemDeleteHover" onClick={()=>{if(data.del){data.del(index)}}} icon={close}/>
                             </IonItem>
                         ):
                         <income.noteIncomeLabel onClick={()=>{if(data.onClick){data.onClick(true)}}}/>
@@ -229,9 +232,9 @@ class Incomes{
 
                 <income.AddIncomes get={(value:any)=>{SET_ITEMS_VALUE(value)}} isOpen={showAddIncome} dismiss={()=>{setShowAddIncome(false)}} value={ITEMS_VALUE} onClick={()=>{setShowAddIncome(true)}}/>
 
-                <income.allCategory state={catAll} value={ITEMS_VALUE} onClick={()=>{setShowAddIncome(true)}}/>
-                <income.dailyCategory state={catDaily} value={ITEMS_VALUE} onClick={()=>{setShowAddIncome(true)}}/>
-                <income.monthlyCategory state={catMonthly} value={ITEMS_VALUE} onClick={()=>{setShowAddIncome(true)}}/>
+                <income.allCategory del={(index:number)=>{}} state={catAll} value={ITEMS_VALUE} onClick={()=>{setShowAddIncome(true)}}/>
+                <income.dailyCategory del={(index:number)=>{}} state={catDaily} value={ITEMS_VALUE} onClick={()=>{setShowAddIncome(true)}}/>
+                <income.monthlyCategory del={(index:number)=>{}} state={catMonthly} value={ITEMS_VALUE} onClick={()=>{setShowAddIncome(true)}}/>
 
                 <IonCard hidden={!data.state} class="addButtonContainer" onClick={()=>{setShowAddIncome(true)}}>
                     <IonIcon class="AddButtonIcon" icon={addOutline}/>

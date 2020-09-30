@@ -71,6 +71,15 @@
     text-align: center;
     text-decoration: underline;
 }
+.itemDelete{
+    color: red;
+    padding: 5px;
+    border-radius: 50%;
+}
+.itemDeleteHover:hover{
+    border-radius: 50%;
+    background-color: lightgray;
+}
 
 /*for notes*/
 .textAreaContainer{
