@@ -116,23 +116,31 @@ class Widgets{
         func(item);
     }
     categoryItemSeperator(cmd:string,values:any){
-        var data = [];
-        var date = w_calendar.weekMonthDayYearExtract(new Date().toString());
-        if (cmd === "daily"){
-            var tempDate = date.fullMonth+"/"+date.day+"/"+date.year;
-            for (var item of values){
-                if (item[2] === tempDate){
-                    data.push(item);
+        //this needs work
+        //its giving an error
+        //add in try cat block to test code but have to fix
+        try{
+            var data = [];
+            var date = w_calendar.weekMonthDayYearExtract(new Date().toString());
+            if (cmd === "daily"){
+                var tempDate = date.fullMonth+"/"+date.day+"/"+date.year;
+                for (var item of values){
+                    if (item[2] === tempDate){
+                        data.push(item);
+                    }
+                }
+            }else if (cmd === "monthly"){
+                for (var Item of values){
+                    if (Item[2].includes(date.fullMonth)){
+                        data.push(Item);
+                    }
                 }
             }
-        }else if (cmd === "monthly"){
-            for (var Item of values){
-                if (Item[2].includes(date.fullMonth)){
-                    data.push(Item);
-                }
-            }
+            return data;
+        }catch{
+            return [];
         }
-        return data;
+        
     }
     noItem(data:any){
         const ifHiden = (value:any) =>{
