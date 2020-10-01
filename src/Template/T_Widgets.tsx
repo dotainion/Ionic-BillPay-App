@@ -79,6 +79,42 @@ export function Reports(data:any){
 }
 
 class Widgets{
+    update(state:boolean,onUpdate:any,onDelete:any){
+        var msg = "Are you sure you will like to delete this item?"
+        tools.toastWithOkCancel(msg,(returnValue:boolean)=>{
+            if (returnValue){onDelete()}
+            if (state){
+                onUpdate(false);
+            }else{
+                onUpdate(true);
+            }
+        });        
+    }
+    headerCategoryhighlight = (ID:string,cmd:any,cmdValue:string) =>{
+        var index = 0;
+        const id_s:any = ["income-cat","income-day","income-mon"];
+        for (var item of id_s){
+            index ++;
+            if (item === ID){
+                cmd[index-1](cmdValue);
+            }else{
+                cmd[index-1]("");
+            }
+        }
+    }
+    addItems = (value:any,newValue:any) =>{
+        var data = [];
+        var values = [newValue[0],newValue[1],newValue[2],newValue[3],newValue[4],newValue[5]];
+        for (var item of value){data.push(item)}
+        data.push(values);
+        return data;
+    }
+    deleteItem(index:number, value:any, func:any){
+        var item = value;
+        item.splice(index,1);
+        console.log(item);
+        func(item);
+    }
     categoryItemSeperator(cmd:string,values:any){
         var data = [];
         var date = w_calendar.weekMonthDayYearExtract(new Date().toString());

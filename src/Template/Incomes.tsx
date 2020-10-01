@@ -12,42 +12,6 @@ import { t_widgets } from './T_Widgets';
 class Incomes{
     /*data add array values [uses,amount,calendar,repeat,comment,photo]*/
 
-    update(state:boolean,onUpdate:any,onDelete:any){
-        var msg = "Are you sure you will like to delete this item?"
-        tools.toastWithOkCancel(msg,(returnValue:boolean)=>{
-            if (returnValue){onDelete()}
-            if (state){
-                onUpdate(false);
-            }else{
-                onUpdate(true);
-            }
-        });        
-    }
-    headerCategoryhighlight = (ID:string,cmd:any,cmdValue:string) =>{
-        var index = 0;
-        const id_s:any = ["income-cat","income-day","income-mon"];
-        for (var item of id_s){
-            index ++;
-            if (item === ID){
-                cmd[index-1](cmdValue);
-            }else{
-                cmd[index-1]("");
-            }
-        }
-    }
-    addItems = (value:any,newValue:any) =>{
-        var data = [];
-        var values = [newValue[0],newValue[1],newValue[2],newValue[3],newValue[4],newValue[5]];
-        for (var item of value){data.push(item)}
-        data.push(values);
-        return data;
-    }
-    deleteItem(index:number, value:any, func:any){
-        var item = value;
-        item.splice(index,1);
-        console.log(item);
-        func(item);
-    }
     displayItem(data:any){
         var TEXTS = ["Type: ","Cost: ","Date: ","Repeat: ","Comment: ","Photo: "];
         return(
@@ -144,7 +108,7 @@ class Incomes{
                                 income_comment,
                                 income_photo
                             ]
-                            if (data.get){data.get(income.addItems(data.value,value))};
+                            if (data.get){data.get(t_widgets.addItems(data.value,value))};
                             if (data.dismiss){data.dismiss(false)}
                         }else{
                             tools.toast("No receonds to be added. Please provide $ amount");
@@ -172,13 +136,13 @@ class Incomes{
             <>
                 <IonItem hidden={!data.state} class="categoryHeaderContainer" lines="full">
                     <IonLabel id="income-cat" class="categoryHeader catHeaderVLine" onClick={(e)=>{
-                        income.headerCategoryhighlight(e.currentTarget.id,cat_cmd,highLightStyle);
+                        t_widgets.headerCategoryhighlight(e.currentTarget.id,cat_cmd,highLightStyle);
                     }} style={{borderBottom:catAll}}>ALL</IonLabel>
                     <IonLabel id="income-day" class="categoryHeader catHeaderVLine" onClick={(e)=>{
-                        income.headerCategoryhighlight(e.currentTarget.id,cat_cmd,highLightStyle);
+                        t_widgets.headerCategoryhighlight(e.currentTarget.id,cat_cmd,highLightStyle);
                     }} style={{borderBottom:catDaily}}>DAILY</IonLabel>
                     <IonLabel id="income-mon" class="categoryHeader" onClick={(e)=>{
-                        income.headerCategoryhighlight(e.currentTarget.id,cat_cmd,highLightStyle);
+                        t_widgets.headerCategoryhighlight(e.currentTarget.id,cat_cmd,highLightStyle);
                     }} style={{borderBottom:catMonthly}}>MONTHLY</IonLabel>
                 </IonItem>
                 
@@ -187,18 +151,18 @@ class Incomes{
                     <income.AddIncomes get={(value:any)=>{SET_ITEMS_VALUE(value)}} isOpen={showAddIncome} dismiss={()=>{setShowAddIncome(false)}} value={ITEMS_VALUE} onClick={()=>{setShowAddIncome(true)}}/>
 
                     <t_widgets.allCategory msg={noItemMsg} openItem={(value:any)=>{setShowSelectedIncome(true);setDisplayItemValue(value)}} del={(index:number)=>{
-                        income.update(update,setUpdate,()=>{
-                            income.deleteItem(index,ITEMS_VALUE,SET_ITEMS_VALUE);
+                        t_widgets.update(update,setUpdate,()=>{
+                            t_widgets.deleteItem(index,ITEMS_VALUE,SET_ITEMS_VALUE);
                         });
                     }} state={catAll} value={ITEMS_VALUE} onClick={()=>{setShowAddIncome(true)}}/>
                     <t_widgets.dailyCategory msg={noItemMsg} openItem={(value:any)=>{setShowSelectedIncome(true);setDisplayItemValue(value)}} del={(index:number)=>{
-                        income.update(update,setUpdate,()=>{
-                            income.deleteItem(index,ITEMS_VALUE,SET_ITEMS_VALUE);
+                        t_widgets.update(update,setUpdate,()=>{
+                            t_widgets.deleteItem(index,ITEMS_VALUE,SET_ITEMS_VALUE);
                         });
                     }} state={catDaily} value={ITEMS_VALUE} onClick={()=>{setShowAddIncome(true)}}/>
                     <t_widgets.monthlyCategory msg={noItemMsg} openItem={(value:any)=>{setShowSelectedIncome(true);setDisplayItemValue(value)}} del={(index:number)=>{
-                        income.update(update,setUpdate,()=>{
-                            income.deleteItem(index,ITEMS_VALUE,SET_ITEMS_VALUE);
+                        t_widgets.update(update,setUpdate,()=>{
+                            t_widgets.deleteItem(index,ITEMS_VALUE,SET_ITEMS_VALUE);
                         });
                     }} state={catMonthly} value={ITEMS_VALUE} onClick={()=>{setShowAddIncome(true)}}/>
                 </IonContent>
