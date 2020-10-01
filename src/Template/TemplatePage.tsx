@@ -2,9 +2,11 @@ import React from 'react';
 import { IonPage, IonContent } from '@ionic/react';
 import Widget from '../components/Widgets';
 import tools from '../components/Tools';
-import { Rewards, Offers, Banking, Earnings, Budgets, Accounts, Reports, Expense } from './T_Widgets';
+import { Rewards, Offers, Banking, Earnings, Accounts, Reports } from './T_Widgets';
 import { note } from './Notes';
 import { income } from './Incomes';
+import { expense } from './Expense';
+import { budget } from './Budget';
 
 
 export const Template:React.FC = () =>{
@@ -22,10 +24,10 @@ export const Template:React.FC = () =>{
                 <Earnings state={tools.compare(cmd,"earning",true,false)}/>
                 <note.show state={tools.compare(cmd,"note",true,false)}/>
                 <income.show state={tools.compare(cmd,"income",true,false)}/>
-                <Budgets state={tools.compare(cmd,"budget",true,false)}/>
+                <budget.show state={tools.compare(cmd,"budget",true,false)}/>
                 <Accounts state={tools.compare(cmd,"account",true,false)}/>
                 <Reports state={tools.compare(cmd,"report",true,false)}/>
-                <Expense state={tools.compare(cmd,"expense",true,false)}/>
+                <expense.show state={tools.compare(cmd,"expense",true,false)}/>
             </IonContent>
         </IonPage>
     )

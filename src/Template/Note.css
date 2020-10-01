@@ -1,0 +1,55 @@
+/*for notes*/
+.textAreaContainer{
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.textArea{
+    width: 100%;
+    margin-right: 20px;
+}
+.textSubject{
+    border-radius: 10px;
+    border: 2px solid lightgray;
+}
+.noteMsgContainer{
+    margin-top: 20px;
+    user-select: none;
+}
+.noteMsgHover:hover{
+    border: 1px solid teal;
+}
+.noteIcon{
+    color: sienna;
+    font-size: 150%;
+    margin-right: 10px;  
+}
+.noteMsgSubject{
+    color: teal;
+}
+.noteMsgSubject1{
+    color: blue;
+    margin-left: 20px;
+}
+.noteMsg{
+    margin-left: 5px;
+}
+.displayNoteMsgContainer{
+    margin: 15px;
+}
+.displayNoteSubject{
+    margin-left: 5px;
+}
+.displayNoteMsg{
+    color: blue;
+}
+.displayNoteMsgSubContainer{
+    margin: 15px;
+}
+.noItemText{
+    color: blue;
+    user-select: none;     
+}
+.noItemTextHover:hover{
+    text-decoration: underline;
+}

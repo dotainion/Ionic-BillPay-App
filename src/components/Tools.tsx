@@ -76,6 +76,37 @@ class Tools{
         document.body.appendChild(toast);
         return toast.present();
     }
+
+    toastWithOkCancel(msg:string,onClick:any=false,okayText:string="Yes",cancelText:string="No"){
+        const toast = document.createElement("ion-toast");
+        toast.header = 'Warning!!';
+        toast.message = msg;
+        toast.position = 'middle';
+        //toast.color = 'light';
+        toast.buttons = [
+            {
+                //side: 'start',
+                icon: 'star',
+                text: okayText,
+                handler: () => {
+                    if (onClick){
+                        onClick(true);
+                    }
+                }
+            }, {
+                role: 'cancel',
+                text: cancelText,
+                handler: () => {
+                    if (onClick){
+                        onClick(false);
+                    }
+                }
+            }
+        ];
+
+        document.body.appendChild(toast);
+        return toast.present();
+    }
       
     platform(){
         if (!isPlatform("desktop")){

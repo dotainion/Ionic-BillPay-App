@@ -12,7 +12,7 @@ import incomeIcon from './Images/income.jpg';
 import budgetIcon from './Images/budget.jpg';
 import reportIcon from './Images/report.png';
 import expensIcon from './Images/expenses.png';
-import accountsIcon from './Images/accounts.png';
+import accountsIcon from './Images/accounts.jpg';
 import notePadIcon from './Images/notePad.jpg';
 import shareIcon from './Images/share.jpg';
 

@@ -4,6 +4,7 @@ import widgets from '../components/Widgets';
 import tools from '../components/Tools';
 import { addOutline, close, readerOutline } from 'ionicons/icons';
 import './TemplatePage.css';
+import './Note.css';
 
 
 class Notes{
