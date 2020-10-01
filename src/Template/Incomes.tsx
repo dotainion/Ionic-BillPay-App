@@ -1,9 +1,8 @@
 import { IonButton, IonCard, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonModal, IonSelect, IonSelectOption, IonTitle, IonToolbar } from '@ionic/react';
-import { addOutline, bookSharp, cameraSharp, chatbox, close, giftOutline, logoUsd, refreshSharp } from 'ionicons/icons';
+import { addOutline, cameraSharp, chatbox, close, giftOutline, logoUsd, refreshSharp } from 'ionicons/icons';
 import React, { useState } from 'react';
 import tools from '../components/Tools';
 import widgets from '../components/Widgets';
-import { w_calendar } from '../components/W_Utils';
 import './TemplatePage.css';
 import './Incomes.css';
 import { t_widgets } from './T_Widgets';
