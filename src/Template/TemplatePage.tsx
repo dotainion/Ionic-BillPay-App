@@ -23,11 +23,11 @@ export const Template:React.FC = () =>{
                 <Banking state={tools.compare(cmd,"banking",true,false)}/>
                 <Earnings state={tools.compare(cmd,"earning",true,false)}/>
                 <note.show state={tools.compare(cmd,"note",true,false)}/>
-                <income.show state={tools.compare(cmd,"income",true,false)}/>
-                <budget.show state={tools.compare(cmd,"budget",true,false)}/>
+                <income.initialize state={tools.compare(cmd,"income",true,false)}/>
+                <budget.initialize state={tools.compare(cmd,"budget",true,false)}/>
                 <Accounts state={tools.compare(cmd,"account",true,false)}/>
                 <Reports state={tools.compare(cmd,"report",true,false)}/>
-                <expense.show state={tools.compare(cmd,"expense",true,false)}/>
+                <expense.initialize state={tools.compare(cmd,"expense",true,false)}/>
             </IonContent>
         </IonPage>
     )

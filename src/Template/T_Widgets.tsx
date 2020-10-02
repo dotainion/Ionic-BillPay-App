@@ -9,7 +9,74 @@ import './TemplatePage.css';
 
 
 export class T_Utils{
-
+    update(state:boolean,onUpdate:any,onProccess:any,toast:boolean=true){
+        var msg = "Are you sure you will like to delete this item?"
+        if (toast){
+            tools.toastWithOkCancel(msg,(returnValue:boolean)=>{
+                if (returnValue){onProccess()}
+                if (state){
+                    onUpdate(false);
+                }else{
+                    onUpdate(true);
+                }
+            });  
+        }      
+    }
+    headerCategoryhighlight = (ID:string,cmd:any,cmdValue:string) =>{
+        var index = 0;
+        const id_s:any = ["income-cat","income-day","income-mon"];
+        for (var item of id_s){
+            index ++;
+            if (item === ID){
+                cmd[index-1](cmdValue);
+            }else{
+                cmd[index-1]("");
+            }
+        }
+    }
+    addItems = (value:any,newValue:any) =>{
+        var data = [];
+        var values = [newValue[0],newValue[1],newValue[2],newValue[3],newValue[4],newValue[5]];
+        for (var item of value){data.push(item)}
+        data.push(values);
+        return data;
+    }
+    deleteItem(index:number, value:any, func:any){
+        var item = value;
+        item.splice(index,1);
+        func(item);
+    }
+    deleteByIndex(index:number, value:any){
+        var item = value;
+        item.splice(index,1);
+        return item;
+    }
+    categoryItemSeperator(cmd:string,values:any){
+        var data = [];
+        var date = w_calendar.weekMonthDayYearExtract(new Date().toString());
+        try{
+            if (cmd === "daily"){
+                var tempDate = date.fullMonth+"/"+date.day+"/"+date.year;
+                for (var item of values){
+                    if (item[2] === tempDate){
+                        data.push(item);
+                    }
+                }
+                return data;
+            }else if (cmd === "monthly"){
+                for (var Item of values){
+                    console.log("testing inclues", Item)
+                    if (Item[2].includes(date.fullMonth)){
+                        data.push(Item);
+                    }
+                }
+                return data;
+            }
+            return [];
+        }catch{
+            return data;
+        }
+    }
 }
 //*************************************************************
 //*************************************************************
@@ -79,72 +146,10 @@ export function Reports(data:any){
 }
 
 class Widgets{
-    update(state:boolean,onUpdate:any,onDelete:any){
-        var msg = "Are you sure you will like to delete this item?"
-        tools.toastWithOkCancel(msg,(returnValue:boolean)=>{
-            if (returnValue){onDelete()}
-            if (state){
-                onUpdate(false);
-            }else{
-                onUpdate(true);
-            }
-        });        
-    }
-    headerCategoryhighlight = (ID:string,cmd:any,cmdValue:string) =>{
-        var index = 0;
-        const id_s:any = ["income-cat","income-day","income-mon"];
-        for (var item of id_s){
-            index ++;
-            if (item === ID){
-                cmd[index-1](cmdValue);
-            }else{
-                cmd[index-1]("");
-            }
-        }
-    }
-    addItems = (value:any,newValue:any) =>{
-        var data = [];
-        var values = [newValue[0],newValue[1],newValue[2],newValue[3],newValue[4],newValue[5]];
-        for (var item of value){data.push(item)}
-        data.push(values);
-        return data;
-    }
-    deleteItem(index:number, value:any, func:any){
-        var item = value;
-        item.splice(index,1);
-        console.log(item);
-        func(item);
-    }
-    categoryItemSeperator(cmd:string,values:any){
-        //this needs work
-        //its giving an error
-        //add in try cat block to test code but have to fix
-        try{
-            var data = [];
-            var date = w_calendar.weekMonthDayYearExtract(new Date().toString());
-            if (cmd === "daily"){
-                var tempDate = date.fullMonth+"/"+date.day+"/"+date.year;
-                for (var item of values){
-                    if (item[2] === tempDate){
-                        data.push(item);
-                    }
-                }
-            }else if (cmd === "monthly"){
-                for (var Item of values){
-                    if (Item[2].includes(date.fullMonth)){
-                        data.push(Item);
-                    }
-                }
-            }
-            return data;
-        }catch{
-            return [];
-        }
-        
-    }
+    t_utils = new T_Utils();
+
     noItem(data:any){
         const ifHiden = (value:any) =>{
-            console.log("testing this value",value)
             if (value.length >= 1){
                 return false;
             }else{
@@ -152,9 +157,9 @@ class Widgets{
             }
         }
         return(
-            <IonItem class="noItemContainer" onClick={()=>{if(data.onClick){data.onClick(true)}}}>
+            <IonItem hidden={!ifHiden(data.switch)} class="noItemContainer" onClick={()=>{if(data.onClick){data.onClick(true)}}}>
                 <IonIcon class="noItemIcon" icon={bookSharp}/>
-                <IonLabel hidden={!ifHiden(data.switch)} class="noItemLabel noItemHover">{data.msg}</IonLabel>
+                <IonLabel class="noItemLabel noItemHover">{data.msg}</IonLabel>
             </IonItem>
         )
     }
@@ -190,8 +195,8 @@ class Widgets{
                 <div className="catContentName">DAILY CATEGORY</div>
                 <IonList>
                     {
-                        t_widgets.categoryItemSeperator("daily",data.value).length?
-                        t_widgets.categoryItemSeperator("daily",data.value).map((item:any, index:number) =>
+                        data.self.categoryItemSeperator("daily",data.value).length?
+                        data.self.categoryItemSeperator("daily",data.value).map((item:any, index:number) =>
                             <IonItem className="incomeAddedHover" key={index} lines={tools.compare(tools.platform(),true,"none","")}>
                                 <IonIcon color="primary" icon={bookSharp}/>
                                 <IonLabel onClick={()=>{if(data.openItem){data.openItem(item)}}} class="incomeAdded">Expense:{index+1}</IonLabel>
@@ -213,8 +218,8 @@ class Widgets{
                 <div className="catContentName">MONTHLY CATEGORY</div>
                 <IonList>
                     {
-                        t_widgets.categoryItemSeperator("monthly",data.value).length?
-                        t_widgets.categoryItemSeperator("monthly",data.value).map((item:any, index:number) =>
+                        data.self.categoryItemSeperator("monthly",data.value).length?
+                        data.self.categoryItemSeperator("monthly",data.value).map((item:any, index:number) =>
                             <IonItem className="incomeAddedHover" key={index} lines={tools.compare(tools.platform(),true,"none","")}>
                                 <IonIcon color="primary" icon={bookSharp}/>
                                 <IonLabel onClick={()=>{if(data.openItem){data.openItem(item)}}} class="incomeAdded">Expense:{index+1}</IonLabel>
