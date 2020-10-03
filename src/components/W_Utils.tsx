@@ -1,3 +1,4 @@
+import tools from "./Tools";
 
 export class W_FlipCard{
     flipCardTimerArray = [] as any[];
@@ -86,6 +87,26 @@ export class W_FlipCard{
         }else{
             this.reset(mainId,frontId,backId);
         }
+    }
+
+    configureCardRow(value:any){
+        var tempData = []
+        var set = 0;
+        if (value){
+            for (var i = 0; i < value.length; i++){
+                set ++;
+                if (set === 3){
+                    set = 0;
+                }
+            }
+            for (var item of value){
+                tempData.push(item);
+            }
+            for  (var j = 0; j < tools.compare(tools.platform(),true,3,4) - set; j ++){
+                tempData.push({detail:[],empty:true})
+            }
+        }
+        return tempData;
     }
 }
 

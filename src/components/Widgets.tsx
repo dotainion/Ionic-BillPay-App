@@ -418,15 +418,16 @@ class Widgets{
 
     createCards(data:any){
         var utils = new W_FlipCard();
+        var itemsData = utils.configureCardRow(data.items);
         return(
-        
+
             <IonGrid>
                 <IonRow>
                 {
-                    data.items.map((files:any, index:number)=>{return(
+                    itemsData.map((files:any, index:number)=>{return(
                     <IonCol key={index}>
-                        <IonCard id={files.id} style={{width:tools.compare(tools.platform(),true,"105px","210px"),
-                            height:tools.compare(tools.platform(),true,"150px","")}} class="card card-hover" onClick={()=>{
+                        <IonCard hidden={tools.compare(files.empty,true,true,false)} id={files.id} style={{width:tools.compare(tools.platform(),true,"105px","210px"),
+                            height:tools.compare(tools.platform(),true,"150px","")}} className="card card-hover" onClick={()=>{
                                 utils.flipCard(files.id,files.id+"content",files.id+"new");
                             }}>
                             <div className="frontOfCard-container-hover" id={files.id+"content"}>
