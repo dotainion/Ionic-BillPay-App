@@ -14,7 +14,7 @@ export const Notifications:React.FC = () =>{
                     reminder bills that are due.</p>
                 <p>Disconnection notification will be sent prior to account being disconnected.</p>
             </div>
-            <IonContent style={{border:"3px solid teal"}}>
+            <IonContent style={{border:"1px solid teal"}}>
                 <div style={{padding:"20px"}}>
                     <li>No faults in your area</li>
                 </div>
