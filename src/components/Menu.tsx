@@ -1,6 +1,6 @@
 import {IonContent,IonIcon,IonItem,IonLabel,IonList,IonListHeader,IonMenu,IonMenuToggle,IonItemDivider, IonButton, IonImg, IonCard} from '@ionic/react';
 import React, { useState } from 'react';
-import { archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, mailOutline, mailSharp, trashOutline, trashSharp,  settingsSharp, settingsOutline, logOutSharp, cardSharp, homeSharp } from 'ionicons/icons';
+import { archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, mailOutline, mailSharp, trashOutline, trashSharp,  settingsSharp, settingsOutline, logOutSharp, cardSharp, homeSharp, cameraSharp } from 'ionicons/icons';
 import './Menu.css';
 import tools from './Tools';
 import { Language } from './Languages';
@@ -130,6 +130,9 @@ const Menu: React.FC = () => {
       <IonCard className="profileImage">
         <IonImg alt="" src={defaul_image}/>
       </IonCard>
+        <IonIcon class="addBtnProfileImg" icon={cameraSharp} onClick={()=>{
+
+        }}/>
 
       <IonContent>
         <IonList>

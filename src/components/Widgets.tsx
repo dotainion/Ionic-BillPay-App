@@ -419,6 +419,7 @@ class Widgets{
     createCards(data:any){
         var utils = new W_FlipCard();
         return(
+        
             <IonGrid>
                 <IonRow>
                 {

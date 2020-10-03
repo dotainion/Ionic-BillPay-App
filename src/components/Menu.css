@@ -9,9 +9,17 @@
   left: 60%;
   width: 70px;
   height: 70px;
-  z-index: 99999;
+  z-index: 9999999;
   border-radius: 50%;
   position: absolute;
   border: 1px solid gray;
+}
+.addBtnProfileImg{
+  top: 0;
+  left: 83%;
+  color: teal;
+  z-index: 999;
+  margin-top: 70px;
+  position: absolute;
 }
 

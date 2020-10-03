@@ -185,7 +185,7 @@ export function cardItems(){
             name:"Share",
             icon:shareIcon,
             id:"Share",
-            cmd:"",
+            cmd:"share",
             group:true,
             title:"Share this app",
             detail:[
