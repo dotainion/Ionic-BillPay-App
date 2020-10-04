@@ -184,6 +184,9 @@ class Widgets{
                     tools.saveHistry(e.currentTarget.id)
                 }} routerLink="/template"/>
 
+                <IonButton hidden id="moneyTransfer" onClick={e=>{
+                    tools.saveHistry(e.currentTarget.id)
+                }} routerLink="/moneyTransfer"/>
                 <IonButton hidden id="home" onClick={e=>{
                     tools.saveHistry(e.currentTarget.id)
                 }} routerLink="/home"/>

@@ -47,6 +47,7 @@ import Favorites from './pages/Favorites';
 import Archieved from './pages/Archieved';
 
 import TemplatePage from './Template/TemplatePage';
+import MoneyTransfer from './pages/MoneyTransfer/MoneyTransfer';
 
 const App: React.FC = () => {
 
@@ -89,6 +90,8 @@ const App: React.FC = () => {
             <Redirect from="/" to="/" exact />
 
             <Route path="/template" component={TemplatePage} exact />
+            <Redirect from="/" to="/" exact />
+            <Route path="/template" component={MoneyTransfer} exact />
             <Redirect from="/" to="/" exact />
 
             <Route path="/payment" component={Payment} exact />

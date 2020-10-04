@@ -15,8 +15,9 @@ import expensIcon from './Images/expenses.png';
 import accountsIcon from './Images/accounts.jpg';
 import notePadIcon from './Images/notePad.jpg';
 import shareIcon from './Images/share.jpg';
+import moneyTransfer from './Images/moneyTransfer.jpg';
 
-
+/*if group is true it will render for the pages in Template folder*/
 export function cardItems(){
     const templates = [
         {
@@ -26,6 +27,18 @@ export function cardItems(){
             cmd:"payment",
             group:false,
             title:"Payment Methods",
+            detail:[
+                "Cash",
+                "Debit Card",
+                "Credit Card",
+            ],
+        },{
+            name:"Money Transfer",
+            icon:moneyTransfer,
+            id:"MoneyTransfer",
+            cmd:"moneyTransfer",
+            group:false,
+            title:"Money Transfer Methods",
             detail:[
                 "Cash",
                 "Debit Card",

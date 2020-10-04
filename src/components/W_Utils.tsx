@@ -95,17 +95,19 @@ export class W_FlipCard{
         if (value){
             for (var i = 0; i < value.length; i++){
                 set ++;
-                if (set === 3){
+                if (set === tools.compare(tools.platform(),true,3,4)){
                     set = 0;
                 }
+                console.log(i)
             }
             for (var item of value){
                 tempData.push(item);
             }
-            for  (var j = 0; j < tools.compare(tools.platform(),true,3,4) - set; j ++){
+            for  (var _ = 0; _ < tools.compare(tools.platform(),true,3,4) - set; _ ++){
                 tempData.push({detail:[],empty:true})
             }
         }
+        console.log(set)
         return tempData;
     }
 }
