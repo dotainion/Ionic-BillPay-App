@@ -98,7 +98,6 @@ export class W_FlipCard{
                 if (set === tools.compare(tools.platform(),true,3,4)){
                     set = 0;
                 }
-                console.log(i)
             }
             for (var item of value){
                 tempData.push(item);
@@ -107,7 +106,6 @@ export class W_FlipCard{
                 tempData.push({detail:[],empty:true})
             }
         }
-        console.log(set)
         return tempData;
     }
 }

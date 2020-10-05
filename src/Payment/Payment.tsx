@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { Component, useState } from "react";
 import StripeCheckout from "react-stripe-checkout";
-import axios from "axios";
 import { IonPage, IonContent, IonSelect, IonSelectOption, IonLabel, IonItem, IonCard, IonList, IonText, IonImg, IonThumbnail } from "@ionic/react";
 import tools from '../components/Tools';
 import Widgets from '../components/Widgets';
@@ -8,29 +7,17 @@ import utils from '../Payment/Utils';
 import Info from './Info';
 import './Payment.css';
 import { cardOutline } from "ionicons/icons";
-import { payUtils } from "../components/PayUtils";
+import { pay } from "../components/PayUtils";
 
 
-const Payment: React.FC = () => {
-    const handleToken = (customer:any) => {
-        axios.post(tools.URL.CHECKOUT,{token:customer,product: utils.getData()})
-        .then(response =>{
-            const { status } = response.data;
-                console.log("Response:", response.data);
-            if (status === "success") {
-                console.log("Success! Check email for details");
-            } else {
-                console.log("Something went wrong");
-            }
-        })
-        .catch(error=>{
 
-        })
-        .finally(()=>{
-
+const Payment: React.FC = () =>{
+    const handleToken = (customer:any) =>{
+        pay.tokenHandle(tools.URL.CHECKOUT,customer,utils.getData(),(response:any)=>{
+            console.log(response);
         });
     }
-    
+
     const [paymentDisabled, setPaymentDisabled] = useState(true);
     const [selectName, setSelectName] = useState();
     const [getData, setData] = useState(utils.dummyData);
@@ -94,7 +81,7 @@ const Payment: React.FC = () => {
                                 </IonItem>
                             </IonList>    
                         </IonCard> 
-                                 
+                                
                                                 
                     </IonContent> 
                     <IonItem style={{textAlign:"center"}} lines="none">
@@ -102,7 +89,7 @@ const Payment: React.FC = () => {
                     </IonItem>
                     <div style={{textAlign:"center",width:"100%",marginTop:"-50"}}>
                         <StripeCheckout
-                            stripeKey={payUtils.key}
+                            stripeKey={pay.key}
                             token={token=>{handleToken(token)}}
                             amount={parseFloat(getData.price.replace("$","")) * 100}
                             name={getData.name}
@@ -128,6 +115,5 @@ const Payment: React.FC = () => {
         </IonPage>
     );
 }
-
 
 export default Payment
