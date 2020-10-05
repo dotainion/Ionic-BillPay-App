@@ -36,7 +36,7 @@ export function cardItems(){
             name:"Money Transfer",
             icon:moneyTransfer,
             id:"MoneyTransfer",
-            cmd:"moneyTransfer",
+            cmd:"moneytransfer",
             group:false,
             title:"Money Transfer Methods",
             detail:[

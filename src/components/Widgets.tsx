@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { IonHeader, IonToolbar, IonTitle, IonFooter, IonIcon, IonButtons, IonItem, IonMenuButton, IonButton, IonLabel, IonLoading, IonPopover, IonList, IonToast, IonGrid, IonRow, IonCol, IonCard, IonImg, IonBackButton, IonInput, IonDatetime, IonContent, IonModal } from '@ionic/react';
 import tools from './Tools';
 import './Widgets.css';
-import { arrowUpCircleSharp, arrowDownCircleSharp, calendarSharp, arrowBack, arrowForward, close, caretDown, happyOutline } from 'ionicons/icons';
+import { arrowUpCircleSharp, arrowDownCircleSharp, calendarSharp, arrowBack, arrowForward, close, caretDown, happyOutline, cardSharp } from 'ionicons/icons';
 import serverVer from '../components/ServerVar';
 import { Language } from './Languages';
 import { w_calendar, W_FlipCard ,utils } from './W_Utils';
@@ -61,7 +61,14 @@ class Widgets{
                 {/*mobile nav bar*/}
                 <IonFooter hidden={tools.compare(tools.platform(),true,false,true)}>
                     <IonToolbar>
-                        <IonTitle>{language.texts().APPNAME}</IonTitle>
+                        {/*<IonTitle>{language.texts().APPNAME}</IonTitle>*/}
+                        <IonItem lines="none">
+                            <span style={{width:"100%",textAlign:"center"}}><IonIcon icon={cardSharp}/></span>
+                            <span style={{width:"100%",textAlign:"center"}}><IonIcon icon={cardSharp}/></span>
+                            <span style={{width:"100%",textAlign:"center"}}><IonIcon icon={cardSharp}/></span>
+                            <span style={{width:"100%",textAlign:"center"}}><IonIcon icon={cardSharp}/></span>
+                            <span style={{width:"100%",textAlign:"center"}}><IonIcon icon={cardSharp}/></span>
+                        </IonItem>
                     </IonToolbar>
                 </IonFooter>
             </>
@@ -184,9 +191,9 @@ class Widgets{
                     tools.saveHistry(e.currentTarget.id)
                 }} routerLink="/template"/>
 
-                <IonButton hidden id="moneyTransfer" onClick={e=>{
+                <IonButton hidden id="moneytransfer" onClick={e=>{
                     tools.saveHistry(e.currentTarget.id)
-                }} routerLink="/moneyTransfer"/>
+                }} routerLink="/moneytransfer"/>
                 <IonButton hidden id="home" onClick={e=>{
                     tools.saveHistry(e.currentTarget.id)
                 }} routerLink="/home"/>

@@ -91,7 +91,7 @@ const App: React.FC = () => {
 
             <Route path="/template" component={TemplatePage} exact />
             <Redirect from="/" to="/" exact />
-            <Route path="/template" component={MoneyTransfer} exact />
+            <Route path="/moneytransfer" component={MoneyTransfer} exact />
             <Redirect from="/" to="/" exact />
 
             <Route path="/payment" component={Payment} exact />

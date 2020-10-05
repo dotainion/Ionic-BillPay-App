@@ -8,6 +8,7 @@ import utils from '../Payment/Utils';
 import Info from './Info';
 import './Payment.css';
 import { cardOutline } from "ionicons/icons";
+import { payUtils } from "../components/PayUtils";
 
 
 const Payment: React.FC = () => {
@@ -101,7 +102,7 @@ const Payment: React.FC = () => {
                     </IonItem>
                     <div style={{textAlign:"center",width:"100%",marginTop:"-50"}}>
                         <StripeCheckout
-                            stripeKey="pk_test_51HMQLOBZvIBjqI0ERBmRc4Feu7qu6fXdnc8IZ9whUpTWAMIEZyYRSUsFCc2LQlXIPJJqBYgzcIbQJY5WODNXdiuf00TucXVjmM"
+                            stripeKey={payUtils.key}
                             token={token=>{handleToken(token)}}
                             amount={parseFloat(getData.price.replace("$","")) * 100}
                             name={getData.name}

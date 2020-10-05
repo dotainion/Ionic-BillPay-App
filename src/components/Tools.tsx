@@ -324,6 +324,6 @@ class Tools{
     }
 }
 
-var tools = new Tools()
+var tools = new Tools();
 
 export default tools;
