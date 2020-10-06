@@ -72,7 +72,7 @@ const Login: React.FC = () => {
           </IonItem>
           <IonList style={{marginLeft:MARGIN,marginRight:MARGIN,
                   padding:"4%",border:"1px solid #000"}}>
-              <Widgets.textStyle subtitle="Sign in" textColor="blue" title={language.texts().APPNAME} LM="31%"/>
+              <Widgets.textStyle subtitle="Sign in" textColor="blue" title={language.texts().APPNAME}/>
 
               <IonItem id="login-email" class="loginItemStyle">
                   <IonLabel position="floating">Email</IonLabel>

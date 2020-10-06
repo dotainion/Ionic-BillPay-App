@@ -93,16 +93,17 @@ export class W_FlipCard{
         var tempData = []
         var set = 0;
         if (value){
+            var rowNum = tools.compare(tools.platform(),true,3,4);
             for (var i = 0; i < value.length; i++){
                 set ++;
-                if (set === tools.compare(tools.platform(),true,3,4)){
+                if (set === rowNum){
                     set = 0;
                 }
             }
             for (var item of value){
                 tempData.push(item);
             }
-            for  (var _ = 0; _ < tools.compare(tools.platform(),true,3,4) - set; _ ++){
+            for  (var _ = 0; _ < rowNum - set; _ ++){
                 tempData.push({detail:[],empty:true})
             }
         }

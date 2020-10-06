@@ -162,15 +162,16 @@
 .card-name{
   position: absolute;
   bottom: 0px;
-  width: auto;
+  width: 100%;
   color: teal;
   font-weight: bold;
   cursor: default;
   font-size: 120%;
   user-select: none;
-  white-space: nowrap;
+  text-align: center;
+  /*white-space: nowrap;*/
   margin-left: 50%;
-  margin-bottom: 10%;
+  /*margin-bottom: 10%;*/
   transform: translate(-50%);
 }
 .card-icon{
@@ -364,3 +365,12 @@
   z-index: 99999;
   margin-top: -30%;
 }
+
+
+/*for nav footer*/
+.navIconSpan{
+  width: 100%;
+  text-align: center;
+}
+
+

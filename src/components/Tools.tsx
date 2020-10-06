@@ -29,7 +29,7 @@ class Tools{
         "purple",
         "blue",
         "red",
-        "yellow",
+        "teal",
         "black",
         "orange",
         "green",

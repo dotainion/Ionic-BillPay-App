@@ -48,6 +48,7 @@ import Archieved from './pages/Archieved';
 
 import TemplatePage from './Template/TemplatePage';
 import MoneyTransfer from './pages/MoneyTransfer/MoneyTransfer';
+import Susu from './pages/Susu/Susu';
 
 const App: React.FC = () => {
 
@@ -92,6 +93,8 @@ const App: React.FC = () => {
             <Route path="/template" component={TemplatePage} exact />
             <Redirect from="/" to="/" exact />
             <Route path="/moneytransfer" component={MoneyTransfer} exact />
+            <Redirect from="/" to="/" exact />
+            <Route path="/susu" component={Susu} exact />
             <Redirect from="/" to="/" exact />
 
             <Route path="/payment" component={Payment} exact />

@@ -22,7 +22,7 @@ class Widgets{
         if (data.image === "img"){imgState = true;iconState = false;}else{imgState = false;iconState = true;}
         return(
             <>
-                <IonHeader id={data.id} style={{borderBottom:"1px solid blue"}}>
+                <IonHeader id={data.id} style={{borderBottom:"1px solid blue",userSelect:"none"}}>
                     <IonToolbar>
                         <IonButtons hidden={tools.compare(tools.platform(),true,false,true)} slot="start">
                             <IonMenuButton autoHide={false}/>
@@ -61,13 +61,12 @@ class Widgets{
                 {/*mobile nav bar*/}
                 <IonFooter hidden={tools.compare(tools.platform(),true,false,true)}>
                     <IonToolbar>
-                        {/*<IonTitle>{language.texts().APPNAME}</IonTitle>*/}
                         <IonItem lines="none">
-                            <span style={{width:"100%",textAlign:"center"}}><IonIcon icon={cardSharp}/></span>
-                            <span style={{width:"100%",textAlign:"center"}}><IonIcon icon={cardSharp}/></span>
-                            <span style={{width:"100%",textAlign:"center"}}><IonIcon icon={cardSharp}/></span>
-                            <span style={{width:"100%",textAlign:"center"}}><IonIcon icon={cardSharp}/></span>
-                            <span style={{width:"100%",textAlign:"center"}}><IonIcon icon={cardSharp}/></span>
+                            <span className="navIconSpan"><IonIcon icon={cardSharp}/></span>
+                            <span className="navIconSpan"><IonIcon icon={cardSharp}/></span>
+                            <span className="navIconSpan"><IonIcon icon={cardSharp}/></span>
+                            <span className="navIconSpan"><IonIcon icon={cardSharp}/></span>
+                            <span className="navIconSpan"><IonIcon icon={cardSharp}/></span>
                         </IonItem>
                     </IonToolbar>
                 </IonFooter>
@@ -133,21 +132,25 @@ class Widgets{
     }
 
     textStyle(data:any){
+        const STYLE_MAIN:any = {textAlign:"center"}
+        const STYLE_TITLE:any = {marginLeft:"50%",transform:"translate(-50%)",fontSize:"20px"}
+        const STYLE_SUB_TITLE:any = {marginBottom:"20px",color:data.textColor}
         return(
             <>
-                <div style={{textAlign:"center"}}>   
-                    <IonItem style={{marginLeft:data.LM,textAlign:"center"}} lines="none">
-                        {
-                            data.title.split("").map((alph:any, i:any)=>{
-                                return(
-                                <h3 key={i} style={{
-                                    color:tools.color[tools.getIndex(tools.color.length)],
-                                    marginRight:tools.compare(alph," ","8px",""),
-                                }}>{alph}</h3>
-                            )})
-                        }
+                <div style={STYLE_MAIN}>   
+                    <IonItem lines="none">
+                        <div style={STYLE_TITLE}>
+                            {
+                                data.title.split("").map((alph:any, i:any)=>{
+                                    return(
+                                    <span key={i} style={{
+                                        color:tools.color[tools.getIndex(tools.color.length)],
+                                    }}>{alph}</span>
+                                )})
+                            }
+                        </div>
                     </IonItem>
-                    <div style={{marginBottom:"20px",color:data.textColor}}>
+                    <div style={STYLE_SUB_TITLE}>
                         <IonLabel>{data.subtitle}</IonLabel>
                     </div>
                 </div>  
@@ -190,6 +193,9 @@ class Widgets{
                 <IonButton hidden id="template" onClick={e=>{
                     tools.saveHistry(e.currentTarget.id)
                 }} routerLink="/template"/>
+                <IonButton hidden id="susu" onClick={e=>{
+                    tools.saveHistry(e.currentTarget.id)
+                }} routerLink="/susu"/>
 
                 <IonButton hidden id="moneytransfer" onClick={e=>{
                     tools.saveHistry(e.currentTarget.id)
@@ -444,7 +450,7 @@ class Widgets{
                                     <IonImg class="card-icon" src={files.icon}/>
                                 </div>
                                 <div className="card-name">
-                                    <IonLabel>{files.name}</IonLabel>
+                                    <p>{files.name}</p>
                                 </div>
                             </div>
                             <div className="backOfCard-container" hidden={true} id={files.id+"new"}>

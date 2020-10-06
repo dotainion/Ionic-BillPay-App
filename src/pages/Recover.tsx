@@ -69,7 +69,7 @@ const Recover: React.FC = () => {
                 </IonItem>
                 <IonList style={{marginLeft:MARGIN,marginRight:MARGIN,
                         padding:"4%",border:"1px solid #000"}}>
-                    <Widgets.textStyle subtitle="Recovery" textColor="blue" title={language.texts().APPNAME} LM="30%"/>
+                    <Widgets.textStyle subtitle="Recovery" textColor="blue" title={language.texts().APPNAME}/>
 
                     <div hidden={!firstPage}>
                         <IonItem lines="none">

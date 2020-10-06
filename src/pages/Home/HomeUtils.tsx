@@ -15,13 +15,14 @@ import expensIcon from './Images/expenses.png';
 import accountsIcon from './Images/accounts.jpg';
 import notePadIcon from './Images/notePad.jpg';
 import shareIcon from './Images/share.jpg';
-import moneyTransfer from './Images/moneyTransfer.jpg';
+import moneyTransferIcon from './Images/moneyTransfer.jpg';
+import susuIcon from './Images/susu.jpg';
 
 /*if group is true it will render for the pages in Template folder*/
 export function cardItems(){
     const templates = [
         {
-            name:"Payment",
+            name:"Bill-Pay",
             icon:billPayIcon,
             id:"BillPayment",
             cmd:"payment",
@@ -34,7 +35,7 @@ export function cardItems(){
             ],
         },{
             name:"Money Transfer",
-            icon:moneyTransfer,
+            icon:moneyTransferIcon,
             id:"MoneyTransfer",
             cmd:"moneytransfer",
             group:false,
@@ -43,6 +44,16 @@ export function cardItems(){
                 "Cash",
                 "Debit Card",
                 "Credit Card",
+            ],
+        },{
+            name:"SuSu",
+            icon:susuIcon,
+            id:"SuSu",
+            cmd:"susu",
+            group:false,
+            title:"no title",
+            detail:[
+                
             ],
         },{
             name:"Bill History",
@@ -95,7 +106,7 @@ export function cardItems(){
                 "this is a test",
             ]
         },{
-            name:"Earning",
+            name:"Manage Earning",
             icon:earningsIcon,
             id:"Earning",
             cmd:"earning",
@@ -135,7 +146,7 @@ export function cardItems(){
                 "this is a test",
             ]
         },{
-            name:"Income",
+            name:"Manage Income",
             icon:incomeIcon,
             id:"Income",
             cmd:"income",
@@ -145,7 +156,7 @@ export function cardItems(){
                 "this is a test",
             ]
         },{
-            name:"Budget",
+            name:"Manage Budget",
             icon:budgetIcon,
             id:"Rudget",
             cmd:"budget",
@@ -165,7 +176,7 @@ export function cardItems(){
                 "this is a test",
             ]
         },{
-            name:"Expenses",
+            name:"Manage Expenses",
             icon:expensIcon,
             id:"Expenses",
             cmd:"expense",
@@ -175,7 +186,7 @@ export function cardItems(){
                 "this is a test",
             ]
           },{
-            name:"Accounts",
+            name:"Manage Accounts",
             icon:accountsIcon,
             id:"Accounts",
             cmd:"account",

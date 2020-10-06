@@ -1,0 +1,6 @@
+/*for SusuFirstTimeInfo in SusuWidget.tsx*/
+.SusuFirstTimeInfoMainContainer{
+    text-align: center;
+    margin-top: 40%;
+    transform: translateY(-50%);
+}
