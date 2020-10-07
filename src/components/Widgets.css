@@ -389,5 +389,11 @@
   margin-left: 10px;
 }
 .dropDownMenuItemsHover:hover{
+  color: black;
+}
+.dropDownMenuItemsSpan{
+  color: teal;
+}
+.dropDownMenuIcon{
   color: teal;
 }

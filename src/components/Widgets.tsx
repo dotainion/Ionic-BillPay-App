@@ -751,11 +751,11 @@ class Widgets{
                     data.options ?
                     data.options.map((item:any, KEY:number) => 
                         <IonItem key={KEY}>
-                            <IonIcon icon={item.icon}/>
-                            <IonLabel class="dropDownMenuItems dropDownMenuItemsHover" onMouseDown={()=>{
+                            <IonIcon class="dropDownMenuIcon" icon={item.icon}/>
+                            <IonLabel class="dropDownMenuItems" onMouseDown={()=>{
                                 tools.clickById(item.cmd)
                                 if (data.dismiss){data.dismiss()}
-                            }}>{item.title}</IonLabel>
+                            }}><span className="dropDownMenuItemsSpan dropDownMenuItemsHover">{item.title}</span></IonLabel>
                         </IonItem>
                     ):
                     null

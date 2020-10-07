@@ -52,7 +52,7 @@ import Susu from './pages/Susu/Susu';
 
 /*components imports*/
 import widgets from './components/Widgets';
-import { logOutOutline, settingsOutline } from 'ionicons/icons';
+import { logOutSharp, settingsSharp } from 'ionicons/icons';
 
 const App: React.FC = () => {
   
@@ -62,11 +62,11 @@ const App: React.FC = () => {
       {
         title:"Settings",
         cmd: "settings",
-        icon: settingsOutline,
+        icon: settingsSharp,
       },{
         title:"Logout",
         cmd: "logout",
-        icon: logOutOutline,
+        icon: logOutSharp,
       }
     ]
     return(
