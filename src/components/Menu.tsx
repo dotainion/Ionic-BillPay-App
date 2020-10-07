@@ -1,10 +1,11 @@
 import {IonContent,IonIcon,IonItem,IonLabel,IonList,IonListHeader,IonMenu,IonMenuToggle,IonItemDivider, IonButton, IonImg, IonCard} from '@ionic/react';
 import React, { useState } from 'react';
-import { archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, mailOutline, mailSharp, trashOutline, trashSharp,  settingsSharp, settingsOutline, logOutSharp, cardSharp, homeSharp, cameraSharp } from 'ionicons/icons';
+import { archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, mailOutline, mailSharp, trashOutline, trashSharp,  settingsSharp, settingsOutline, cardSharp, homeSharp, cameraSharp } from 'ionicons/icons';
 import './Menu.css';
 import tools from './Tools';
 import { Language } from './Languages';
 import defaul_image from './GlobImage/defaultProfile.png';
+import gndFlagIcon from './GlobImage/gndFlag.jpg';
 
 interface SystemLinks {
   url: string;
@@ -113,11 +114,11 @@ const oftenLink:UserLinks[] = [
     url:"payment",
     icon:cardSharp,
   },
-  {
+  /*{
     title:'Logout',
     url:"logout",
     icon:logOutSharp,
-  },
+  },*/
 ]
 
 const Menu: React.FC = () => {
@@ -127,12 +128,15 @@ const Menu: React.FC = () => {
     <IonMenu hidden={hideMenu} contentId="menu" type="overlay" 
     style={{width:tools.compare(tools.platform(),true,"","0px")}}>
       <IonListHeader style={{fontWeight:"bold",fontSize:"25px"}}>{language.texts().APPNAME}</IonListHeader>
+      
+      <IonCard class="locationflags">
+        <IonImg src={gndFlagIcon}/>
+      </IonCard>
+
       <IonCard className="profileImage">
         <IonImg alt="" src={defaul_image}/>
       </IonCard>
-        <IonIcon class="addBtnProfileImg" icon={cameraSharp} onClick={()=>{
-
-        }}/>
+        <IonIcon class="addBtnProfileImg" icon={cameraSharp} onClick={()=>{}}/>
 
       <IonContent>
         <IonList>

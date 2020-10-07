@@ -1,9 +1,8 @@
 import React from 'react';
 import './Susu.css';
-import { IonPage, IonContent, IonLabel, IonItem, IonButton } from '@ionic/react';
+import { IonPage, IonContent, IonButton } from '@ionic/react';
 import Widget from '../../components/Widgets';
 import { flowerOutline } from 'ionicons/icons';
-import { SusuFirstTimeInfo } from './SusuWidgets';
 
 
 

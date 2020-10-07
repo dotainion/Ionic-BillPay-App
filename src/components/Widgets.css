@@ -61,6 +61,12 @@
     font-size: 30px;
     font-weight: bold;
   }
+
+  .threeDotMenu{
+    margin-left: 10px;
+    margin-right: 20px;
+  }
+
 /*for language popup box*/
 .language{
   padding: 5px;
@@ -153,6 +159,7 @@
   height: 200px;
   padding: 1px;
   margin: 0px;
+  margin-bottom: 40px;
   text-align: center;
   background-color: white;
 }
@@ -373,4 +380,14 @@
   text-align: center;
 }
 
-
+/*for drop down menu in widgets*/
+.dropDownMenuItems{
+  width: 100%;
+  height: 80%;
+  padding-top: 10px;
+  user-select: none;
+  margin-left: 10px;
+}
+.dropDownMenuItemsHover:hover{
+  color: teal;
+}

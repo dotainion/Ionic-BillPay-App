@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { IonHeader, IonToolbar, IonTitle, IonFooter, IonIcon, IonButtons, IonItem, IonMenuButton, IonButton, IonLabel, IonLoading, IonPopover, IonList, IonToast, IonGrid, IonRow, IonCol, IonCard, IonImg, IonBackButton, IonInput, IonDatetime, IonContent, IonModal } from '@ionic/react';
 import tools from './Tools';
 import './Widgets.css';
-import { arrowUpCircleSharp, arrowDownCircleSharp, calendarSharp, arrowBack, arrowForward, close, caretDown, happyOutline, cardSharp } from 'ionicons/icons';
+import { arrowUpCircleSharp, arrowDownCircleSharp, calendarSharp, arrowBack, arrowForward, close, caretDown, happyOutline, ellipsisVerticalOutline } from 'ionicons/icons';
 import serverVer from '../components/ServerVar';
 import { Language } from './Languages';
 import { w_calendar, W_FlipCard ,utils } from './W_Utils';
 import EmojiPicker from 'emoji-picker-react';
+
 
 
 class Widgets{
@@ -49,6 +50,10 @@ class Widgets{
                             }}>HELP</div>
                         </IonItem>
 
+                        <IonIcon class="threeDotMenu" slot="end" onClick={()=>{
+                            tools.clickById("three-dot-menu-drop-down");
+                        }} icon={ellipsisVerticalOutline}/>
+
                     </IonToolbar>
                 </IonHeader>
             </>
@@ -62,11 +67,12 @@ class Widgets{
                 <IonFooter hidden={tools.compare(tools.platform(),true,false,true)}>
                     <IonToolbar>
                         <IonItem lines="none">
+                            <IonLabel style={{color:"teal",fontWeight:"bold"}}>{language.texts().APPNAME+" Financial App"}</IonLabel>
+                            {/*<span className="navIconSpan"><IonIcon icon={cardSharp}/></span>
                             <span className="navIconSpan"><IonIcon icon={cardSharp}/></span>
                             <span className="navIconSpan"><IonIcon icon={cardSharp}/></span>
                             <span className="navIconSpan"><IonIcon icon={cardSharp}/></span>
-                            <span className="navIconSpan"><IonIcon icon={cardSharp}/></span>
-                            <span className="navIconSpan"><IonIcon icon={cardSharp}/></span>
+                            <span className="navIconSpan"><IonIcon icon={cardSharp}/></span>*/}
                         </IonItem>
                     </IonToolbar>
                 </IonFooter>
@@ -439,9 +445,9 @@ class Widgets{
             <IonGrid>
                 <IonRow>
                 {
-                    utils.configureCardRow(data.items).map((files:any, index:number)=>{return(
+                    utils.configureCardRow(data.items,3,8).map((files:any, index:number)=>{return(
                     <IonCol key={index}>
-                        <IonCard hidden={tools.compare(files.empty,true,true,false)} id={files.id} style={{width:tools.compare(tools.platform(),true,"105px","210px"),
+                        <IonCard hidden={tools.compare(files.empty,true,true,false)} id={files.id} style={{width:tools.compare(tools.platform(),true,"100px","110px"),
                             height:tools.compare(tools.platform(),true,"150px","")}} className="card card-hover" onClick={()=>{
                                 utils.flipCard(files.id,files.id+"content",files.id+"new");
                             }}>
@@ -722,6 +728,39 @@ class Widgets{
                   if (data.event){data.event(event)};
               }}/>
             </div>
+        )
+    }
+
+    dropDownMenu(data:any){
+        var STYLE:any = {
+            width: tools.compare(tools.platform(),true,"35%","20%"),
+            position: "fixed",
+            zIndex: 999999,
+            right: 0,
+            marginTop: "45px",
+        }
+
+        window.addEventListener("mouseup",(e)=>{
+            if (!document.getElementById("drop-down-menu-card")?.hidden){
+                if (data.dismiss){data.dismiss()}
+            }
+        })
+        return(
+            <IonCard id="drop-down-menu-card" style={STYLE} hidden={!data.isOpen}>
+                {
+                    data.options ?
+                    data.options.map((item:any, KEY:number) => 
+                        <IonItem key={KEY}>
+                            <IonIcon icon={item.icon}/>
+                            <IonLabel class="dropDownMenuItems dropDownMenuItemsHover" onMouseDown={()=>{
+                                tools.clickById(item.cmd)
+                                if (data.dismiss){data.dismiss()}
+                            }}>{item.title}</IonLabel>
+                        </IonItem>
+                    ):
+                    null
+                }
+            </IonCard>
         )
     }
 }

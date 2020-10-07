@@ -1,6 +1,6 @@
 import billPayIcon from './Images/billPay.jpg';
 import billHistoryIcon from './Images/billHistory.png';
-import settingsIcon from './Images/settings.png';
+//import settingsIcon from './Images/settings.png';
 import offersIcon from './Images/offers.jpg';
 import rewardIcon from './Images/reward.png';
 import bankingIcon from './Images/banking.png';
@@ -65,7 +65,7 @@ export function cardItems(){
             detail:[
                 "Pass bills",
             ],
-        },{
+        }/*,{
             name:"Settings",
             icon:settingsIcon,
             id:"Settings",
@@ -75,7 +75,7 @@ export function cardItems(){
             detail:[
                 "this is a test",
             ]
-        },{
+        }*/,{
             name:"Offers",
             icon:offersIcon,
             id:"Offers",

@@ -13,7 +13,7 @@ export class Language{
     }
     texts(){
         return {
-            APPNAME: "Finance App",//"Bill-Pay",
+            APPNAME: "G-Suit",//"Bill-Pay",
             fieldsRequired:"Feilds are required",
             passwordMatch:"Passwords dose not match",
             provideValidCreds:"Please provide valid credentials",

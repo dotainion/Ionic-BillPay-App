@@ -1,5 +1,5 @@
-import React from 'react';
-import { IonApp, IonSplitPane, IonRouterOutlet } from '@ionic/react';
+import React, { useState } from 'react';
+import { IonApp, IonSplitPane, IonRouterOutlet, IonButton } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 
@@ -50,59 +50,69 @@ import TemplatePage from './Template/TemplatePage';
 import MoneyTransfer from './pages/MoneyTransfer/MoneyTransfer';
 import Susu from './pages/Susu/Susu';
 
+/*components imports*/
+import widgets from './components/Widgets';
+import { logOutOutline, settingsOutline } from 'ionicons/icons';
+
 const App: React.FC = () => {
+  
+  const DropDwon = () =>{
+    const [openDropDownMenu, setOpenDropDwonMenu] = useState(false);
+    const DROP_DOWN_LIST = [
+      {
+        title:"Settings",
+        cmd: "settings",
+        icon: settingsOutline,
+      },{
+        title:"Logout",
+        cmd: "logout",
+        icon: logOutOutline,
+      }
+    ]
+    return(
+      <>
+        <widgets.dropDownMenu isOpen={openDropDownMenu} dismiss={()=>{
+            setOpenDropDwonMenu(false);
+        }} event={""} options={DROP_DOWN_LIST}/>
+        <IonButton hidden id="three-dot-menu-drop-down" onClick={()=>{
+            if (!openDropDownMenu){setOpenDropDwonMenu(true);}
+        }}/>
+      </>
+    )
+  }
 
   return (
     <IonApp>
-      
+      <DropDwon/>
+
       <IonReactRouter>
         <IonSplitPane contentId="menu">
           <Menu/>
           <IonRouterOutlet id="menu">
             <Route path="/aboutus" component={Aboutus} exact />
-            <Redirect from="/" to="/" exact />
             <Route path="/contactus" component={ContactUs} exact />
-            <Redirect from="/" to="/" exact />
             <Route path="/help" component={Help} exact />
-            <Redirect from="/" to="/" exact />
             <Route path="/privacy" component={Privacy} exact />
-            <Redirect from="/" to="/" exact />
             <Route path="/terms" component={Terms} exact />
-            <Redirect from="/" to="/" exact />
             
             <Route path="/trash" component={Trash} exact />
-            <Redirect from="/" to="/" exact />
             <Route path="/settings" component={Settings} exact />
-            <Redirect from="/" to="/" exact />
             <Route path="/favorites" component={Favorites} exact />
-            <Redirect from="/" to="/" exact />
             <Route path="/archeived" component={Archieved} exact />
-            <Redirect from="/" to="/" exact />
 
             <Route path="/chat" component={Chat} exact />
-            <Redirect from="/" to="/" exact />
             <Route path="/history" component={History} exact />
-            <Redirect from="/" to="/" exact />
             <Route path="/notification" component={Notification} exact />
-            <Redirect from="/" to="/" exact />
             <Route path="/generalinfo" component={GeneralInfo} exact />
-            <Redirect from="/" to="/" exact />
             <Route path="/faults" component={Faults} exact />
-            <Redirect from="/" to="/" exact />
 
             <Route path="/template" component={TemplatePage} exact />
-            <Redirect from="/" to="/" exact />
             <Route path="/moneytransfer" component={MoneyTransfer} exact />
-            <Redirect from="/" to="/" exact />
             <Route path="/susu" component={Susu} exact />
-            <Redirect from="/" to="/" exact />
 
             <Route path="/payment" component={Payment} exact />
-            <Redirect from="/" to="/" exact />
             <Route path="/home" component={Home} exact />
-            <Redirect from="/" to="/" exact />
             <Route path="/login" component={Login} exact />
-            <Redirect from="/" to="/login" exact />
           </IonRouterOutlet>
         </IonSplitPane>
 
@@ -111,7 +121,7 @@ const App: React.FC = () => {
         <Route path="/recover" component={Recover} exact />
         <Redirect from="/" to="/" exact />
         <Route path="/login" component={Login} exact />
-        <Redirect from="/" to="/login" exact />
+        <Redirect from="/*" to="/login" exact />
       </IonReactRouter>
       
     </IonApp>

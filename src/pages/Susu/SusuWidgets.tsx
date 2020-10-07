@@ -1,4 +1,4 @@
-import { IonContent, IonLabel, IonList } from '@ionic/react';
+import { IonLabel, IonList } from '@ionic/react';
 import React from 'react';
 
 

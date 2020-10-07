@@ -89,11 +89,11 @@ export class W_FlipCard{
         }
     }
 
-    configureCardRow(value:any){
+    configureCardRow(value:any,mobileRow:number,desktopRow:number){
         var tempData = []
         var set = 0;
         if (value){
-            var rowNum = tools.compare(tools.platform(),true,3,4);
+            var rowNum = tools.compare(tools.platform(),true,mobileRow,desktopRow);
             for (var i = 0; i < value.length; i++){
                 set ++;
                 if (set === rowNum){
