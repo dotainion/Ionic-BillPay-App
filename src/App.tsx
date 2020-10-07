@@ -75,7 +75,10 @@ const App: React.FC = () => {
             setOpenDropDwonMenu(false);
         }} event={""} options={DROP_DOWN_LIST}/>
         <IonButton hidden id="three-dot-menu-drop-down" onClick={()=>{
-            if (!openDropDownMenu){setOpenDropDwonMenu(true);}
+            setOpenDropDwonMenu(true);
+        }}/>
+        <IonButton hidden id="three-dot-menu-drop-down-set" onClick={()=>{
+            setOpenDropDwonMenu(false);
         }}/>
       </>
     )

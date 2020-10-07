@@ -12,6 +12,8 @@ import EmojiPicker from 'emoji-picker-react';
 
 class Widgets{
     Header(data:any){
+        const [dotMenuState, setDotMenuState] = useState(true);
+
         var appName;
         var icon;
         var backButton;
@@ -51,7 +53,13 @@ class Widgets{
                         </IonItem>
 
                         <IonIcon class="threeDotMenu" slot="end" onClick={()=>{
-                            tools.clickById("three-dot-menu-drop-down");
+                            if (dotMenuState){
+                                tools.clickById("three-dot-menu-drop-down");
+                                setDotMenuState(false);
+                            }else{
+                                tools.clickById("three-dot-menu-drop-down-set");
+                                setDotMenuState(true);
+                            }
                         }} icon={ellipsisVerticalOutline}/>
 
                     </IonToolbar>
