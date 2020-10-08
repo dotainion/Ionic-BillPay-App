@@ -1,6 +1,6 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import StripeCheckout from "react-stripe-checkout";
-import { IonPage, IonContent, IonSelect, IonSelectOption, IonLabel, IonItem, IonCard, IonList, IonText, IonImg, IonThumbnail } from "@ionic/react";
+import { IonPage, IonContent, IonSelect, IonSelectOption, IonLabel, IonItem, IonCard, IonList, IonText, IonImg, IonThumbnail, IonButton } from "@ionic/react";
 import tools from '../components/Tools';
 import Widgets from '../components/Widgets';
 import utils from '../Payment/Utils';
@@ -8,14 +8,17 @@ import Info from './Info';
 import './Payment.css';
 import { cardOutline } from "ionicons/icons";
 import { pay } from "../components/PayUtils";
+import axios from 'axios';
 
 
 
 const Payment: React.FC = () =>{
     const handleToken = (customer:any) =>{
+        console.log("sending out request")
         pay.tokenHandle(tools.URL.CHECKOUT,customer,utils.getData(),(response:any)=>{
             console.log(response);
         });
+        console.log("done")
     }
 
     const [paymentDisabled, setPaymentDisabled] = useState(true);

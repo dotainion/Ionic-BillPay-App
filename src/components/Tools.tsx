@@ -7,9 +7,9 @@ class Tools{
     SERVERUSERNAME = "user";
     SERVERPASSWORD = "users"
 
-    link = "http://127.0.0.1:80"
+    link = "http://127.0.0.1:4242"
     URL = {
-        CHECKOUT:this.link+"/checkout",
+        CHECKOUT:this.link+"/create-session",
         LOGIN:this.link+"/login",
         REGISTER:this.link+"/register",
         RECOVER:this.link+"/recover"

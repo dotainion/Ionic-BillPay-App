@@ -1,6 +1,60 @@
+/*main functions*/
+.clickableLable{
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 2px;
+    color: teal;
+}
+.clickableLableHover:hover{
+    border: 1px solid gray;
+}
+
 /*for SusuFirstTimeInfo in SusuWidget.tsx*/
 .SusuFirstTimeInfoMainContainer{
     text-align: center;
     margin-top: 40%;
     transform: translateY(-50%);
+}
+
+.loginCodeWidthMainContainers{
+    margin-top: 100px;
+}
+
+.mainContainer{
+    margin-top: 10%;
+    padding: 20px;
+    margin-left: 50%;
+    transform: translate(-50%);
+    user-select: none;
+    min-height: 50%;
+    border: 1px solid black;
+}
+
+/*for ListOfSusuAccounts*/
+.listOfSusuAccountMaincontainer{
+    height: 300px;
+    overflow: scroll;;
+}
+
+/*for search*/
+.searchInput{
+    border-top: 1px solid red;
+    border-left: 1px solid red;
+    border-bottom: 1px solid red;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+.inputGoButton{
+    height: 85%;
+    border-top: 1px solid red;
+    border-right: 1px solid red;
+    border-bottom: 1px solid red;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+/*for inputs*/
+.itemInputsContainer{
+    margin-bottom: 20px;
+    border: 1px solid gray;
 }

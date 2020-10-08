@@ -48,7 +48,7 @@ import Archieved from './pages/Archieved';
 
 import TemplatePage from './Template/TemplatePage';
 import MoneyTransfer from './pages/MoneyTransfer/MoneyTransfer';
-import Susu from './pages/Susu/Susu';
+import Susu from './pages/Susu/Susun';
 
 /*components imports*/
 import widgets from './components/Widgets';
