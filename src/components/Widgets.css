@@ -397,3 +397,34 @@
 .dropDownMenuIcon{
   color: teal;
 }
+
+/*for brokenPageOrNoInternet*/
+.brokenPageContainer{
+  text-align: center;
+  font-size: larger;
+  user-select: none;
+}
+.brokenPageImage{
+  margin-left: 50%;
+  transform: translate(-50%);
+}
+.brokenPageButtonContainer{
+  width: 270px;
+  margin-left: 50%;
+  transform: translate(-50%);
+}
+.brokenPageDetailsContainer{
+  width: 80%;
+  margin-left: 50%;
+  transform: translate(-50%);
+  user-select: none;
+}
+.brokenPageHover:hover{
+  color: gray;
+}
+.brokenPageButton{
+  margin-right: 100px;
+}
+.brokenPageButtonLable{
+  text-decoration: underline;
+}

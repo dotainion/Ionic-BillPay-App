@@ -1,21 +1,36 @@
-import { IonCard, IonIcon, IonInput, IonItem, IonLabel, IonList, IonSelect, IonSelectOption } from '@ionic/react';
-import { close, search } from 'ionicons/icons';
+import { IonButton, IonCard, IonContent, IonIcon, IonInput, IonItem, IonLabel, IonList, IonPopover, IonSelect, IonSelectOption } from '@ionic/react';
+import { close, locateOutline, search } from 'ionicons/icons';
 import React, { useState } from 'react';
 import tools from '../../components/Tools';
 
 
-export function SearchBar(){
+export function SearchBar(data:any){
+    const [showLocation, setShowLocation] = useState(false);
+    const LOCATION_ERR = ["No location to show"];
+    var LOCATION = data.locations;
+    if (!LOCATION.length) LOCATION = LOCATION_ERR;
+    LOCATION = LOCATION_ERR;
     return(
         <div>
+            <IonPopover isOpen={showLocation} onDidDismiss={()=>{setShowLocation(false)}}>
+                <IonContent>
+                    {
+                        LOCATION.map((area:any, key:number)=>{return(
+                            <IonItem key={key}>
+                                <IonLabel>{area}</IonLabel>
+                            </IonItem>
+                        )})
+                    }
+                </IonContent>
+                <IonItem>
+                    <IonButton slot="end" color="light" onClick={()=>{setShowLocation(false)}}>Close</IonButton>
+                </IonItem>
+            </IonPopover>
             <IonCard style={{borderRadius:"15px"}}>
                 <IonItem lines="none">
                     <IonInput placeholder="Search" value={""} />
-                    <IonIcon icon={close} />
-
-                    <IonSelect interface="popover" placeholder="Location" value={""}>
-                        <IonSelectOption>{"Locations"}</IonSelectOption>
-                    </IonSelect>
-
+                    <IonIcon icon={close}/>
+                    <IonIcon icon={locateOutline} onClick={()=>{setShowLocation(true);}}/>
                     <IonIcon color="primary" icon={search}/>
                 </IonItem>
             </IonCard>
@@ -116,7 +131,7 @@ export function ListOfSusuAccounts(data:any){
     console.log(ITEMS)
     return(
         <div hidden={!data.isOpen}>
-            <SearchBar/>
+            <SearchBar locations={[]}/>
             <div className="listOfSusuAccountMaincontainer">
                 {
                     data.items.map((item:any, key:number)=>{return(

@@ -3,7 +3,7 @@ import { IonPage, IonContent, IonLabel } from '@ionic/react';
 import Widget from '../../components/Widgets';
 import { leafOutline } from 'ionicons/icons';
 import StripeCheckout from 'react-stripe-checkout';
-import { pay } from '../../components/PayUtils';
+import { pay } from '../../components/CheckOut';
 
 
 
@@ -18,7 +18,7 @@ export const moneyTransfer:React.FC = () =>{
                 </div>
 
                 <StripeCheckout
-                    stripeKey={pay.key}
+                    stripeKey={pay.STRIPE_KEY}
                     token={(token)=>{}}
                     amount={0}
                     name={"NAME"}

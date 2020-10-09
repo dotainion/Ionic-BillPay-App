@@ -7,7 +7,7 @@ import utils from '../Payment/Utils';
 import Info from './Info';
 import './Payment.css';
 import { cardOutline } from "ionicons/icons";
-import { pay } from "../components/PayUtils";
+import { pay } from "../components/CheckOut";
 import axios from 'axios';
 
 
@@ -92,7 +92,7 @@ const Payment: React.FC = () =>{
                     </IonItem>
                     <div style={{textAlign:"center",width:"100%",marginTop:"-50"}}>
                         <StripeCheckout
-                            stripeKey={pay.key}
+                            stripeKey={pay.STRIPE_KEY}
                             token={token=>{handleToken(token)}}
                             amount={parseFloat(getData.price.replace("$","")) * 100}
                             name={getData.name}

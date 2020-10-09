@@ -67,22 +67,24 @@ class Tools{
         
     }
 
-    toast(msg:string,duration:number=3000){
+    toast(msg:string,duration:number=3000,position:any="top",color:string="dark"){
         const toast = document.createElement('ion-toast');
         toast.message = msg;
-        toast.position = "top";
+        toast.position = position;
         toast.duration = duration;
+        toast.color = color;
       
         document.body.appendChild(toast);
         return toast.present();
     }
 
-    toastWithOkCancel(msg:string,onClick:any=false,okayText:string="Yes",cancelText:string="No"){
+    toastWithOkCancel(msg:string="",onClick:any=false,okayText:string="Yes",
+        cancelText:string="No",header:string="Warning!!",color:string="light",position:any="top"){
         const toast = document.createElement("ion-toast");
-        toast.header = 'Warning!!';
+        toast.header = header;
         toast.message = msg;
-        toast.position = 'middle';
-        //toast.color = 'light';
+        toast.position = position;
+        toast.color = color;
         toast.buttons = [
             {
                 //side: 'start',

@@ -7,6 +7,7 @@ import serverVer from '../components/ServerVar';
 import { Language } from './Languages';
 import { w_calendar, W_FlipCard ,utils } from './W_Utils';
 import EmojiPicker from 'emoji-picker-react';
+import brokenRobot from './GlobImage/brokenRobot.png';
 
 
 
@@ -382,21 +383,17 @@ class Widgets{
         )
     }
 
-    toastMsg(show=false,time=2000,position:any="top",msg="Pop up message"){
-        const [showToast,setShowToast] = useState(false);
-        if (show){
-            setShowToast(true);
-        }else if (show === false){
-            setShowToast(false);
-        }else{
-            console.log("show: only accept boolean value");
-        }
+    toastMsg(data:any){
+        const show = data.isOpen || false;
+        const position = data.position || "top";
+        const msg = data.msg || "Pop Up Message";
+        const time = data.time || 2000
         return(
             <>
                 <IonToast
-                    isOpen={showToast}
+                    isOpen={show}
                     position={position}
-                    onDidDismiss={() => setShowToast(false)}
+                    onDidDismiss={() =>{if (data.dismiss)data.dismiss()}}
                     message={msg}
                     duration={time}/>
             </>
@@ -769,6 +766,44 @@ class Widgets{
                     null
                 }
             </IonCard>
+        )
+    }
+
+    brokenPageOrNoInternet(data:any){
+        const [showDetails, setShowDetails] = useState(false);
+        var WIDTH = tools.compare(tools.platform(),true,"55%","25%");
+        var DETAILS;
+        const details_text = `Unfortunately we are having great 
+            problems with the internet connection or server.Please be patient.
+            You can check your internet connection or try reconnecting, if that 
+            dosent work then there may be a server issue that our team is working on
+            so you can try back later. thanks for your patient.`; 
+        if (!data.details) DETAILS = details_text;
+        else DETAILS = data.details;
+        return(
+            <IonContent hidden={!data.isConnection}>
+
+                <div className="brokenPageContainer">
+                    <IonImg class="brokenPageImage" style={{width:WIDTH}} src={brokenRobot}/>
+                    <div><IonLabel>Oops!</IonLabel></div>
+                    <div><IonLabel>No Internet Connection</IonLabel></div>
+                    <div><IonLabel style={{fontSize:"11px"}}>Check your connection and try again</IonLabel></div>
+                    <IonItem class="brokenPageButtonContainer" lines="none">
+                        <IonButton color="tertiary" class="brokenPageButton" onClick={()=>{
+                            if (data.onTry) data.onTry();
+                        }}>Try again</IonButton>
+                        <IonLabel class="brokenPageButtonLable brokenPageHover" onClick={()=>{
+                            setShowDetails(true);
+                        }}>Details</IonLabel>
+                    </IonItem>
+                </div>
+                <IonList hidden={!showDetails} class="brokenPageDetailsContainer">
+                    <p>{DETAILS}</p>
+                    <IonItem lines="full">
+                        <IonButton color="light" slot="end" onClick={()=>{setShowDetails(false);}}>Close</IonButton>
+                    </IonItem>
+                </IonList>
+            </IonContent>
         )
     }
 }
