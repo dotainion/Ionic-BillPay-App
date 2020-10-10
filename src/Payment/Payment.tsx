@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import StripeCheckout from "react-stripe-checkout";
-import { IonPage, IonContent, IonSelect, IonSelectOption, IonLabel, IonItem, IonCard, IonList, IonText, IonImg, IonThumbnail, IonButton } from "@ionic/react";
+import { IonPage, IonContent, IonSelect, IonSelectOption, IonLabel, IonItem, IonCard, IonList, IonText, IonImg, IonThumbnail } from "@ionic/react";
 import tools from '../components/Tools';
 import Widgets from '../components/Widgets';
 import utils from '../Payment/Utils';
@@ -8,19 +7,10 @@ import Info from './Info';
 import './Payment.css';
 import { cardOutline } from "ionicons/icons";
 import { pay } from "../components/CheckOut";
-import axios from 'axios';
 
 
 
 const Payment: React.FC = () =>{
-    const handleToken = (customer:any) =>{
-        console.log("sending out request")
-        pay.tokenHandle(tools.URL.CHECKOUT,customer,utils.getData(),(response:any)=>{
-            console.log(response);
-        });
-        console.log("done")
-    }
-
     const [paymentDisabled, setPaymentDisabled] = useState(true);
     const [selectName, setSelectName] = useState();
     const [getData, setData] = useState(utils.dummyData);
@@ -77,36 +67,26 @@ const Payment: React.FC = () =>{
                                     <IonLabel>{getData.name}</IonLabel>
                                 </IonItem>
                                 <IonItem style={{textAlign:"center"}} lines="full">
-                                    <IonLabel>{getData.price}</IonLabel>
+                                    <IonLabel>${getData.price}</IonLabel>
                                 </IonItem>
                                 <IonItem lines="full">
                                     <IonText>{getData.description}</IonText>
                                 </IonItem>
                             </IonList>    
                         </IonCard> 
-                                
                                                 
                     </IonContent> 
                     <IonItem style={{textAlign:"center"}} lines="none">
-                        <IonLabel>{getData.price}</IonLabel>
+                        <IonLabel>${getData.price}</IonLabel>
                     </IonItem>
                     <div style={{textAlign:"center",width:"100%",marginTop:"-50"}}>
-                        <StripeCheckout
-                            stripeKey={pay.STRIPE_KEY}
-                            token={token=>{handleToken(token)}}
-                            amount={parseFloat(getData.price.replace("$","")) * 100}
-                            name={getData.name}
-                            billingAddress
-                            shippingAddress>
-                            <button id="stripeCheckout" disabled={paymentDisabled}/>
-                        </StripeCheckout>
-                        <button className="checkOutButton checkOutButtonClick" onClick={()=>{
-                            if (!paymentDisabled){
-                                tools.clickById("stripeCheckout");
-                            }else{
-                                tools.clickById("payment-dialog-box");
-                            }
-                        }}>Pay With Card</button>
+                        <pay.checkOut
+                            price={getData.price}
+                            title={getData.name}
+                            subTitle="checkout"
+                            disable={paymentDisabled}
+                            onOpen={()=>{if(getData.price <= 0)tools.clickById("payment-dialog-box")}}
+                        />
                     </div>
                 </IonList>
 

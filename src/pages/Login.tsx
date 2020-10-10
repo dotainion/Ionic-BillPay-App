@@ -7,7 +7,6 @@ import serverVar from '../components/ServerVar';
 import './Home.css';
 import { loginUser } from '../Firebase/Firebase';
 import { Language } from '../components/Languages';
-import { pay } from '../components/CheckOut';
 
 
 const Login: React.FC = () => {  
