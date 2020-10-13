@@ -67,7 +67,7 @@ class Tools{
         
     }
 
-    toast(msg:string,duration:number=3000,position:any="top",color:string="dark"){
+    toastMsg(msg:string,duration:number=3000,position:any="top",color:string="dark"){
         const toast = document.createElement('ion-toast');
         toast.message = msg;
         toast.position = position;
@@ -78,7 +78,7 @@ class Tools{
         return toast.present();
     }
 
-    toastWithOkCancel(msg:string="",onClick:any=false,okayText:string="Yes",
+    toastWithCmd(msg:string="",onClick:any=false,okayText:string="Yes",
         cancelText:string="No",header:string="Warning!!",color:string="light",position:any="top"){
         const toast = document.createElement("ion-toast");
         toast.header = header;
@@ -324,6 +324,7 @@ class Tools{
             tag.style.cssText = styles;
         }
     }
+    
 }
 
 var tools = new Tools();

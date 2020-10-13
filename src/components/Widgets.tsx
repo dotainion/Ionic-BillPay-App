@@ -39,7 +39,7 @@ class Widgets{
                         <IonCard hidden={!imgState} class="pageHeaderImg" slot="start">
                             <IonImg src={icon}/>
                         </IonCard>
-                        <IonTitle class="headerPageName">{appName}</IonTitle>
+                        <IonTitle class="headerPageName" style={{fontSize:tools.compare(tools.platform(),true,"20px","")}}>{appName}</IonTitle>
 
                         <IonItem hidden={tools.compare(tools.platform(),true,true,false)} slot="end" lines="none">
                             <div className="onHover topBarButtonNav" onClick={()=>{

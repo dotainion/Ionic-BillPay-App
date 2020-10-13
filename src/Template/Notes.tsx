@@ -76,11 +76,11 @@ class Notes{
                 <IonItem>
                     <IonButton slot="end" onClick={()=>{
                         if (!note_subject && !note_message){
-                            tools.toast("You must provide a valide subject and message");
+                            tools.toastMsg("You must provide a valide subject and message");
                         }else if (!note_subject){
-                            tools.toast("Must provide subject");
+                            tools.toastMsg("Must provide subject");
                         }else if (!note_message){
-                            tools.toast("must provide message");
+                            tools.toastMsg("must provide message");
                         }else{
                             if (data.get){data.get(note.addNote(data.value,[note_subject,note_message]))}
                             if (data.dismiss){data.dismiss(false)}

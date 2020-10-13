@@ -94,7 +94,7 @@ class Budget{
                             if (data.get){data.get(value)};
                             if (data.dismiss){data.dismiss(false)}
                         }else{
-                            tools.toast("No receonds to be added. Please provide $ amount");
+                            tools.toastMsg("No receonds to be added. Please provide $ amount");
                         }
                     }}>Add</IonButton>
                 </IonItem>

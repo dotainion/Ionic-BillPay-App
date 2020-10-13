@@ -10,7 +10,7 @@ export class T_Utils{
     update(state:boolean,onUpdate:any,onProccess:any,toast:boolean=true){
         var msg = "Are you sure you will like to delete this item?"
         if (toast){
-            tools.toastWithOkCancel(msg,(returnValue:boolean)=>{
+            tools.toastWithCmd(msg,(returnValue:boolean)=>{
                 if (returnValue){onProccess()}
                 if (state){
                     onUpdate(false);
